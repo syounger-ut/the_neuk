@@ -6,6 +6,9 @@ class UsersController < ApplicationController
     if user.save
       # invoke send email method here if you want to send confirmation email
       render json: {status: 'User created successfully'}, status: :created
+
+      # send email to user with confirm_token to confirm email
+      UserMailer.sign_up_confirmation(user).deliver_later
     else
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
