@@ -5,12 +5,12 @@ class PasswordsController < ApplicationController
       return render json: {error: 'Email not present'}
     end
 
-    user = User.find_by(email: email.downcase)
+    user = User.find_by(email: params[:email].downcase)
 
     if user.present? && user.confirmed_at?
       user.generate_password_token!
       # SEND EMAIL HERE
-      UserMailer.sign_up_confirmation(user).deliver_later
+      UserMailer.forgot_password(user).deliver_later
       render json: {status: 'ok'}, status: :ok
     else
       render json: {error: ['Email address not found. Please check and try again.']}, status: :not_found

@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
-  post 'password/forgot', to: 'password#forgot'
-  post 'password/reset',  to: 'password#reset'
-  put  'password/update', to: 'password#update'
+  post 'password/forgot', to: 'passwords#forgot'
+  post 'password/reset',  to: 'passwords#reset'
+  put  'password/update', to: 'passwords#update'
 
 end

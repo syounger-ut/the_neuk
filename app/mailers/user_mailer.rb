@@ -9,4 +9,13 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def forgot_password(user)
+    @user = user
+    @url = # generate confirmation url
+    mail(
+      to: @user.email,
+      subject: "Forgot your password"
+    )
+  end
+
 end
