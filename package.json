@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/samyounger/the_neuk_front/issues"
   },
-  "homepage": "https://github.com/samyounger/the_neuk_front#readme"
+  "homepage": "https://github.com/samyounger/the_neuk_front#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
