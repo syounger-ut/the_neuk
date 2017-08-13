@@ -1,24 +1,25 @@
-# README
+# The Neuk API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    DESCRIPTION: The Neuk API is is an application that will be the back-end of the_neuk_frontend application. As a whole it is a website to manage the property The Neuk in Kames, Scotland which is to be let to holiday makers. It will give guests the ability to create bookings and pay, and view their bookings with relevant guest information. It will also serve as a blogging website and listing events to give guests information on the local area for site and attractions to visit.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Get Started
 
-* System dependencies
+This is a rails application. To start it on your local host, in your terminal run:
 
-* Configuration
+```
+$ git clone git@github.com:samyounger/the_neuk_api.git
 
-* Database creation
+$ bundle
 
-* Database initialization
+$ rails db:create
 
-* How to run the test suite
+$ rails db:migrate
 
-* Services (job queues, cache servers, search engines, etc.)
+$ rails s
+```
 
-* Deployment instructions
+And you should be good to go :thumbsup:
 
-* ...
+---
