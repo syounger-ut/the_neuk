@@ -23,3 +23,7 @@ $ rails s
 And you should be good to go :thumbsup:
 
 ---
+
+## User authentication
+
+Json Web Token (JWT) authentication has been implemented. Instructions on setup [HERE](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api)
