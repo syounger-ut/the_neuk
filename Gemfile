@@ -6,8 +6,11 @@ gem 'puma', '~> 3.0'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
+
+# Authentication
 gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
+gem 'simple_command'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
