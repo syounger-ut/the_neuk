@@ -18,6 +18,8 @@ class BookingsController < ApplicationController
     else
       render json: @booking.errors, status: :unprocessable_entity
     end
+  rescue
+    render json: { status: "You cannot proceed without paying" }
   end
 
   private
@@ -27,9 +29,11 @@ class BookingsController < ApplicationController
   end
 
   def find_user
-    @user ||= User.find_by_email(params[:user][:email])
-    @user.update(user_params) if @user
-    @user ||= User.create(user_params) unless @user
+    if params[:booking][:paid] == true
+      @user ||= User.find_by_email(params[:user][:email])
+      @user.update(user_params) if @user
+      @user ||= User.create(user_params) unless @user
+    end
   end
 
   def user_params
