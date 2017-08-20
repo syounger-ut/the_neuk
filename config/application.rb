@@ -18,6 +18,7 @@ Bundler.require(*Rails.groups)
 
 module TheNeukApi
   class Application < Rails::Application
+    config.time_zone = 'London'
     config.api_only = true
     config.autoload_paths << Rails.root.join('lib')
   end
