@@ -37,5 +37,3 @@ group :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
   gem 'simplecov'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
