@@ -6,6 +6,10 @@ class AuthenticationController < ApplicationController
     if user.save
       token = JsonWebToken.encode({id: user.id})
       user_to_render = user.as_json(only: [:name, :email, :role, :phone_number])
+
+      # => At this point, need to email the new user with login details embedded in url
+      # get password with 'password'
+
       render json: { token: token, user: user_to_render }, status: :ok
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
@@ -26,8 +30,12 @@ class AuthenticationController < ApplicationController
 
   def user_params
     hash = {}
-    hash.merge! params.slice(:name, :email, :role, :phone_number, :password, :password_confirmation)
+    hash.merge! params.slice(:name, :email, :role, :phone_number).merge(password: password, password_confirmation: password)
     hash
+  end
+
+  def password(pass_code = nil)
+    @password ||= SecureRandom.hex(12) unless pass_code # => generate a random 12 digit password
   end
 
 end
