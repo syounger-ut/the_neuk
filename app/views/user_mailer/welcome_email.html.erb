@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to The Neuk</h1>
+
+    <h2>Dear <%= @user.name.capitalize %></h2>
+
+    <p>You have successfully booked your stay at The Neuk, Kames.</p>
+
+    <p>To login to the site, please follow this link: <a href="<%= @url %>">MY BOOKING</a>.</p>
+
+    <h3>Booking details:</h3>
+    
+    <p>Name: <%= @user.name %></p>
+    <p>Start Date: <%= @booking.start_date %></p>
+    <p>End Date: <%= @booking.end_date %></p>
+    <p>Occupants: <%= @booking.occupants %></p>
+    <p>Special Instructions: <%= @booking.special_instructions %></p>
+
+    <p>Thank you for booking, we hope you have a fantastic stay and enjoy it as much as we do.</p>
+
+    <p>Best wishes</p>
+
+    <p>Douglas & Susie</p>
+  </body>
+</html>
