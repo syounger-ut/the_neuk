@@ -1,4 +1,4 @@
-class ChargesController < ApplicationController
+class Stripe::ChargesController < ApplicationController
 
   def new
   end
@@ -16,12 +16,11 @@ class ChargesController < ApplicationController
       :customer    => customer.id,
       :amount      => @amount,
       :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+      :currency    => 'gbp'
     )
 
   rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
+    render json: {error: e.message}
   end
 
 end
