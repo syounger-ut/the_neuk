@@ -7,8 +7,7 @@ class AuthenticationController < ApplicationController
       token = JsonWebToken.encode({id: user.id})
       user_to_render = user.as_json(only: [:name, :email, :role, :phone_number])
 
-      # => At this point, need to email the new user with login details embedded in url
-      # get password with 'password'
+      UserMailer.welcome_email(user, password).deliver_later
 
       render json: { token: token, user: user_to_render }, status: :ok
     else
