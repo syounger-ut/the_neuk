@@ -8,7 +8,6 @@ class CreateBooking < ActiveRecord::Migration[5.0]
       t.string  :special_instructions
       t.integer :booking_source, default: 0
       t.boolean :paid,   default: false
-      t.boolean :active, default: true
 
       t.timestamps
     end

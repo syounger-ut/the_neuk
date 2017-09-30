@@ -1,40 +1,31 @@
 class AuthenticationController < ApplicationController
-  skip_before_action :authenticate_request
+  skip_before_action :authenticate_user!
 
   def register
     user = User.new(user_params)
     if user.save
-      token = JsonWebToken.encode({id: user.id})
-      user_to_render = user.as_json(only: [:name, :email, :role, :phone_number])
-
-      UserMailer.welcome_email(user, password).deliver_later
-
-      render json: { token: token, user: user_to_render }, status: :ok
+      token = JsonWebToken.issue({id: user.id})
+      UserMailer.welcome_email(user).deliver_later
+      render json: { token: token, user: UserSerializer.new(user) }, status: :ok
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def login
-    command = AuthenticateUser.call(params[:email], params[:password])
-
-    if command.success?
-      render json: { auth_token: command.result }
+    user = User.find_by_email(params[:email])
+    if user && user.authenticate(params[:password])
+      token = JsonWebToken.issue({id: user.id})
+      render json: { token: token, user: UserSerializer.new(user) }, status: :ok
     else
-      render json: { error: command.errors }, status: :unauthorized
+      render json: { errors: ["Invalid login credentials."]}, status: 401
     end
   end
 
   private
 
   def user_params
-    hash = {}
-    hash.merge! params.slice(:name, :email, :role, :phone_number).merge(password: password, password_confirmation: password)
-    hash
-  end
-
-  def password(pass_code = nil)
-    @password ||= SecureRandom.hex(12) unless pass_code # => generate a random 12 digit password
+    params.permit(:first_name, :last_name, :email, :phone_number, :password)
   end
 
 end

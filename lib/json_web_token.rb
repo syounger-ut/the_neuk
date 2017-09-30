@@ -1,15 +1,19 @@
 class JsonWebToken
-  class << self
-    def encode(payload, exp = 24.hours.from_now)
-      payload[:exp] = exp.to_i
-      JWT.encode(payload, Rails.application.secrets.secret_key_base)
-    end
+  ALGORITHM = 'HS256'
 
-    def decode(token)
-      body = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
-      HashWithIndifferentAccess.new(body)
-    rescue
-      nil
-    end
+  def self.issue(payload, expiry_in_minutes=60*24*30)
+    payload[:exp] = expiry_in_minutes.minutes.from_now.to_i
+    JWT.encode(payload, auth_secret, ALGORITHM)
   end
+
+  def self.decode(token, leeway=0)
+    decoded = JWT.decode(token, auth_secret, true, { leeway: leeway, algorithm: ALGORITHM })
+    HashWithIndifferentAccess.new(decoded[0])
+  end
+
+
+  def self.auth_secret
+    ENV["AUTH_SECRET"]
+  end
+
 end

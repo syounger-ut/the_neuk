@@ -1,5 +1,6 @@
 user = User.create({
-  name:         "Sam Younger",
+  first_name:   "Sam",
+  last_name:    "Younger",
   email:        "sam@sam.com",
   password:     "password",
   phone_number: "07564738291",
