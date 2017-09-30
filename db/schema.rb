@@ -23,18 +23,18 @@ ActiveRecord::Schema.define(version: 20170815205927) do
     t.string   "special_instructions"
     t.integer  "booking_source",       default: 0
     t.boolean  "paid",                 default: false
-    t.boolean  "active",               default: true
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
+    t.string   "phone_number"
     t.integer  "role",            default: 0
     t.string   "password_digest"
-    t.string   "phone_number"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

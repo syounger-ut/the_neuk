@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_secure_password
+  has_secure_password validations: false # => removes password_confirmation check
 
   # Relationships
   has_many :bookings
@@ -8,17 +8,17 @@ class User < ApplicationRecord
   enum role: [ :guest, :family, :admin ]
 
   # Validations
-  validates :name,         presence: true
-  validates :email,        presence: true, uniqueness: true
-  validates :phone_number, presence: true
+  validates :first_name, :last_name, :phone_number, :password, presence: true
+  validates :email, presence: true, uniqueness: true
 
   before_create :format_text
 
   private
 
   def format_text
-    self.name  = self.name.downcase
-    self.email = self.email.downcase
+    self.first_name = self.first_name.downcase
+    self.last_name  = self.last_name.downcase
+    self.email      = self.email.downcase
   end
 
 end
