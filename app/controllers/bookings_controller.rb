@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     booking = @current_user.bookings.new(booking_params)
 
     if booking.save && !!booking.paid
-      UserMailer.welcome_email(@current_user, @booking).deliver_later
+      UserMailer.booking_email(@current_user, @booking).deliver_later
       render json: booking, serializer: BookingSerializer , status: :created
     elsif !booking.paid
       render json: { paid: "The booking is unpaid. Please pay" }
