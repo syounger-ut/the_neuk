@@ -12,14 +12,20 @@ var Login = React.createClass({
       email: this.refs.email,
       password: this.refs.password
     });
-    console.log(this.state.email.value, this.state.password.value);
+  },
+  handleSubmit: function(event) {
+    event.preventDefault();
+    var email = this.state.email.value;
+    var password = this.state.password.value;
+    console.log(email, password);
   },
   render: function() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" ref="email" placeholder="Email" onChange={this.handleLogin}/>
-          <input type="text" ref="password" placeholder="Password" onChange={this.handleLogin}/>
+          <input type="password" ref="password" placeholder="Password" onChange={this.handleLogin}/>
+          <input className="button" type="submit"/>
         </form>
       </div>
     )
