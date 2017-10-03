@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "The Neuk",
   "version": "1.0.0",
-  "description": "an udemy reactjs tutorial",
+  "description": "A holiday letting website",
   "main": "index.js",
   "scripts": {
     "test": "karma start",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samyounger/learnReact.git"
+    "url": "git+https://github.com/samyounger/the_neuk_front.git"
   },
   "author": "Sam Younger",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/samyounger/learnReact/issues"
+    "url": "https://github.com/samyounger/the_neuk_front/issues"
   },
-  "homepage": "https://github.com/samyounger/learnReact#readme",
+  "homepage": "https://github.com/samyounger/the_neuk_front#readme",
   "dependencies": {
     "axios": "^0.16.1",
     "express": "^4.15.2",

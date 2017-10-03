@@ -1,12 +1,12 @@
-var React = require("react");
-var Login = require("Login");
+var React     = require("react");
+var LoginForm = require("LoginForm");
 
 var Main = React.createClass({
   render: function() {
     return (
       <div>
         <div>The Neuk</div>
-        <Login/>
+        <LoginForm/>
       </div>
     )
   }

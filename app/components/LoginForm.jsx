@@ -1,25 +1,37 @@
 var React = require("react");
 
-var Login = React.createClass({
-  getInitialState: function(){
+var LoginForm = React.createClass ({
+  getInitialState: function() {
     return {
-      email: "",
+      email:    "",
       password: ""
     }
   },
   handleLogin: function() {
     this.setState({
-      email: this.refs.email,
+      email:    this.refs.email,
       password: this.refs.password
     });
   },
   handleSubmit: function(event) {
     event.preventDefault();
-    var email = this.state.email.value;
+    var email    = this.state.email.value;
     var password = this.state.password.value;
+
     console.log(email, password);
+
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:3000/api/login",
+      data: { email: email, password: password }
+    }).done(function(data) {
+      console.log(data);
+    }).fail(function(e) {
+      console.log(e);
+    });
+
   },
-  render: function() {
+  render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -28,8 +40,8 @@ var Login = React.createClass({
           <input className="button" type="submit"/>
         </form>
       </div>
-    )
+    );
   }
 });
 
-module.exports = Login;
+module.exports = LoginForm;
