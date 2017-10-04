@@ -25,7 +25,7 @@ var LoginForm = React.createClass ({
       url: "http://localhost:3000/api/login",
       data: { email: email, password: password }
     }).done(function(data) {
-      console.log(data);
+      localStorage.setItem('auth_token', data.token);
     }).fail(function(e) {
       console.log(e);
     });
