@@ -15,8 +15,15 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
+      {test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel-loader']},
       {test: /(\.css)$/, loaders: ['style-loader', 'css-loader']}
     ]
+  },
+  resolve: {
+    modules: [
+      "node_modules",
+      path.resolve(__dirname, "app/components")
+    ],
+    extensions: [".js", ".json", ".jsx", ".css"]
   }
 }
