@@ -27,6 +27,7 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function() {
   livereload.listen();
+  gulp.watch('app/components/**/*.jsx', ['webpackDevServer'])
   gulp.watch('app/styles/**/*.scss',['styles']);
 });
 
