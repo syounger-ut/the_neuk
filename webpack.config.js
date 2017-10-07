@@ -5,17 +5,17 @@ module.exports = {
   context: __dirname + "/app",
   entry: "./app",
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/public',
     publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
+    contentBase: path.resolve(__dirname, 'dist'),
     port: 8000
   },
   module: {
     loaders: [
-      {test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel-loader']},
+      {test: /\.(js|jsx)$/, exclude: /node_modules/, loaders: ['babel-loader']},
       {test: /(\.css)$/, loaders: ['style-loader', 'css-loader']}
     ]
   },
@@ -24,6 +24,6 @@ module.exports = {
       "node_modules",
       path.resolve(__dirname, "app/components")
     ],
-    extensions: [".js", ".json", ".jsx", ".css"]
+    extensions: [".js", ".json", ".jsx", ".scss"]
   }
 }
