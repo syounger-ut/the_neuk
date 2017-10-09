@@ -9,10 +9,6 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    port: 8000
-  },
   module: {
     loaders: [
       {test: /\.(js|jsx)$/, exclude: /node_modules/, loaders: ['babel-loader']},
