@@ -1,2 +1,18 @@
+// Variables
+@import 'variables/colors';
+@import 'variables/fonts';
+
+// Presets
+@import 'presets/reset';
+@import 'presets/text';
+
+// Modules
+@import 'modules/buttons';
+@import 'modules/forms';
+
 // Components
-@import 'components/login'
+@import 'components/login';
+
+* {
+  box-sizing: border-box;
+}

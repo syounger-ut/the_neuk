@@ -22023,11 +22023,15 @@ var Login = function (_React$Component) {
         ),
         _react2.default.createElement(
           'form',
-          { onSubmit: this.handleSubmit },
+          { className: 'loginForm', onSubmit: this.handleSubmit },
           _react2.default.createElement(
             'label',
-            null,
-            'Username:',
+            { htmlFor: 'username' },
+            'Username:'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'input' },
             _react2.default.createElement('input', {
               type: 'text',
               name: 'username',
@@ -22037,15 +22041,19 @@ var Login = function (_React$Component) {
           ),
           _react2.default.createElement(
             'label',
-            null,
-            'Password:',
+            { htmlFor: 'password' },
+            'Password:'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'input' },
             _react2.default.createElement('input', { type: 'password',
               name: 'password',
               value: password,
               onChange: this.handleChange,
               placeholder: 'Password' })
           ),
-          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+          _react2.default.createElement('input', { className: 'button', type: 'submit', value: 'Submit' })
         )
       );
     }
