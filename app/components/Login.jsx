@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Login extends React.Component {
   constructor(props) {
@@ -18,12 +19,24 @@ class Login extends React.Component {
     this.setState({
       [name]: event.target.value
     });
-    var token = "TOKEN"
-    this.props.authToken(token)
   }
 
   handleSubmit(event) {
+    var self = this;
     event.preventDefault();
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/api/login',
+      data: {
+        email: this.state.username,
+        password: this.state.password
+      }
+    }).then(function(response) {
+      self.props.loginUser(response.data);
+    }).catch(function(error) {
+      console.log(error.response);
+    });
+
   }
   render() {
     const username = this.state.username;
@@ -31,7 +44,6 @@ class Login extends React.Component {
     return (
       <div>
         <h2>Login</h2>
-        {/* <form onSubmit={this.props.authToken}> */}
         <form onSubmit={this.handleSubmit}>
           <label>
             Username:
@@ -41,20 +53,20 @@ class Login extends React.Component {
               value={username}
               onChange={this.handleChange}
               placeholder="Username" />
-          </label>
-          <label>
-            Password:
-            <input type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-              placeholder="Password" />
-          </label>
-          <input type="submit" value="Submit"/>
-        </form>
-      </div>
-    );
-  }
-}
+            </label>
+            <label>
+              Password:
+              <input type="password"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+                placeholder="Password" />
+              </label>
+              <input type="submit" value="Submit"/>
+            </form>
+          </div>
+        );
+      }
+    }
 
-export default Login;
+    export default Login;
