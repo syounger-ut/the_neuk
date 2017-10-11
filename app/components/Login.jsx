@@ -3,37 +3,42 @@ import React, { Component } from 'react';
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: ''};
+    this.state = {
+      username: '',
+      password: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   handleChange(event) {
     var target = event.target;
-    var name   = target.name
+    var name   = target.name;
     this.setState({
       [name]: event.target.value
     });
-    console.log(this.props)
+    var token = "TOKEN"
+    this.props.authToken(token)
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
   }
   render() {
+    const username = this.state.username;
+    const password = this.state.password;
     return (
       <div>
         <h2>Login</h2>
+        {/* <form onSubmit={this.props.authToken}> */}
         <form onSubmit={this.handleSubmit}>
           <label>
             Username:
             <input
               type="text"
               name="username"
-              value={this.state.value}
+              value={username}
               onChange={this.handleChange}
               placeholder="Username" />
           </label>
@@ -41,7 +46,7 @@ class Login extends React.Component {
             Password:
             <input type="password"
               name="password"
-              value={this.state.value}
+              value={password}
               onChange={this.handleChange}
               placeholder="Password" />
           </label>

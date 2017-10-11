@@ -21213,6 +21213,11 @@ var Main = function (_React$Component) {
   }
 
   _createClass(Main, [{
+    key: 'handleAuthToken',
+    value: function handleAuthToken(token) {
+      console.log(token);
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -21223,7 +21228,7 @@ var Main = function (_React$Component) {
           null,
           'Main'
         ),
-        _react2.default.createElement(_Login2.default, null)
+        _react2.default.createElement(_Login2.default, { authToken: this.handleAuthToken.bind(this) })
       );
     }
   }]);
@@ -21268,7 +21273,10 @@ var Login = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
-    _this.state = { username: '' };
+    _this.state = {
+      username: '',
+      password: ''
+    };
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -21281,17 +21289,19 @@ var Login = function (_React$Component) {
       var target = event.target;
       var name = target.name;
       this.setState(_defineProperty({}, name, event.target.value));
-      console.log(this.props);
+      var token = "TOKEN";
+      this.props.authToken(token);
     }
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
       event.preventDefault();
     }
   }, {
     key: 'render',
     value: function render() {
+      var username = this.state.username;
+      var password = this.state.password;
       return _react2.default.createElement(
         'div',
         null,
@@ -21310,7 +21320,7 @@ var Login = function (_React$Component) {
             _react2.default.createElement('input', {
               type: 'text',
               name: 'username',
-              value: this.state.value,
+              value: username,
               onChange: this.handleChange,
               placeholder: 'Username' })
           ),
@@ -21320,7 +21330,7 @@ var Login = function (_React$Component) {
             'Password:',
             _react2.default.createElement('input', { type: 'password',
               name: 'password',
-              value: this.state.value,
+              value: password,
               onChange: this.handleChange,
               placeholder: 'Password' })
           ),
