@@ -360,6 +360,21 @@ module.exports = invariant;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(16);
+} else {
+  module.exports = __webpack_require__(17);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -451,21 +466,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(16);
-} else {
-  module.exports = __webpack_require__(17);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 5 */
@@ -959,7 +959,7 @@ module.exports = getActiveElement;
 "use strict";
 
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -967,13 +967,13 @@ var _reactDom = __webpack_require__(18);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _HelloWorld = __webpack_require__(32);
+var _Main = __webpack_require__(32);
 
-var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
+var _Main2 = _interopRequireDefault(_Main);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_HelloWorld2.default, null), document.getElementById('app'));
+_reactDom2.default.render(_react2.default.createElement(_Main2.default, null), document.getElementById('app'));
 
 /***/ }),
 /* 16 */
@@ -989,7 +989,7 @@ _reactDom2.default.render(_react2.default.createElement(_HelloWorld2.default, nu
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(3),p=__webpack_require__(5);__webpack_require__(2);var r=__webpack_require__(1);
+var f=__webpack_require__(4),p=__webpack_require__(5);__webpack_require__(2);var r=__webpack_require__(1);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -1026,7 +1026,7 @@ if (process.env.NODE_ENV !== "production") {
 
 'use strict';
 
-var objectAssign$1 = __webpack_require__(3);
+var objectAssign$1 = __webpack_require__(4);
 var require$$0 = __webpack_require__(6);
 var emptyObject = __webpack_require__(5);
 var invariant = __webpack_require__(2);
@@ -2772,7 +2772,7 @@ if (process.env.NODE_ENV === 'production') {
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(4);__webpack_require__(2);var l=__webpack_require__(9),n=__webpack_require__(3),ba=__webpack_require__(10),ca=__webpack_require__(1),da=__webpack_require__(5),ea=__webpack_require__(11),fa=__webpack_require__(12),ha=__webpack_require__(13),ia=__webpack_require__(14);
+var aa=__webpack_require__(3);__webpack_require__(2);var l=__webpack_require__(9),n=__webpack_require__(4),ba=__webpack_require__(10),ca=__webpack_require__(1),da=__webpack_require__(5),ea=__webpack_require__(11),fa=__webpack_require__(12),ha=__webpack_require__(13),ia=__webpack_require__(14);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -3097,10 +3097,10 @@ if (process.env.NODE_ENV !== "production") {
 
 'use strict';
 
-var react = __webpack_require__(4);
+var react = __webpack_require__(3);
 var invariant = __webpack_require__(2);
 var ExecutionEnvironment = __webpack_require__(9);
-var _assign = __webpack_require__(3);
+var _assign = __webpack_require__(4);
 var EventListener = __webpack_require__(10);
 var require$$0 = __webpack_require__(6);
 var hyphenateStyleName = __webpack_require__(23);
@@ -20576,7 +20576,7 @@ if (process.env.NODE_ENV !== 'production') {
 var emptyFunction = __webpack_require__(1);
 var invariant = __webpack_require__(2);
 var warning = __webpack_require__(6);
-var assign = __webpack_require__(3);
+var assign = __webpack_require__(4);
 
 var ReactPropTypesSecret = __webpack_require__(8);
 var checkPropTypes = __webpack_require__(7);
@@ -21187,9 +21187,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Login = __webpack_require__(33);
+
+var _Login2 = _interopRequireDefault(_Login);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21199,30 +21203,137 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var HelloWorld = function (_React$Component) {
-  _inherits(HelloWorld, _React$Component);
+var Main = function (_React$Component) {
+  _inherits(Main, _React$Component);
 
-  function HelloWorld() {
-    _classCallCheck(this, HelloWorld);
+  function Main() {
+    _classCallCheck(this, Main);
 
-    return _possibleConstructorReturn(this, (HelloWorld.__proto__ || Object.getPrototypeOf(HelloWorld)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
   }
 
-  _createClass(HelloWorld, [{
+  _createClass(Main, [{
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'h1',
+        'div',
         null,
-        'Hello, Cora'
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Main'
+        ),
+        _react2.default.createElement(_Login2.default, null)
       );
     }
   }]);
 
-  return HelloWorld;
+  return Main;
 }(_react2.default.Component);
 
-exports.default = HelloWorld;
+exports.default = Main;
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Login = function (_React$Component) {
+  _inherits(Login, _React$Component);
+
+  function Login(props) {
+    _classCallCheck(this, Login);
+
+    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+    _this.state = { username: '' };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: 'handleChange',
+    value: function handleChange(event) {
+      var target = event.target;
+      var name = target.name;
+      this.setState(_defineProperty({}, name, event.target.value));
+      console.log(this.props);
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(event) {
+      alert('A name was submitted: ' + this.state.value);
+      event.preventDefault();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Login'
+        ),
+        _react2.default.createElement(
+          'form',
+          { onSubmit: this.handleSubmit },
+          _react2.default.createElement(
+            'label',
+            null,
+            'Username:',
+            _react2.default.createElement('input', {
+              type: 'text',
+              name: 'username',
+              value: this.state.value,
+              onChange: this.handleChange,
+              placeholder: 'Username' })
+          ),
+          _react2.default.createElement(
+            'label',
+            null,
+            'Password:',
+            _react2.default.createElement('input', { type: 'password',
+              name: 'password',
+              value: this.state.value,
+              onChange: this.handleChange,
+              placeholder: 'Password' })
+          ),
+          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+        )
+      );
+    }
+  }]);
+
+  return Login;
+}(_react2.default.Component);
+
+exports.default = Login;
 
 /***/ })
 /******/ ]);
