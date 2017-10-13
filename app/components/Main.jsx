@@ -16,8 +16,9 @@ class Main extends React.Component {
       token:        localStorage.getItem('auth_token'),
       isLoggedIn:   false
     };
-    this.handleUserLogin = this.handleUserLogin.bind(this)
+    this.handleUserLogin = this.handleUserLogin.bind(this);
     this.authenticateUserToken.bind(this).call();
+    this.handleLoginClick = this.handleLoginClick.bind(this);
   }
 
   authenticateUserToken() {
@@ -40,6 +41,10 @@ class Main extends React.Component {
     });
   }
 
+  handleLoginClick() {
+    console.log("HERE");
+  }
+
   handleUserLogin(response) {
     localStorage.setItem('auth_token', response.token);
     this.setState({
@@ -53,21 +58,26 @@ class Main extends React.Component {
 
   render() {
     const isLoggedIn = this.state.isLoggedIn;
-
-    let greeting = null;
-    if(isLoggedIn) {
-      greeting = <UserGreeting/>
-    } else {
-      greeting = <GuestGreeting/>
-    }
     return (
       <div>
         <h1>Main</h1>
-        {greeting}
+        <LoginButton loggedIn={isLoggedIn} handleLoginClick={this.handleLoginClick} />
         <Login loginUser={this.handleUserLogin} />
       </div>
     );
   }
+}
+
+function LoginButton(props) {
+
+  var loggedIn = props.loggedIn;
+  var button = null;
+  if(loggedIn) {
+    button = <button onClick={props.handleLoginClick}>LoggedIn</button>
+  } else {
+    button = <button onClick={props.handleLoginClick}>NotLoggedIn</button>
+  }
+  return button
 }
 
 export default Main;

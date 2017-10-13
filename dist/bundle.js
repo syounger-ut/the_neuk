@@ -21918,6 +21918,7 @@ var Main = function (_React$Component) {
     };
     _this.handleUserLogin = _this.handleUserLogin.bind(_this);
     _this.authenticateUserToken.bind(_this).call();
+    _this.handleLoginClick = _this.handleLoginClick.bind(_this);
     return _this;
   }
 
@@ -21943,6 +21944,11 @@ var Main = function (_React$Component) {
       });
     }
   }, {
+    key: 'handleLoginClick',
+    value: function handleLoginClick() {
+      console.log("HERE");
+    }
+  }, {
     key: 'handleUserLogin',
     value: function handleUserLogin(response) {
       localStorage.setItem('auth_token', response.token);
@@ -21958,13 +21964,6 @@ var Main = function (_React$Component) {
     key: 'render',
     value: function render() {
       var isLoggedIn = this.state.isLoggedIn;
-
-      var greeting = null;
-      if (isLoggedIn) {
-        greeting = _react2.default.createElement(_UserGreeting2.default, null);
-      } else {
-        greeting = _react2.default.createElement(_GuestGreeting2.default, null);
-      }
       return _react2.default.createElement(
         'div',
         null,
@@ -21973,7 +21972,7 @@ var Main = function (_React$Component) {
           null,
           'Main'
         ),
-        greeting,
+        _react2.default.createElement(LoginButton, { loggedIn: isLoggedIn, handleLoginClick: this.handleLoginClick }),
         _react2.default.createElement(_Login2.default, { loginUser: this.handleUserLogin })
       );
     }
@@ -21981,6 +21980,26 @@ var Main = function (_React$Component) {
 
   return Main;
 }(_react2.default.Component);
+
+function LoginButton(props) {
+
+  var loggedIn = props.loggedIn;
+  var button = null;
+  if (loggedIn) {
+    button = _react2.default.createElement(
+      'button',
+      { onClick: props.handleLoginClick },
+      'LoggedIn'
+    );
+  } else {
+    button = _react2.default.createElement(
+      'button',
+      { onClick: props.handleLoginClick },
+      'NotLoggedIn'
+    );
+  }
+  return button;
+}
 
 exports.default = Main;
 
