@@ -1,6 +1,18 @@
-@import "base/variables";
+// Variables
+@import 'variables/colors';
+@import 'variables/fonts';
 
-// Foundation
-@import "base/foundation-settings";
-@import "foundation";
-@include foundation-everything;
+// Presets
+@import 'presets/reset';
+@import 'presets/text';
+
+// Modules
+@import 'modules/buttons';
+@import 'modules/forms';
+
+// Components
+@import 'components/login';
+
+* {
+  box-sizing: border-box;
+}

@@ -1,55 +1,25 @@
-var webpack = require("webpack");
-var path    = require("path");
+var webpack = require('webpack')
+var path    = require('path')
 
 module.exports = {
-  entry: [
-    "script!jquery/dist/jquery.min.js",
-    'script!foundation-sites/dist/js/foundation.min.js',
-    "./app/app.jsx"
-  ],
-  externals: {
-    jquery: "jQuery"
-  },
-  plugins: [
-    new webpack.ProvidePlugin({
-      "$": "jquery",
-      "jquery": "jquery"
-    })
-  ],
+  context: __dirname + "/app",
+  entry: "./app",
   output: {
-    path: __dirname,
-    filename: "./public/bundle.js"
-  },
-  resolve: {
-    root: __dirname,
-    modulesDirectories: [
-      "node_modules",
-      "./app/components"
-    ],
-    alias: {
-      applicationStyles: "app/styles/app.scss"
-    },
-    extensions: ["", ".js", ".jsx"]
+    path: __dirname + '/public',
+    publicPath: '/',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
-      {
-        loader: "babel-loader",
-        query: {
-          presets: [ "react", "env", "stage-0" ]
-        },
-        test: /\.jsx?$/,
-        excludes: /(node_modules|bower_components)/
-      },{
-        loader: 'style-loader!css-loader',
-        test: /\.css$/
-      }
+      {test: /\.(js|jsx)$/, exclude: /node_modules/, loaders: ['babel-loader']},
+      {test: /(\.css)$/, loaders: ['style-loader', 'css-loader']}
     ]
   },
-  sassLoader: {
-    includePaths: [
-      path.resolve(__dirname, './node_modules/foundation-sites/scss')
+  resolve: {
+    modules: [
+      "node_modules",
+      path.resolve(__dirname, "app/components")
     ],
-  },
-  devtool: "cheap-module-eval-source-map"
-};
+    extensions: [".js", ".json", ".jsx", ".scss"]
+  }
+}

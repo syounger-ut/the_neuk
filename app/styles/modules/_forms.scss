@@ -1,0 +1,31 @@
+form {
+  max-width: 20rem;
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  grid-gap: 16px;
+  .input input, label {
+    line-height: 2.5rem;
+  }
+  label {
+    grid-column: 1 / 2;
+    border: 1px solid transparent;
+  }
+  .input {
+    grid-column: 2 / 3;
+  }
+  input {
+    width: 100%;
+    padding-left: 0.2rem;
+  }
+  .button {
+    grid-column: span 2;
+  }
+}
+
+// no all border highlight on focus
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
