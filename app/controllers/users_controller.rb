@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def show
+    user = @current_user
+    render json: user, serializer: UserSerializer, status: :ok
+  end
+
   def update
     user = @current_user
 
@@ -11,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    binding.pry
     user = @current_user
 
     if user.destroy
