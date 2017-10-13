@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// function Login(props) {
+//   console.log("HERE");
+//   var token = localStorage.getItem('auth_token');
+//   if(token) {
+//     console.log("Token exists");
+//   } else {
+//     console.log("Token doesn't exist");
+//   }
+// }
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
