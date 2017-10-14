@@ -1,83 +1,28 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react'
+import { Route, Switch }    from 'react-router-dom'
 
-import Login         from 'Login';
-import UserGreeting  from 'UserGreeting';
-import GuestGreeting from 'GuestGreeting';
+import Login    from 'Login';
+import Bookings from 'Bookings';
+import Pay      from 'Pay';
+import Home     from 'Home';
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      full_name:    '',
-      email:        '',
-      phone_number: '',
-      bookings:     [],
-      token:        localStorage.getItem('auth_token'),
-      isLoggedIn:   false
-    };
-    this.handleUserLogin = this.handleUserLogin.bind(this);
-    this.authenticateUserToken.bind(this).call();
-    this.handleLoginClick = this.handleLoginClick.bind(this);
+  handleLogin(response) {
+    this.props.isLogggedIn(response)
   }
-
-  authenticateUserToken() {
-    var self = this;
-    axios({
-      method: 'get',
-      url: 'http://localhost:3000/api/users/me',
-      headers: { 'Authorization': this.state.token }
-    }).then(function(response) {
-      var user = response.data;
-      self.setState({
-        full_name:    user.email,
-        email:        user.full_name,
-        phone_number: user.phone_number,
-        bookings:     user.bookings,
-        isLoggedIn:   true
-      })
-    }).catch(function(error) {
-      console.log(error.response);
-    });
-  }
-
-  handleLoginClick() {
-    console.log("HERE");
-  }
-
-  handleUserLogin(response) {
-    localStorage.setItem('auth_token', response.token);
-    this.setState({
-      full_name:    response.user.email,
-      email:        response.user.full_name,
-      phone_number: response.user.phone_number,
-      bookings:     response.user.bookings,
-      isLoggedIn:   true
-    })
-  }
-
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
+    const isLoggedIn = this.props.handleUserLogin;
     return (
-      <div>
-        <h1>Main</h1>
-        <LoginButton loggedIn={isLoggedIn} handleLoginClick={this.handleLoginClick} />
-        <Login loginUser={this.handleUserLogin} />
-      </div>
+      <main>
+        <Switch>
+          <Route exact path='/'   component={Home}/>
+          <Route path='/login'    component={Login}/>
+          <Route path='/bookings' component={Bookings}/>
+          <Route path='/pay'      component={Pay}/>
+        </Switch>
+      </main>
     );
   }
-}
-
-function LoginButton(props) {
-
-  var loggedIn = props.loggedIn;
-  var button = null;
-  if(loggedIn) {
-    button = <button onClick={props.handleLoginClick}>LoggedIn</button>
-  } else {
-    button = <button onClick={props.handleLoginClick}>NotLoggedIn</button>
-  }
-  return button
 }
 
 export default Main;

@@ -19,8 +19,11 @@
   "homepage": "https://github.com/samyounger/the_neuk_front#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "connect-history-api-fallback": "^1.4.0",
+    "history": "^4.7.2",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

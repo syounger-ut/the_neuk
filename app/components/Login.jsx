@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// function Login(props) {
-//   console.log("HERE");
-//   var token = localStorage.getItem('auth_token');
-//   if(token) {
-//     console.log("Token exists");
-//   } else {
-//     console.log("Token doesn't exist");
-//   }
-// }
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -38,11 +28,12 @@ class Login extends React.Component {
       method: 'post',
       url: 'http://localhost:3000/api/login',
       data: {
-        email: this.state.username,
+        email:    this.state.username,
         password: this.state.password
       }
     }).then(function(response) {
-      self.props.loginUser(response.data);
+      console.log(self.props)
+      self.props.route.isLoggedIn(response.data);
     }).catch(function(error) {
       console.log(error.response);
     });

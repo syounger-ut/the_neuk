@@ -6,7 +6,7 @@ module.exports = {
   entry: "./app",
   output: {
     path: __dirname + '/public',
-    publicPath: '/',
+    publicPath: '/**',
     filename: 'bundle.js'
   },
   module: {

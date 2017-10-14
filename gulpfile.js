@@ -1,12 +1,13 @@
-const gulp             = require('gulp');
-const sass             = require('gulp-sass');       // => Convert to css
-const concat           = require('gulp-concat');     // => Compile to 1 file
-const clean            = require('gulp-clean');      // => Delete files
-const livereload       = require("gulp-livereload");
-const connect          = require('gulp-connect');
+const gulp          = require('gulp');
+const sass          = require('gulp-sass');       // => Convert to css
+const concat        = require('gulp-concat');     // => Compile to 1 file
+const clean         = require('gulp-clean');      // => Delete files
+const livereload    = require("gulp-livereload");
+const connect       = require('gulp-connect');
 
-const webpackStream    = require('webpack-stream');  // => Compiles jsx files
-const webpackConfig    = require('./webpack.config');
+const webpackStream = require('webpack-stream');  // => Compiles jsx files
+const webpackConfig = require('./webpack.config');
+const history       = require('connect-history-api-fallback');
 
 LOCAL_SERVER_PORT = 8000;
 
