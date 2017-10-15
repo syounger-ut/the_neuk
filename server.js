@@ -13,6 +13,9 @@ app.use(webpackMiddleware(
   { publicPath: '/' }
 ))
 
+// Tells express where the static assets are located e.g. css
+app.use(express.static(__dirname + '/public'));
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'app', 'index.html'))
 })
