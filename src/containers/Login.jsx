@@ -42,7 +42,7 @@ class Login extends React.Component {
     const username = this.state.username;
     const password = this.state.password;
     return (
-      <div>
+      <div className="login">
         <h2>Login</h2>
         <form className="loginForm" onSubmit={this.handleSubmit}>
             <label htmlFor="username">Username:</label>
