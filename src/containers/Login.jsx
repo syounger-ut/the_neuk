@@ -32,8 +32,7 @@ class Login extends React.Component {
         password: this.state.password
       }
     }).then(function(response) {
-      console.log(self.props)
-      self.props.route.isLoggedIn(response.data);
+      self.props.handleUserLogin(response.data);
     }).catch(function(error) {
       console.log(error.response);
     });
