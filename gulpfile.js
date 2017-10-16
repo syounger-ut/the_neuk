@@ -20,7 +20,7 @@ gulp.task('nodemon', () => {
 });
 
 gulp.task('styles', function() {
-  gulp.src('app/styles/**/*.scss')
+  gulp.src('src/styles/**/*.scss')
   .pipe(sass().on('error', sass.logError))
   .pipe(concat('master.css'))
   .pipe(gulp.dest('./public/css/'))
@@ -28,14 +28,14 @@ gulp.task('styles', function() {
 });
 
 gulp.task('clean', function() {
-  gulp.src('public/*')
+  gulp.src('public/css/*')
   .pipe(clean());
 });
 
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch('app/components/**/*.jsx', ['nodemon'])
-  gulp.watch('app/styles/**/*.scss',['styles']);
+  gulp.watch('src/**/*.jsx', ['nodemon'])
+  gulp.watch('src/styles/**/*.scss',['styles']);
 });
 
 gulp.task('default', ['watch', 'clean', 'styles', 'nodemon'])

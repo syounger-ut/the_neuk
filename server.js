@@ -17,7 +17,7 @@ app.use(webpackMiddleware(
 app.use(express.static(__dirname + '/public'));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'app', 'index.html'))
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 app.listen(port, () => console.log(`Server listening on ${port}`))

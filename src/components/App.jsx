@@ -17,6 +17,9 @@ class App extends React.Component {
       isLoggedIn:   false
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
+  }
+
+  componentDidMount(){
     this.authenticateUserToken.bind(this).call();
   }
 

@@ -22,8 +22,8 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    var self = this;
     event.preventDefault();
+    var self = this;
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/login',
