@@ -9,12 +9,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      full_name:    '',
-      email:        '',
-      phone_number: '',
-      bookings:     [],
+      user: {
+        full_name:    '',
+        email:        '',
+        phone_number: '',
+        bookings:     [],
+      },
       token:        localStorage.getItem('auth_token'),
-      isLoggedIn:   false
+      loggedIn:   false
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
   }
@@ -32,11 +34,13 @@ class App extends React.Component {
     }).then(function(response) {
       var user = response.data;
       self.setState({
-        full_name:    user.email,
-        email:        user.full_name,
-        phone_number: user.phone_number,
-        bookings:     user.bookings,
-        isLoggedIn:   true
+        user: {
+          full_name:    user.full_name,
+          email:        user.email,
+          phone_number: user.phone_number,
+          bookings:     user.bookings,
+        },
+        loggedIn:   true
       })
     }).catch(function(error) {
       console.log(error.response);
@@ -46,19 +50,23 @@ class App extends React.Component {
   handleUserLogin(response) {
     localStorage.setItem('auth_token', response.token);
     this.setState({
-      full_name:    response.user.email,
-      email:        response.user.full_name,
-      phone_number: response.user.phone_number,
-      bookings:     response.user.bookings,
-      isLoggedIn:   true
+      user: {
+        full_name:    response.user.full_name,
+        email:        response.user.email,
+        phone_number: response.user.phone_number,
+        bookings:     response.user.bookings,
+      },
+      loggedIn:   true
     })
   }
 
   render() {
+    const user     = this.state.user;
+    const loggedIn = this.state.loggedIn;
     return (
       <div>
-        <Header/>
-        <Main handleUserLogin={this.handleUserLogin}/>
+        <Header user={user} loggedIn={loggedIn}/>
+        <Main handleUserLogin={this.handleUserLogin} user={user}/>
       </div>
     );
   }
