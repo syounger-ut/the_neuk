@@ -1,0 +1,16 @@
+.login {
+  height: calc(100vh - 3rem);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: 1fr 2.5fr;
+  grid-gap: 2rem;
+  h2 {
+    align-self: end;
+    justify-self: center;
+  }
+  form {
+    align-self: start;
+    width: 20rem;
+  }
+}

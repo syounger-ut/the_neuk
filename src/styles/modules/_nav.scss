@@ -1,0 +1,24 @@
+nav {
+  display: grid;
+  justify-items: end;
+  height: 3rem;
+  background: rgba($button-color, 0.8);
+  ul {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    li {
+      display: flex;
+      width: 10rem;
+      height: 3rem;
+      &:hover {
+        background: rgba($button-color, 1);
+      }
+      a {
+        flex: 1;
+        line-height: 3rem;
+        text-align: center;
+      }
+    }
+  }
+}
