@@ -9,32 +9,48 @@ class User extends React.Component {
       email:        '',
       phone_number: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProp) {
-    console.log(nextProp)
-    var user = nextProp.user;
+  componentDidMount() {
+    var user = this.props.user;
     this.setState({
       first_name:   user.full_name,
       last_name:    user.full_name,
       email:        user.email,
       phone_number: user.phone_number
-    })
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    var user = nextProps.user;
+    this.setState({
+      first_name:   user.full_name,
+      last_name:    user.full_name,
+      email:        user.email,
+      phone_number: user.phone_number
+    });
+    this.render()
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(event);
+    this.props.updateUser(this.state)
+  }
+
+  handleChange(event) {
+    var target = event.target;
+    var name   = target.name;
+    this.setState({
+      [name]: target.value
+    });
+    console.log(this.state)
   }
 
   render() {
-    var user = this.props.user;
-
-    var first_name   = this.state.first_name;
-    var last_name    = this.state.last_name;
-    var email        = this.state.email;
-    var phone_number = this.state.phone_number;
-
+    const {full_name, first_name, last_name, email, phone_number} = this.state;
+    // const {full_name, first_name, last_name, email, phone_number} = this.props.user;
     return (
       <form className="loginForm" onSubmit={this.handleSubmit}>
           <label htmlFor="first_name">First Name:</label>

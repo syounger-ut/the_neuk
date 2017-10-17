@@ -19,10 +19,20 @@ class App extends React.Component {
       loggedIn:   false
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
+    this.updateUser      = this.updateUser.bind(this);
   }
 
   componentDidMount(){
     this.authenticateUserToken.bind(this).call();
+  }
+
+  updateUser(user) {
+    console.log(user);
+    this.setState({
+      full_name: user.first_name,
+      email: user.email,
+      phone_number: user.phone_number,
+    });
   }
 
   authenticateUserToken() {
@@ -66,7 +76,7 @@ class App extends React.Component {
     return (
       <div>
         <Header user={user} loggedIn={loggedIn}/>
-        <Main handleUserLogin={this.handleUserLogin} user={user}/>
+        <Main handleUserLogin={this.handleUserLogin} user={user} updateUser={this.updateUser}/>
       </div>
     );
   }
