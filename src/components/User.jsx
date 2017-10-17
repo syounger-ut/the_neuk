@@ -45,7 +45,8 @@ class User extends React.Component {
     this.setState({
       [name]: target.value
     });
-    console.log(this.state)
+    console.log(this.context.router);
+    <Redirect to="/" />
   }
 
   render() {

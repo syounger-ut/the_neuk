@@ -3,7 +3,6 @@ const sass          = require('gulp-sass');       // => Convert to css
 const concat        = require('gulp-concat');     // => Compile to 1 file
 const clean         = require('gulp-clean');      // => Delete files
 const livereload    = require("gulp-livereload");
-const connect       = require('gulp-connect');
 const nodemon       = require('gulp-nodemon');
 
 gulp.task('nodemon', () => {

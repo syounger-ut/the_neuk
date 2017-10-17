@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter }       from 'react-router-dom';
+
 import axios from 'axios';
 
 class Login extends React.Component {
@@ -6,7 +8,7 @@ class Login extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,14 +35,16 @@ class Login extends React.Component {
       }
     }).then(function(response) {
       self.props.handleUserLogin(response.data);
+      self.props.history.push("/");
     }).catch(function(error) {
       console.log(error.response);
     });
 
   }
   render() {
-    const username = this.state.username;
-    const password = this.state.password;
+    const username     = this.state.username;
+    const password     = this.state.password;
+
     return (
       <div className="login">
         <h2>Login</h2>
@@ -69,4 +73,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

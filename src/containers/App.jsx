@@ -67,7 +67,7 @@ class App extends React.Component {
         bookings:     response.user.bookings,
       },
       loggedIn:   true
-    })
+    });
   }
 
   render() {
