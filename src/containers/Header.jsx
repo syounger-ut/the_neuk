@@ -7,8 +7,10 @@ class Header extends React.Component {
     const loggedIn = this.props.loggedIn;
 
     var loginButton;
+    var logoutButton;
     if(loggedIn) {
-      loginButton = <Link to='/user'>{user.email}</Link>;
+      loginButton  = <Link to='/user'>{user.email}</Link>;
+      logoutButton = <li><a href="#">Logout</a></li>;
     } else {
       loginButton = <Link to='/login'>Login</Link>;
     }
@@ -20,7 +22,10 @@ class Header extends React.Component {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/pay'>Pay page</Link></li>
             <li><Link to='/bookings'>Bookings page</Link></li>
-            <li>{loginButton}</li>
+            <ul className="loginButton">
+              <li>{loginButton}</li>
+              {logoutButton}
+            </ul>
           </ul>
         </nav>
       </header>
