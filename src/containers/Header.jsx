@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
-import { Link }             from 'react-router-dom'
+import { Link, withRouter }             from 'react-router-dom'
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.logout = this.logout.bind(this);
+  }
+
+  logout() {
+    this.props.handleUserLogin("logout");
+  }
+
   render() {
     const user     = this.props.user;
     const loggedIn = this.props.loggedIn;
+    const logout   = this.logout;
 
     var loginButton;
     var logoutButton;
     if(loggedIn) {
       loginButton  = <Link to='/user'>{user.email}</Link>;
-      logoutButton = <li><a href="#">Logout</a></li>;
+      logoutButton = <li><a href='/' onClick={logout}>Logout</a></li>;
     } else {
       loginButton = <Link to='/login'>Login</Link>;
     }
@@ -33,4 +43,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

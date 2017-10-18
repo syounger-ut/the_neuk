@@ -17,10 +17,13 @@ module.exports = {
     ]
   },
   resolve: {
+    alias: {
+      theNeukApi: path.resolve(__dirname, 'src/api/theNeukApi.js')
+    },
     modules: [
-      'node_modules',
-      path.resolve(__dirname, "src/components"),
-      path.resolve(__dirname, "src/containers")
+      path.resolve(__dirname, 'node_modules'),
+      path.resolve(__dirname, 'src/components'),
+      path.resolve(__dirname, 'src/containers'),
     ],
     extensions: [".js", ".json", ".jsx", ".scss", ".css"]
   }

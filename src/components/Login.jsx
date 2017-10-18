@@ -34,8 +34,7 @@ class Login extends React.Component {
         password: this.state.password
       }
     }).then(function(response) {
-      self.props.handleUserLogin(response.data);
-      self.props.history.push("/");
+      self.props.handleUserLogin("login", response.data);
     }).catch(function(error) {
       console.log(error.response);
     });

@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { withRouter }       from 'react-router-dom';
+
+import theNeukApi from 'theNeukApi';
 
 // Components
-import Header from 'Header'
-import Main   from 'Main'
+import Header     from 'Header';
+import Main       from 'Main';
+import ErrorModal from 'ErrorModal';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,8 +18,7 @@ class App extends React.Component {
         phone_number: '',
         bookings:     [],
       },
-      token:        localStorage.getItem('auth_token'),
-      loggedIn:   false
+      loggedIn: false
     };
     this.handleUserLogin = this.handleUserLogin.bind(this);
     this.updateUser      = this.updateUser.bind(this);
@@ -27,59 +29,85 @@ class App extends React.Component {
   }
 
   updateUser(user) {
-    console.log(user);
     this.setState({
-      full_name: user.first_name,
-      email: user.email,
+      full_name:    user.first_name,
+      email:        user.email,
       phone_number: user.phone_number,
     });
   }
 
   authenticateUserToken() {
-    var self = this;
-    axios({
-      method: 'get',
-      url: 'http://localhost:3000/api/users/me',
-      headers: { 'Authorization': this.state.token }
-    }).then(function(response) {
-      var user = response.data;
-      self.setState({
-        user: {
-          full_name:    user.full_name,
-          email:        user.email,
-          phone_number: user.phone_number,
-          bookings:     user.bookings,
-        },
-        loggedIn:   true
-      })
-    }).catch(function(error) {
-      console.log(error.response);
-    });
+    var token = localStorage.getItem('auth_token');
+    var self  = this;
+    if(token) {
+      theNeukApi.authenticateToken(token).then(function(user) {
+        self.setState({
+          user: {
+            full_name:    user.full_name,
+            email:        user.email,
+            phone_number: user.phone_number,
+            bookings:     user.bookings,
+          },
+          loggedIn:   true
+        });
+      }).catch(function(error) {
+        localStorage.removeItem('auth_token');
+        self.setState({
+          errorMessage: error.message
+        });
+        self.props.history.push("/login");
+      });
+    }
   }
 
-  handleUserLogin(response) {
-    localStorage.setItem('auth_token', response.token);
-    this.setState({
-      user: {
-        full_name:    response.user.full_name,
-        email:        response.user.email,
-        phone_number: response.user.phone_number,
-        bookings:     response.user.bookings,
-      },
-      loggedIn:   true
-    });
+  handleUserLogin(action, response = null) {
+    if (action === "login") {
+      localStorage.setItem('auth_token', response.token);
+      this.setState({
+        user: {
+          full_name:    response.user.full_name,
+          email:        response.user.email,
+          phone_number: response.user.phone_number,
+          bookings:     response.user.bookings,
+        },
+        loggedIn:   true,
+        errorMessage: ''
+      });
+      this.props.history.push("/");
+    } else {
+      localStorage.removeItem('auth_token');
+      this.setState({
+        user: {
+          full_name:    '',
+          email:        '',
+          phone_number: '',
+          bookings:     '',
+        },
+        loggedIn: false
+      });
+      this.props.history.push("/");
+    }
   }
 
   render() {
-    const user     = this.state.user;
-    const loggedIn = this.state.loggedIn;
+    const { user, loggedIn, errorMessage } = this.state;
+
+    function renderError() {
+      if(typeof errorMessage === "string") {
+        return (
+          <ErrorModal message={errorMessage}/>
+        );
+      }
+    }
+
     return (
       <div>
-        <Header user={user} loggedIn={loggedIn}/>
+        <Header user={user} loggedIn={loggedIn} handleUserLogin={this.handleUserLogin}/>
+        {renderError()}
         <Main handleUserLogin={this.handleUserLogin} user={user} updateUser={this.updateUser}/>
       </div>
     );
   }
 }
 
-export default App
+export default withRouter(App);

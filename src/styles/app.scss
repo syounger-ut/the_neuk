@@ -10,9 +10,10 @@
 @import 'modules/buttons';
 @import 'modules/forms';
 @import 'modules/nav';
+@import 'modules/login';
 
 // Components
-@import 'modules/login';
+@import 'components/error';
 
 * {
   box-sizing: border-box;
