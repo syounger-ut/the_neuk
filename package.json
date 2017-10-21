@@ -1,7 +1,7 @@
 {
   "name": "the_neuk_front",
   "version": "1.0.0",
-  "description": "a property letting website",
+  "description": "a property letting website for the neuk",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
