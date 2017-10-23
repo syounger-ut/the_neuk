@@ -8,8 +8,9 @@ class User < ApplicationRecord
   enum role: [ :guest, :family, :admin ]
 
   # Validations
-  validates :first_name, :last_name, :phone_number, :password, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :first_name, :last_name, :phone_number, presence: true
+  validates :password, presence: true, on: :create
+  validates :email, presence: true, uniqueness: true, if: :email_changed?
 
   before_create :format_text
 
