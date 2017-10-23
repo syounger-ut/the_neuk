@@ -45,9 +45,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-html {
-  font-size: 100%;
+*, body {
   font-family: "Raleway", sans-serif;
+  font-size: 100%;
   font-weight: 300; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -73,6 +73,16 @@ a {
   text-decoration: none;
   color: black; }
 
+input, button, select, textarea, optgroup, option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit; }
+
+::selection {
+  background: #5b9169;
+  color: white; }
+
 .button {
   background: #5b9169;
   opacity: 0.9;
@@ -83,9 +93,10 @@ a {
     opacity: 1; }
 
 form {
-  max-width: 20rem;
+  min-width: 30rem;
   display: grid;
-  grid-template-columns: 5rem 1fr;
+  grid-template-columns: auto 1fr;
+  align-items: center;
   grid-gap: 16px; }
   form .input input, form label {
     line-height: 2.5rem; }
@@ -162,6 +173,11 @@ h4.errorMessage {
   color: #cc0000;
   background: #FFCCCC;
   padding: 0.5rem; }
+
+main {
+  min-height: calc(100vh - 3rem);
+  display: grid;
+  justify-content: center; }
 
 * {
   box-sizing: border-box; }

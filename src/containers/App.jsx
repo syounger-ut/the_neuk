@@ -13,6 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: {
+        id:      '',
         full_name:    '',
         email:        '',
         phone_number: '',
@@ -34,6 +35,13 @@ class App extends React.Component {
       email:        user.email,
       phone_number: user.phone_number,
     });
+
+    var updatedUser = this.state.user;
+    var token       = localStorage.getItem('auth_token');
+
+    theNeukApi.updateUser(updatedUser, token).then(function(user) {
+      console.log(user);
+    });
   }
 
   authenticateUserToken() {
@@ -43,6 +51,7 @@ class App extends React.Component {
       theNeukApi.authenticateToken(token).then(function(user) {
         self.setState({
           user: {
+            id:           user.id,
             full_name:    user.full_name,
             email:        user.email,
             phone_number: user.phone_number,

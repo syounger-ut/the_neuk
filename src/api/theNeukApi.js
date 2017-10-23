@@ -22,5 +22,26 @@ module.exports = {
         throw new Error(error.message);
       }
     });
+  },
+
+  updateUser: function(user, token) {
+    var requestUrl = `${THE_NEUK_API_URL}/users/${user.id}`;
+
+    return axios({
+      method: 'put',
+      url: requestUrl,
+      headers: { 'Authorization': token },
+      data: { 'user': user },
+    }).then(function(response) {
+      console.log(response.data); // TO BE REMOVED LATER
+      return response.data;
+    }).catch(function(error) {
+      if(error.response.status === 401) {
+        throw new Error("Your details were not updated. Please try again");
+
+      } else {
+        throw new Error(error.message);
+      }
+    });
   }
 }
