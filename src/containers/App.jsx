@@ -4,9 +4,10 @@ import { withRouter }       from 'react-router-dom';
 import theNeukApi from 'theNeukApi';
 
 // Components
-import Header     from 'Header';
-import Main       from 'Main';
-import ErrorModal from 'ErrorModal';
+import Header      from 'Header';
+import Main        from 'Main';
+import ErrorModal  from 'ErrorModal';
+import UpdateModal from 'UpdateModal';
 
 class App extends React.Component {
   constructor(props) {
@@ -42,7 +43,8 @@ class App extends React.Component {
           last_name:    user_update.last_name,
           email:        user_update.email,
           phone_number: user_update.phone_number
-        }
+        },
+        updateMessage: 'Your details have been updated'
       });
       console.log(self.state)
     });
@@ -107,7 +109,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { user, loggedIn, errorMessage } = this.state;
+    const { user, loggedIn, errorMessage, updateMessage } = this.state;
 
     function renderError() {
       if(typeof errorMessage === "string") {
@@ -117,10 +119,20 @@ class App extends React.Component {
       }
     }
 
+    function renderUpdate() {
+      if(typeof updateMessage === "string") {
+        console.log("HERE")
+        return (
+          <UpdateModal message={updateMessage}/>
+        );
+      }
+    }
+
     return (
       <div>
         <Header user={user} loggedIn={loggedIn} handleUserLogin={this.handleUserLogin}/>
         {renderError()}
+        {renderUpdate()}
         <Main handleUserLogin={this.handleUserLogin} user={user} updateUser={this.updateUser}/>
       </div>
     );
