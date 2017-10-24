@@ -15,6 +15,8 @@ class App extends React.Component {
       user: {
         id:      '',
         full_name:    '',
+        first_name:    '',
+        last_name:    '',
         email:        '',
         phone_number: '',
         bookings:     [],
@@ -30,17 +32,19 @@ class App extends React.Component {
   }
 
   updateUser(user) {
-    this.setState({
-      full_name:    user.first_name,
-      email:        user.email,
-      phone_number: user.phone_number,
-    });
-
-    var updatedUser = this.state.user;
+    var self = this;
     var token       = localStorage.getItem('auth_token');
 
-    theNeukApi.updateUser(updatedUser, token).then(function(user) {
-      console.log(user);
+    theNeukApi.updateUser(user, token).then(function(user_update) {
+      self.setState({
+        user: {
+          first_name:   user_update.first_name,
+          last_name:    user_update.last_name,
+          email:        user_update.email,
+          phone_number: user_update.phone_number
+        }
+      });
+      console.log(self.state)
     });
   }
 
@@ -53,6 +57,8 @@ class App extends React.Component {
           user: {
             id:           user.id,
             full_name:    user.full_name,
+            first_name:   user.first_name,
+            last_name:    user.last_name,
             email:        user.email,
             phone_number: user.phone_number,
             bookings:     user.bookings,
@@ -75,6 +81,8 @@ class App extends React.Component {
       this.setState({
         user: {
           full_name:    response.user.full_name,
+          first_name:   response.user.first_name,
+          last_name:    response.user.last_name,
           email:        response.user.email,
           phone_number: response.user.phone_number,
           bookings:     response.user.bookings,

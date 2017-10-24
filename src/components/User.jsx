@@ -16,8 +16,8 @@ class User extends React.Component {
   componentDidMount() {
     var user = this.props.user;
     this.setState({
-      first_name:   user.full_name,
-      last_name:    user.full_name,
+      first_name:   user.first_name,
+      last_name:    user.last_name,
       email:        user.email,
       phone_number: user.phone_number
     });
@@ -26,8 +26,8 @@ class User extends React.Component {
   componentWillReceiveProps(nextProps) {
     var user = nextProps.user;
     this.setState({
-      first_name:   user.full_name,
-      last_name:    user.full_name,
+      first_name:   user.first_name,
+      last_name:    user.last_name,
       email:        user.email,
       phone_number: user.phone_number
     });
@@ -45,13 +45,11 @@ class User extends React.Component {
     this.setState({
       [name]: target.value
     });
-    console.log(this.context.router);
-    <Redirect to="/" />
   }
 
   render() {
-    const {full_name, first_name, last_name, email, phone_number} = this.state;
-    // const {full_name, first_name, last_name, email, phone_number} = this.props.user;
+    const {first_name, last_name, email, phone_number} = this.state;
+
     return (
       <form className="loginForm" onSubmit={this.handleSubmit}>
           <label htmlFor="first_name">First Name:</label>
