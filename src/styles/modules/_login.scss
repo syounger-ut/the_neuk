@@ -3,11 +3,28 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-rows: 1fr 2.5fr;
+  grid-template-rows: 1fr 0.1fr 4fr;
   grid-gap: 2rem;
   h2 {
     align-self: end;
     justify-self: center;
+  }
+  ul {
+    line-height: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem;
+    justify-items: stretch;
+    align-items: stretch;
+    li {
+      background: $button-color;
+      opacity: 0.9;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
   form {
     align-self: start;

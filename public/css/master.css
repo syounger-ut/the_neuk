@@ -88,7 +88,8 @@ input, button, select, textarea, optgroup, option {
   opacity: 0.9;
   border: none;
   height: 2.5rem;
-  width: 100%; }
+  width: 100%;
+  border-radius: 0; }
   .button:hover {
     opacity: 1; }
 
@@ -158,11 +159,25 @@ nav ul {
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-rows: 1fr 2.5fr;
+  grid-template-rows: 1fr 0.1fr 4fr;
   grid-gap: 2rem; }
   .login h2 {
     align-self: end;
     justify-self: center; }
+  .login ul {
+    line-height: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem;
+    justify-items: stretch;
+    align-items: stretch; }
+    .login ul li {
+      background: #5b9169;
+      opacity: 0.9;
+      text-align: center;
+      cursor: pointer; }
+      .login ul li:hover {
+        opacity: 1; }
   .login form {
     align-self: start;
     width: 20rem; }
