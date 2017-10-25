@@ -121,7 +121,8 @@ nav ul {
   background: rgba(91, 145, 105, 0.8);
   display: grid;
   justify-content: end;
-  grid-template-columns: repeat(4, 10rem); }
+  grid-template-columns: repeat(4, 10rem);
+  height: 3rem; }
   nav ul li {
     display: flex;
     width: 10rem; }

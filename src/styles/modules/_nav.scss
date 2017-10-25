@@ -4,6 +4,7 @@ nav {
     display: grid;
     justify-content: end;
     grid-template-columns: repeat(4, 10rem);
+    height: 3rem;
     li {
       display: flex;
       width: 10rem;
