@@ -118,15 +118,13 @@ button:focus {
   outline: none; }
 
 nav ul {
-  height: 3rem;
   background: rgba(91, 145, 105, 0.8);
   display: grid;
   justify-content: end;
   grid-template-columns: repeat(4, 10rem); }
   nav ul li {
     display: flex;
-    width: 10rem;
-    height: 3rem; }
+    width: 10rem; }
     nav ul li:hover {
       background: #5b9169; }
     nav ul li a {
