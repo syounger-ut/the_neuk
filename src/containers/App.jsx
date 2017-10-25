@@ -46,7 +46,11 @@ class App extends React.Component {
         },
         updateMessage: 'Your details have been updated'
       });
-      console.log(self.state)
+      setTimeout(function() {
+        self.setState({
+          updateMessage: ''
+        })
+      }.bind(this), 2000);
     });
   }
 
@@ -121,7 +125,6 @@ class App extends React.Component {
 
     function renderUpdate() {
       if(typeof updateMessage === "string") {
-        console.log("HERE")
         return (
           <UpdateModal message={updateMessage}/>
         );

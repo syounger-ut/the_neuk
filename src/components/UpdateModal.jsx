@@ -4,14 +4,28 @@ class UpdateModal extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      updateMessage: ''
+      updateMessage: '',
+      closeMessage: false,
+      updateClass: [ 'updateMessage' ]
     };
   }
 
   componentDidMount() {
     this.setState({
       updateMessage: this.props.message
-    })
+    });
+    setTimeout(function() {
+      this.setState({
+        closeMessage: true,
+        updateClass: [ 'updateMessage', 'closeMessage' ]
+      });
+    }.bind(this), 1000);
+    setTimeout(function() {
+      this.setState({
+        updateMessage: '',
+        updateClass: [ 'updateMessage' ]
+      });
+    }.bind(this), 2000);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -19,17 +33,26 @@ class UpdateModal extends React.Component{
       updateMessage: nextProps.message
     });
     setTimeout(function() {
-      this.setState({ updateMessage: '' });
-      console.log("HERE")
+      this.setState({
+        closeMessage: true,
+        updateClass: [ 'updateMessage', 'closeMessage' ]
+      });
     }.bind(this), 1000);
+    setTimeout(function() {
+      this.setState({
+        updateMessage: '',
+        updateClass: [ 'updateMessage' ]
+      });
+    }.bind(this), 2000);
   }
 
   render() {
     const updateMessage = this.state.updateMessage;
+    const updateClass   = this.state.updateClass;
 
     var update;
     if(updateMessage) {
-      update = <h4 className='updateMessage'>{updateMessage}</h4>;
+      update = <h4 className={updateClass.join(' ')}>{updateMessage}</h4>;
     }
 
     return (
