@@ -2,19 +2,35 @@ import React, { Component } from 'react';
 import { withRouter }       from 'react-router-dom';
 
 import { connect }          from 'react-redux'
-import { addUser }          from '../actions'
 
-import * as loginActions from '../actions/index';
+import * as userActions from '../actions/userActions';
 
 import axios from 'axios';
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  // handleChange(event) {
+  //   this.setState({
+  //     username: event.target.value
+  //   });
+  //   mapStateToProps(this.state, this.props);
+  // }
+
+  handleChange(event){
+    let user = { first_name: event.target.value }
+    this.props.loginUser(user);
+    console.log(this.props.user)
+  }
+
   render() {
-    console.log(this.props)
     return (
       <form className="loginForm">
         <div className="input">
-          <input placeholder="name" onChange={handleChange}/>
+          <input placeholder="name" onChange={this.handleChange}/>
         </div>
         <input type="submit" className="button"/>
       </form>
@@ -22,27 +38,24 @@ class Login extends React.Component {
   };
 }
 
-function handleChange(event) {
-  // console.log(event.target.value)
-}
 
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    // You can now say this.props.books
-    books: state.books
+    // You can now say this.props.user
+    user: state.user
   }
 };
 
 // Maps actions to props
 const mapDispatchToProps = (dispatch) => {
   return {
-  // You can now say this.props.createBook
-    createBook: book => dispatch(bookActions.createBook(book))
+    // You can now say this.props.loginUser
+    loginUser: user => dispatch(userActions.loginUser(user))
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
 
 // class Login extends React.Component {
 //   constructor(props) {

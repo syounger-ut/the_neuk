@@ -4,12 +4,15 @@ import { BrowserRouter } from 'react-router-dom'
 
 // Redux setup
 import { Provider }      from 'react-redux'
-import { createStore }   from 'redux'
-import theNeukApp        from './reducers'
+// import { createStore }   from 'redux'
+// import theNeukApp        from './reducers'
 
 import App from 'App';
 
-let store = createStore(theNeukApp)
+import configureStore from './store/configureStore';
+
+const store = configureStore();
+// let store = createStore(theNeukApp)
 
 ReactDOM.render(
   <Provider store={store}>
