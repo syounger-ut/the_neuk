@@ -2,12 +2,13 @@ class BookingsController < ApplicationController
 
   def index
     bookings = @current_user.bookings.all
-    render json: bookings, each_serializer: BookingSerializer
+    bookings_serialized = bookings.map{ |booking| BookingSerializer.new(booking) }
+    render json: { bookings: bookings_serialized }
   end
 
   def show
     booking = @current_user.bookings.find(params[:id])
-    render json: booking, serializer: BookingSerializer, status: :ok
+    render json: { booking: BookingSerializer.new(booking) }, status: :ok
   end
 
   def create
@@ -15,7 +16,7 @@ class BookingsController < ApplicationController
 
     if booking.save && !!booking.paid
       UserMailer.booking_email(@current_user, @booking).deliver_later
-      render json: booking, serializer: BookingSerializer , status: :created
+      render json: { booking: BookingSerializer.new(booking) }, status: :created
     elsif !booking.paid
       render json: { paid: "The booking is unpaid. Please pay" }
     else
@@ -27,7 +28,7 @@ class BookingsController < ApplicationController
     booking = @current_user.bookings.find(params[:id])
 
     if booking.update(booking_params)
-      render json: booking, serializer: BookingSerializer, status: :ok
+      render json: { booking: BookingSerializer.new(booking) }, status: :ok
     else
       render json: booking.errors.full_messages, status: :unprocessable_entity
     end

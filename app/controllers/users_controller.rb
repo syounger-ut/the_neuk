@@ -2,14 +2,14 @@ class UsersController < ApplicationController
 
   def show
     user = @current_user
-    render json: user, serializer: UserSerializer, status: :ok
+    render json: { user: UserSerializer.new(user) }, status: :ok
   end
 
   def update
     user = @current_user
 
     if user.update(user_params)
-      render json: user, serializer: UserSerializer, status: :ok
+      render json: { user: UserSerializer.new(user) }, status: :ok
     else
       render json: user.errors.full_messages, status: :unprocessable_entity
     end
