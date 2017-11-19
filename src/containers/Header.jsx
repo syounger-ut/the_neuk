@@ -1,28 +1,35 @@
 import React, { Component } from 'react'
-import { Link, withRouter }             from 'react-router-dom'
+import { Link }             from 'react-router-dom'
 
-class Header extends React.Component {
+import { connect }      from 'react-redux'
+import * as userActions from '../actions/userActions';
+
+class Header extends Component {
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);
   }
 
   logout() {
-    this.props.handleUserLogin("logout");
+    let logoutOption = true;
+    this.props.logoutUser(logoutOption);
   }
 
   render() {
-    const user     = this.props.user;
-    const loggedIn = this.props.loggedIn;
-    const logout   = this.logout;
-
-    var loginButton;
-    var logoutButton;
-    if(loggedIn) {
-      loginButton  = <Link to='/user'>{user.email}</Link>;
-      logoutButton = <li><a href='/' onClick={logout}>Logout</a></li>;
+    let loginButton;
+    if (this.props.user) {
+      loginButton = (
+        <ul className="loginButton">
+          <li><Link to='/user'>{this.props.user.email}</Link></li>
+          <li><a href='/' onClick={this.logout}>Logout</a></li>;
+        </ul>
+      )
     } else {
-      loginButton = <Link to='/login'>Login</Link>;
+      loginButton = (
+        <ul className="loginButton">
+          <li><Link to='/login'>Login</Link></li>
+        </ul>
+      )
     }
 
     return (
@@ -32,10 +39,7 @@ class Header extends React.Component {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/pay'>Pay page</Link></li>
             <li><Link to='/bookings'>Bookings page</Link></li>
-            <ul className="loginButton">
-              <li>{loginButton}</li>
-              {logoutButton}
-            </ul>
+            {loginButton}
           </ul>
         </nav>
       </header>
@@ -43,4 +47,20 @@ class Header extends React.Component {
   }
 }
 
-export default withRouter(Header);
+// Maps state from store to props
+const mapStateToProps = (state, ownProps) => {
+  return {
+    // You can now say this.props.user
+    user: state.user
+  }
+};
+
+// Maps actions to props
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // You can now say this.props.logoutUser
+    logoutUser: logoutOption => dispatch(userActions.logoutUser(logoutOption))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

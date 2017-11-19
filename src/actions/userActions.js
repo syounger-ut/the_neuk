@@ -1,8 +1,43 @@
-export const loginUser = (user) => {
+import theNeukApi from 'theNeukApi';
+
+export const setUser = (user) => {
   return {
-    // Unique identifier
-    type: "LOGIN_USER",
-    // Payload
-    user: user
+    type: "SET_USER",
+    payload: user
   };
 };
+
+export const updateUser = (user, token) => {
+  return (dispatch) => {
+    return theNeukApi.updateUser(user, token).then(response => {
+      dispatch(setUser(response))
+    })
+    .catch(error => {
+      throw(error);
+    });
+  }
+}
+
+export const resetUser = (logoutOption) => {
+  return {
+    type: "UNSET_USER",
+    payload: logoutOption
+  }
+}
+
+export const loginUser = (user) => {
+  return (dispatch) => {
+    return theNeukApi.loginUser(user).then(response => {
+      dispatch(setUser(response))
+    })
+    .catch(error => {
+      throw(error);
+    });
+  }
+}
+
+export const logoutUser = (logoutOption) => {
+  return (dispatch) => {
+    dispatch(resetUser(logoutOption))
+  }
+}

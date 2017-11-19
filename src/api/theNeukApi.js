@@ -24,6 +24,27 @@ module.exports = {
     });
   },
 
+  loginUser: function(user) {
+    var requestUrl = `${THE_NEUK_API_URL}/login`;
+
+    return axios({
+      method: 'post',
+      url: requestUrl,
+      data: {
+        email:    user.username,
+        password: user.password
+      }
+    }).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      if(error.response.status === 401) {
+        throw new Error("Login failed. Please try again");
+      } else {
+        throw new Error(error.message);
+      }
+    });
+  },
+
   updateUser: function(user, token) {
     var requestUrl = `${THE_NEUK_API_URL}/users/${user.id}`;
 
@@ -38,7 +59,6 @@ module.exports = {
     }).catch(function(error) {
       if(error.response.status === 401) {
         throw new Error("Your details were not updated. Please try again");
-
       } else {
         throw new Error(error.message);
       }
