@@ -21,7 +21,7 @@ class Header extends Component {
       loginButton = (
         <ul className="loginButton">
           <li><Link to='/user'>{this.props.user.email}</Link></li>
-          <li><a href='/' onClick={this.logout}>Logout</a></li>;
+          <li><a href='/' onClick={this.logout}>Logout</a></li>
         </ul>
       )
     } else {

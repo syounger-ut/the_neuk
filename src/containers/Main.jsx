@@ -10,7 +10,7 @@ import Bookings from 'Bookings';
 import Pay      from 'Pay';
 import Home     from 'Home';
 
-class Main extends React.Component {
+class Main extends Component {
   render() {
     return (
       <main>

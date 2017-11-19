@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Bookings extends React.Component {
+class Bookings extends Component {
   render() {
     return (
       <h1>Hello Bookings component</h1>

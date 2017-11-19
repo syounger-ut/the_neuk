@@ -1,6 +1,6 @@
-var React = require("react");
+import React, { Component } from 'react';
 
-class ErrorModal extends React.Component{
+class ErrorModal extends Component{
   constructor(props) {
     super(props);
     this.state = {

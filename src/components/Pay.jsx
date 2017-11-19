@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Pay extends React.Component {
+class Pay extends Component {
   render() {
     return (
       <h1>Hello Pay component</h1>

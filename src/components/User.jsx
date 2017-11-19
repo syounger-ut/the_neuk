@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { connect }      from 'react-redux'
 import * as userActions from '../actions/userActions';
 
-class User extends React.Component {
+class User extends Component {
   constructor(props) {
     super(props);
     this.state = {

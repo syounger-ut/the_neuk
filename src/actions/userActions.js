@@ -18,13 +18,6 @@ export const updateUser = (user, token) => {
   }
 }
 
-export const resetUser = (logoutOption) => {
-  return {
-    type: "UNSET_USER",
-    payload: logoutOption
-  }
-}
-
 export const loginUser = (user) => {
   return (dispatch) => {
     return theNeukApi.loginUser(user).then(response => {
@@ -37,7 +30,8 @@ export const loginUser = (user) => {
 }
 
 export const logoutUser = (logoutOption) => {
-  return (dispatch) => {
-    dispatch(resetUser(logoutOption))
+  return {
+    type: "UNSET_USER",
+    payload: logoutOption
   }
 }
