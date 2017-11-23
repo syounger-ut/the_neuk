@@ -1,9 +1,6 @@
 const userReducer = (state = null, action) => {
   switch (action.type) {
     case 'SET_USER':
-      if (action.payload.token) {
-        localStorage.setItem('auth_token', action.payload.token);
-      }
       return {
         id:           action.payload.user.id,
         first_name:   action.payload.user.first_name,
@@ -14,7 +11,6 @@ const userReducer = (state = null, action) => {
         loggedIn: true
       }
     case 'UNSET_USER':
-      localStorage.removeItem('auth_token');
       return {
         loggedIn: false
       }

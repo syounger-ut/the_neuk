@@ -14,6 +14,13 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    // Redirect to home if login succeeds
+    if(nextProps.user.loggedIn) {
+      this.props.history.push("/")
+    }
+  }
+
   handleChange(event){
     let key   = event.target.name;
     let value = event.target.value;
