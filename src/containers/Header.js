@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-import { Link }             from 'react-router-dom'
 
+// Redux
 import { connect }      from 'react-redux'
-import * as userActions from '../actions/userActions';
+import * as userActions from 'userActions';
+
+// Components
+import Nav from 'Header/Nav';
 
 class Header extends Component {
   constructor(props) {
@@ -16,32 +19,11 @@ class Header extends Component {
   }
 
   render() {
-    let loginButton;
-    if (this.props.user) {
-      loginButton = (
-        <ul className="loginButton">
-          <li><Link to='/user'>{this.props.user.email}</Link></li>
-          <li><a href='/' onClick={this.logout}>Logout</a></li>
-        </ul>
-      )
-    } else {
-      loginButton = (
-        <ul className="loginButton">
-          <li><Link to='/login'>Login</Link></li>
-        </ul>
-      )
-    }
-
+    const user   = this.props.user;
+    const logout = this.logout;
     return (
       <header>
-        <nav>
-          <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/pay'>Pay page</Link></li>
-            <li><Link to='/bookings'>Bookings page</Link></li>
-            {loginButton}
-          </ul>
-        </nav>
+        <Nav logout={logout} user={user}/>
       </header>
     );
   }

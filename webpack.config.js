@@ -3,7 +3,7 @@ var path    = require('path')
 
 module.exports = {
   context: __dirname + "/src",
-  entry: './index.jsx',
+  entry: './index.js',
   output: {
     path: __dirname + '/public',
     publicPath: '/',
@@ -24,6 +24,7 @@ module.exports = {
       path.resolve(__dirname, 'node_modules'),
       path.resolve(__dirname, 'src/components'),
       path.resolve(__dirname, 'src/containers'),
+      path.resolve(__dirname, 'src/actions')
     ],
     extensions: [".js", ".json", ".jsx", ".scss", ".css"]
   }
