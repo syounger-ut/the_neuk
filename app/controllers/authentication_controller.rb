@@ -6,7 +6,7 @@ class AuthenticationController < ApplicationController
     if user.save
       token = JsonWebToken.issue({id: user.id})
       UserMailer.welcome_email(user).deliver_later
-      render json: { token: token, user: UserSerializer.new(user) }, status: :ok
+      render json: { token: token, email: user.email, id: user.id }, status: :ok
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -16,7 +16,7 @@ class AuthenticationController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       token = JsonWebToken.issue({id: user.id})
-      render json: { token: token, user: UserSerializer.new(user) }, status: :ok
+      render json: { token: token, email: user.email, id: user.id }, status: :ok
     else
       render json: { errors: ["Invalid login credentials."]}, status: 401
     end
