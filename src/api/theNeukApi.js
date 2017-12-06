@@ -54,7 +54,6 @@ module.exports = {
       headers: { 'Authorization': token },
       data: { 'user': user },
     }).then(function(response) {
-      console.log(response.data); // TO BE REMOVED LATER
       return response.data;
     }).catch(function(error) {
       if(error.response.status === 401) {

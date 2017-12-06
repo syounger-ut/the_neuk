@@ -17,20 +17,3 @@ export const updateUser = (user, token) => {
     });
   }
 }
-
-export const loginUser = (user) => {
-  return (dispatch) => {
-    return theNeukApi.loginUser(user).then(response => {
-      localStorage.setItem('auth_token', response.token);
-      dispatch(setUser(response))
-    });
-  }
-}
-
-export const logoutUser = (logoutOption) => {
-  localStorage.removeItem('auth_token');
-  return {
-    type: "UNSET_USER",
-    payload: logoutOption
-  }
-}
