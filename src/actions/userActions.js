@@ -26,7 +26,10 @@ export const getUser = () => {
 export const updateUser = (user) => {
   return (dispatch) => {
     return theNeukApi.updateUser(user).then(response => {
-      dispatch(messageActions.setMessage("Your details have been updated"))
+      dispatch(messageActions.setMessage({
+        message: "Your details have been updated",
+        style: "update"
+      }))
       dispatch(setUser(response))
     })
     .catch(error => {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link }             from 'react-router-dom';
 
 import * as authenticationActions from 'authenticationActions';
 
@@ -31,32 +32,26 @@ class Login extends Component {
     let password = this.state.password;
 
     return (
-      <div className="login">
-        <ul>
-          <li>Login</li>
-          <li>Register</li>
-        </ul>
-        <form className="loginForm" onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Email:</label>
-          <div className="input">
-            <input
-              type="text"
-              name="username"
-              onChange={this.handleChange}
-              value={username}
-              placeholder="Username" />
-          </div>
-          <label htmlFor="password">Password:</label>
-          <div className="input">
-            <input type="password"
-              name="password"
-              onChange={this.handleChange}
-              value={password}
-              placeholder="Password" />
-          </div>
-          <input className="button" type="submit" value="Submit"/>
-        </form>
-      </div>
+      <form className="loginForm" onSubmit={this.handleSubmit}>
+        <label htmlFor="username">Email:</label>
+        <div className="input">
+          <input
+            type="text"
+            name="username"
+            onChange={this.handleChange}
+            value={username}
+            placeholder="Username" />
+        </div>
+        <label htmlFor="password">Password:</label>
+        <div className="input">
+          <input type="password"
+            name="password"
+            onChange={this.handleChange}
+            value={password}
+            placeholder="Password" />
+        </div>
+        <input className="button" type="submit" value="Submit"/>
+      </form>
     );
   };
 }

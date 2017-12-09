@@ -29,6 +29,18 @@ export const login = (user) => {
   }
 }
 
+export const register = (user) => {
+  return (dispatch) => {
+    return theNeukApi.registerUser(user).then(response => {
+      localStorage.setItem('auth_token', response.token);
+      dispatch(loggedIn(true));
+      theNeukApi.getUser(response).then(response => {
+        dispatch(userActions.setUser(response));
+      })
+    });
+  }
+}
+
 export const logout = () => {
   return (dispatch) => {
     localStorage.removeItem('auth_token');

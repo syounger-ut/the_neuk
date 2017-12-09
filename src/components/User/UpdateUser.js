@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import UpdateModal from 'UpdateModal';
-
 class UpdateUser extends Component {
   constructor(props) {
     super(props);

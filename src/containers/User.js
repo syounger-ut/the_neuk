@@ -6,7 +6,7 @@ import * as userActions from 'userActions';
 
 // Components
 import UpdateUser  from 'User/UpdateUser';
-import UpdateModal from 'UpdateModal';
+import MessageModal from 'MessageModal';
 
 class User extends Component {
   render() {
@@ -16,7 +16,7 @@ class User extends Component {
     const message = this.props.message;
     let updateMessage;
     if(message) {
-      updateMessage = <UpdateModal message={message}/>;
+      updateMessage = <MessageModal message={message.text} style={message.style}/>;
     }
 
     return (

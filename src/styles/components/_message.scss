@@ -1,0 +1,12 @@
+.message {
+  text-align: center;
+  padding:    0.5rem;
+  &.update {
+    color:      $text-color;
+    background: rgba($button-color, 0.5);
+  }
+  &.error {
+    color:      $error-color;
+    background: $error-color-background;
+  }
+}
