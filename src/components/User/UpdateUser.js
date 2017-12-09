@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import { connect }      from 'react-redux'
-import * as userActions from '../actions/userActions';
+import UpdateModal from 'UpdateModal';
 
-class User extends Component {
+class UpdateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,19 +15,17 @@ class User extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount() {
-    if(this.props.user) {
-      let user = this.props.user;
-      this.updateUserState(user);
-    }
+  componentDidMount() {
+    const user = this.props.user;
+    if(user) { this.setUserState(user) }
   }
 
   componentWillReceiveProps(nextProps) {
-    let user = nextProps.user;
-    this.updateUserState(user);
+    const user = nextProps.user;
+    if(user) { this.setUserState(user) }
   }
 
-  updateUserState(user) {
+  setUserState(user) {
     this.setState({
       first_name:   user.first_name,
       last_name:    user.last_name,
@@ -38,8 +35,8 @@ class User extends Component {
   }
 
   handleChange(event) {
-    var target = event.target;
-    var name   = target.name;
+    const target = event.target;
+    const name   = target.name;
     this.setState({
       [name]: target.value
     });
@@ -47,12 +44,11 @@ class User extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let token = localStorage.getItem('auth_token');
-    this.props.updateUser(this.state, token);
+    this.props.updateUser(this.state);
   }
 
   render() {
-    let { first_name, last_name, email, phone_number } = this.state;
+    const { first_name, last_name, email, phone_number } = this.state;
 
     return (
       <form className="loginForm" onSubmit={this.handleSubmit}>
@@ -95,20 +91,4 @@ class User extends Component {
   }
 }
 
-// Maps state from store to props
-const mapStateToProps = (state, ownProps) => {
-  return {
-    // You can now say this.props.user
-    user: state.user
-  }
-};
-
-// Maps actions to props
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // You can now say this.props.updateUser
-    updateUser: (user, token) => dispatch(userActions.updateUser(user, token))
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default UpdateUser;

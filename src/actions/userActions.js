@@ -1,4 +1,5 @@
 import theNeukApi from 'theNeukApi';
+import * as messageActions from 'messageActions';
 
 export const setUser = (user) => {
   return {
@@ -25,6 +26,7 @@ export const getUser = () => {
 export const updateUser = (user) => {
   return (dispatch) => {
     return theNeukApi.updateUser(user).then(response => {
+      dispatch(messageActions.setMessage("Your details have been updated"))
       dispatch(setUser(response))
     })
     .catch(error => {
