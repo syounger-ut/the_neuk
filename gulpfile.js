@@ -6,16 +6,15 @@ const livereload    = require("gulp-livereload");
 const nodemon       = require('gulp-nodemon');
 
 gulp.task('nodemon', () => {
-  return nodemon({
-    script: 'server.js'
-  }).on('readable', () => {
-    this.stdout.on('data', chunk => {
-      if (/^listening/.test(chunk)) {
-        livereload.reload();
-      }
-      process.stdout.write(chunk);
-    });
-  });
+  nodemon({
+		// the script to run the app
+		script: 'server.js',
+		ext: 'js'
+	}).on('restart', function(){
+		// when the app has restarted, run livereload.
+		gulp.src('server.js')
+			.pipe(livereload());
+	});
 });
 
 gulp.task('styles', function() {

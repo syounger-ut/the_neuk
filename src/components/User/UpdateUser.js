@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class User extends React.Component {
+class UpdateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -8,47 +8,45 @@ class User extends React.Component {
       last_name:    '',
       email:        '',
       phone_number: ''
-    };
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    var user = this.props.user;
-    this.setState({
-      first_name:   user.first_name,
-      last_name:    user.last_name,
-      email:        user.email,
-      phone_number: user.phone_number
-    });
+    const user = this.props.user;
+    if(user) { this.setUserState(user) }
   }
 
   componentWillReceiveProps(nextProps) {
-    var user = nextProps.user;
+    const user = nextProps.user;
+    if(user) { this.setUserState(user) }
+  }
+
+  setUserState(user) {
     this.setState({
       first_name:   user.first_name,
       last_name:    user.last_name,
       email:        user.email,
       phone_number: user.phone_number
-    });
-    this.render()
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.updateUser(this.state)
+    })
   }
 
   handleChange(event) {
-    var target = event.target;
-    var name   = target.name;
+    const target = event.target;
+    const name   = target.name;
     this.setState({
       [name]: target.value
     });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.updateUser(this.state);
+  }
+
   render() {
-    const {first_name, last_name, email, phone_number} = this.state;
+    const { first_name, last_name, email, phone_number } = this.state;
 
     return (
       <form className="loginForm" onSubmit={this.handleSubmit}>
@@ -91,4 +89,4 @@ class User extends React.Component {
   }
 }
 
-export default User;
+export default UpdateUser;

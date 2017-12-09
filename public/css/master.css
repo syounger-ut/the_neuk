@@ -182,23 +182,15 @@ nav ul {
     align-self: start;
     width: 20rem; }
 
-h4.errorMessage {
+.message {
   text-align: center;
-  color: #cc0000;
-  background: #FFCCCC;
   padding: 0.5rem; }
-
-h4.updateMessage {
-  background: rgba(91, 145, 105, 0.5);
-  text-align: center;
-  color: black;
-  padding: 0.5rem;
-  transition-property: all;
-  transition-duration: 0.8s; }
-  h4.updateMessage.closeMessage {
-    padding: 0;
-    height: 0;
-    font-size: 0; }
+  .message.update {
+    color: black;
+    background: rgba(91, 145, 105, 0.5); }
+  .message.error {
+    color: #cc0000;
+    background: #FFCCCC; }
 
 main {
   min-height: calc(100vh - 3rem);
