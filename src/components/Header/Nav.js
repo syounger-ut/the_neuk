@@ -16,7 +16,7 @@ class Nav extends Component {
     } else {
       loginButton = (
         <ul className="loginButton">
-          <li><Link to='/login'>Login</Link></li>
+          <li><Link to='/authentication'>Login</Link></li>
         </ul>
       )
     }

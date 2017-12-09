@@ -14,7 +14,7 @@ class App extends Component {
   componentWillMount() {
     const token = localStorage.getItem('auth_token');
     if(token) {
-      this.props.authenticateToken(token);
+      this.props.authenticateToken();
     }
   }
 
@@ -31,14 +31,14 @@ class App extends Component {
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    user: state.user
+    loggedIn: state.loggedIn
   }
 };
 
 // Maps actions to props
 const mapDispatchToProps = (dispatch) => {
   return {
-    authenticateToken: token => dispatch(authenticationActions.authenticateToken(token))
+    authenticateToken: () => dispatch(authenticationActions.authenticateToken())
   }
 };
 

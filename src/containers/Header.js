@@ -2,25 +2,15 @@ import React, { Component } from 'react'
 
 // Redux
 import { connect }      from 'react-redux'
-import * as userActions from 'userActions';
+import * as authenticationActions from 'authenticationActions';
 
 // Components
 import Nav from 'Header/Nav';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.logout = this.logout.bind(this);
-  }
-
-  logout() {
-    let logoutOption = true;
-    this.props.logoutUser(logoutOption);
-  }
-
   render() {
     const user   = this.props.user;
-    const logout = this.logout;
+    const logout = this.props.logout;
     return (
       <header>
         <Nav logout={logout} user={user}/>
@@ -41,7 +31,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // You can now say this.props.logoutUser
-    logoutUser: logoutOption => dispatch(userActions.logoutUser(logoutOption))
+    logout: () => dispatch(authenticationActions.logout())
   }
 };
 

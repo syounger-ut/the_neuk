@@ -1,27 +1,38 @@
 import theNeukApi from 'theNeukApi';
 import * as userActions from 'userActions';
 
-export const authenticateToken = (token) => {
+export const loggedIn = (status) => {
+  return {
+    type: "LOGGED_IN",
+    payload: status
+  }
+}
+
+export const authenticateToken = () => {
   return (dispatch) => {
-    return theNeukApi.authenticateToken(token).then(response => {
-      dispatch(userActions.setUser(response))
+    return theNeukApi.getUser().then(response => {
+      dispatch(loggedIn(true));
+      dispatch(userActions.setUser(response));
     });
   }
 }
 
-export const loginUser = (user) => {
+export const login = (user) => {
   return (dispatch) => {
     return theNeukApi.loginUser(user).then(response => {
       localStorage.setItem('auth_token', response.token);
-      dispatch(setUser(response))
+      dispatch(loggedIn(true));
+      theNeukApi.getUser(response).then(response => {
+        dispatch(userActions.setUser(response));
+      })
     });
   }
 }
 
-export const logoutUser = (logoutOption) => {
-  localStorage.removeItem('auth_token');
-  return {
-    type: "UNSET_USER",
-    payload: logoutOption
+export const logout = () => {
+  return (dispatch) => {
+    localStorage.removeItem('auth_token');
+    dispatch(loggedIn(false));
+    dispatch(userActions.unsetUser());
   }
 }

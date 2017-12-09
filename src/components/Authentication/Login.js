@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import { connect }          from 'react-redux'
-import * as userActions     from '../actions/userActions';
+import * as authenticationActions from 'authenticationActions';
 
 class Login extends Component {
   constructor(props) {
@@ -14,13 +13,6 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    // Redirect to home if login succeeds
-    if(nextProps.user.loggedIn) {
-      this.props.history.push("/")
-    }
-  }
-
   handleChange(event){
     let key   = event.target.name;
     let value = event.target.value;
@@ -31,7 +23,7 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.loginUser(this.state);
+    this.props.login(this.state);
   }
 
   render() {
@@ -69,20 +61,4 @@ class Login extends Component {
   };
 }
 
-// Maps state from store to props
-const mapStateToProps = (state, ownProps) => {
-  return {
-    // You can now say this.props.loginDetails
-    user: state.user
-  }
-};
-
-// Maps actions to props
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // You can now say this.props.loginUser
-    loginUser: user => dispatch(userActions.loginUser(user))
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

@@ -3,15 +3,16 @@
 import axios from 'axios';
 
 const THE_NEUK_API_URL = 'http://localhost:3000/api'
+let TOKEN = localStorage.getItem("auth_token");
 
 module.exports = {
-  authenticateToken: function(token) {
+  getUser: function() {
     var requestUrl = `${THE_NEUK_API_URL}/users/me`;
 
     return axios({
       method: 'get',
       url: requestUrl,
-      headers: { 'Authorization': token }
+      headers: { 'Authorization': TOKEN }
     }).then(function(response) {
       return response.data;
     }).catch(function(error) {
@@ -35,6 +36,7 @@ module.exports = {
         password: user.password
       }
     }).then(function(response) {
+      TOKEN = response.data.token;
       return response.data;
     }).catch(function(error) {
       if(error.response.status === 401) {
@@ -45,13 +47,13 @@ module.exports = {
     });
   },
 
-  updateUser: function(user, token) {
+  updateUser: function(user) {
     var requestUrl = `${THE_NEUK_API_URL}/users/${user.id}`;
 
     return axios({
       method: 'put',
       url: requestUrl,
-      headers: { 'Authorization': token },
+      headers: { 'Authorization': TOKEN },
       data: { 'user': user },
     }).then(function(response) {
       return response.data;
