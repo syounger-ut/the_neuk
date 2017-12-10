@@ -18,7 +18,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      theNeukApi: path.resolve(__dirname, 'src/api/theNeukApi.js')
+      theNeukApi: path.resolve(__dirname, 'src/api/theNeukApi.js'),
+      googleCalendarApi: path.resolve(__dirname, 'src/api/googleCalendarApi.js')
     },
     modules: [
       path.resolve(__dirname, 'node_modules'),
