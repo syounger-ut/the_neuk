@@ -17,14 +17,19 @@ class Calendar extends Component {
   };
 
   render() {
-    console.log(this.getDaysInMonth(1, 2012));
-    console.log(this.getDaysInMonth(2, 2012));
-    console.log(this.getDaysInMonth(9, 2012));
-    console.log(this.getDaysInMonth(12, 2012));
+    const daysInMonth = this.getDaysInMonth(1,2017); // February
+
+    let calendar = new Array;
+    for(let i = 1; i < daysInMonth + 1; i++) {
+      calendar.push(<li className="calendarDay" key={i}>{i}</li>);
+    }
+
     return (
       <div>
         <h1>Calendar Component</h1>
-        <div id='calendar'></div>
+        <ul id="calendar">
+          {calendar}
+        </ul>
       </div>
     );
   }

@@ -197,6 +197,22 @@ main {
   display: grid;
   justify-content: center; }
 
+#calendar {
+  background: #cccccc;
+  padding: 1px;
+  height: 20rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1px; }
+  #calendar .calendarDay {
+    background: white;
+    justify-self: stretch;
+    padding: 0.5rem;
+    cursor: pointer; }
+    #calendar .calendarDay:hover {
+      background: #e6e6e6; }
+
 * {
   box-sizing: border-box; }
 
