@@ -8,26 +8,49 @@ class Calendar extends Component {
     const calendar = new GoogleCalendarApi();
   }
 
-  getDaysInMonth(month,year) {
+  monthFacts(month,year) {
     // Here January is 1 based
     //Day 0 is the last day in the previous month
-   return new Date(year, month, 0).getDate();
-  // Here January is 0 based
-  // return new Date(year, month+1, 0).getDate();
+    let daysInMonth = new Date(year, month, 0).getDate();
+    let startDayOfWeek = new Date(year, month, 1).getDay();
+    console.log(new Date(year, month, 1))
+    return {
+      days: daysInMonth,
+      startDayOfWeek: startDayOfWeek
+    }
   };
 
   render() {
-    const daysInMonth = this.getDaysInMonth(1,2017); // February
+    const monthFacts = this.monthFacts(0,2017);
 
     let calendar = new Array;
-    for(let i = 1; i < daysInMonth + 1; i++) {
-      calendar.push(<li className="calendarDay" key={i}>{i}</li>);
+    for(let i = 1; i < monthFacts.days + monthFacts.startDayOfWeek; i++) {
+      let day = i - monthFacts.startDayOfWeek + 1;
+      if(i < monthFacts.startDayOfWeek) {
+        calendar.push(<li className="emptyDay" key={i}></li>);
+      } else {
+        calendar.push(<li className="calendarDay" key={i}>{day}</li>);
+      }
     }
 
     return (
       <div>
         <h1>Calendar Component</h1>
         <ul id="calendar">
+          <ul id="datePicker">
+            <li>LeftDate</li>
+            <li>Sams Calendar Picker</li>
+            <li>RightDate</li>
+          </ul>
+          <ul id="daysOfWeek">
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+            <li>Sun</li>
+          </ul>
           {calendar}
         </ul>
       </div>

@@ -1,11 +1,29 @@
 #calendar {
   background: lighten($primary-color, 80%);
   padding: 1px;
-  height: 20rem;
+  min-height: 20rem;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto;
   grid-gap: 1px;
+  #datePicker, #daysOfWeek {
+    grid-column: span 7;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    align-items: center;
+  }
+  #datePicker {
+    li:first-child {
+      grid-column: 1;
+    }
+    li:nth-child(2) {
+      grid-column: span 5;
+    }
+    li:last-child {
+      grid-column: 7;
+    }
+  }
   .calendarDay {
     background: white;
     justify-self: stretch;
@@ -14,5 +32,8 @@
     &:hover {
       background: lighten($primary-color, 90%);
     }
+  }
+  .emptyDay {
+    background: none;
   }
 }

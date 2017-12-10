@@ -200,11 +200,23 @@ main {
 #calendar {
   background: #cccccc;
   padding: 1px;
-  height: 20rem;
+  min-height: 20rem;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto;
   grid-gap: 1px; }
+  #calendar #datePicker, #calendar #daysOfWeek {
+    grid-column: span 7;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    align-items: center; }
+  #calendar #datePicker li:first-child {
+    grid-column: 1; }
+  #calendar #datePicker li:nth-child(2) {
+    grid-column: span 5; }
+  #calendar #datePicker li:last-child {
+    grid-column: 7; }
   #calendar .calendarDay {
     background: white;
     justify-self: stretch;
@@ -212,6 +224,8 @@ main {
     cursor: pointer; }
     #calendar .calendarDay:hover {
       background: #e6e6e6; }
+  #calendar .emptyDay {
+    background: none; }
 
 * {
   box-sizing: border-box; }
