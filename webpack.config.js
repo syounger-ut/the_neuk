@@ -12,8 +12,7 @@ module.exports = {
   devtool: 'inline-source-map',
   module: {
     loaders: [
-      {test: /\.(js|jsx)$/, exclude: /node_modules/, loaders: ['babel-loader']},
-      {test: /(\.css)$/, loaders: ['style-loader', 'css-loader']}
+      {test: /\.(js|jsx)$/, exclude: /node_modules/, loaders: ['babel-loader']}
     ]
   },
   resolve: {

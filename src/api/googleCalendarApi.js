@@ -1,6 +1,6 @@
 class GoogleCalendarApi {
   constructor() {
-    console.log("LOADED")
+    // console.log("LOADED")
   }
   testMethod() {
 

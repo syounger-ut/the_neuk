@@ -20,6 +20,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "express": "^4.16.2",
+    "font-awesome": "^4.7.0",
     "moment": "^2.19.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -34,7 +35,6 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.7",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
     "gulp-livereload": "^3.8.1",
@@ -42,7 +42,6 @@
     "gulp-sass": "^3.1.0",
     "gulp4": "^4.0.2",
     "path": "^0.12.7",
-    "style-loader": "^0.19.0",
     "webpack": "^3.6.0"
   }
 }
