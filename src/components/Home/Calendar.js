@@ -17,6 +17,7 @@ class Calendar extends Component {
     };
     this.updateCalendarFacts = this.updateCalendarFacts.bind(this);
     this.changeMonth         = this.changeMonth.bind(this);
+    this.bookingDates        = this.bookingDates.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +45,30 @@ class Calendar extends Component {
     this.updateCalendarFacts(nextMonth.toDate())
   }
 
+  bookingDates(date) {
+    let dateFormatted = Date.parse(date);
+    let startDate = this.state.bookingStart;
+    let endDate   = this.state.bookingEnd;
+
+    if(startDate === "") {
+      this.setState({
+        bookingStart: date
+      })
+    } else if(dateFormatted === Date.parse(startDate)) {
+      this.setState({
+        bookingStart: date
+      })
+    } else if(date > Date.parse(startDate)) {
+      this.setState({
+        bookingEnd: date
+      })
+    }
+    debugger
+    console.log(this.state)
+  }
+
   render() {
+    console.log(this.state)
     const monthName   = moment.months()[this.state.month];
     const changeMonth = this.changeMonth;
 
@@ -58,7 +82,7 @@ class Calendar extends Component {
         calendar.push(<li className="emptyDay" key={i}></li>);
       } else {
         let date = moment(this.state.date).startOf('month').add(day - 1, 'd').toDate();
-        calendar.push(<li className="calendarDay" key={i} value={date}>{day}</li>);
+        calendar.push(<li className="calendarDay" key={i} onClick={() => this.bookingDates(date)}>{day}</li>);
       }
     }
 
