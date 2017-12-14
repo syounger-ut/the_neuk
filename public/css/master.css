@@ -2547,6 +2547,8 @@ main {
     grid-column: span 5; }
   #calendar #datePicker li:last-child {
     grid-column: 7; }
+  #calendar .emptyDay, #calendar .calendarDay {
+    height: 5rem; }
   #calendar .calendarDay {
     background: white;
     justify-self: stretch;

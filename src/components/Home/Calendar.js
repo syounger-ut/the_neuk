@@ -8,24 +8,28 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date:        '',
-      month:       '',
-      daysInMonth: '',
-      startDay:    ''
+      date:         '',
+      month:        '',
+      daysInMonth:  '',
+      startDay:     '',
+      bookingStart: '',
+      bookingEnd:   ''
     };
     this.updateCalendarFacts = this.updateCalendarFacts.bind(this);
+    this.changeMonth         = this.changeMonth.bind(this);
   }
 
   componentDidMount() {
     const calendar = new GoogleCalendarApi();
-    const date     = new Date(2017,5);
+    const date     = new Date();
     this.updateCalendarFacts(date);
   }
 
   updateCalendarFacts(date) {
     const month       = date.getMonth();
     const daysInMonth = moment(date).daysInMonth();
-    const startDay    = moment(date).startOf('month').toDate().getDay()
+    let startDay      = moment(date).startOf('month').toDate().getDay();
+    if(startDay === 0) { startDay = 7 } // Change Sunday from 0 to day 7
     this.setState({
       date:  date,
       month: month,
@@ -34,37 +38,39 @@ class Calendar extends Component {
     })
   }
 
-  handleClick(direction) {
-    console.log(direction);
+  changeMonth(direction) {
+    let momentDate = moment(this.state.date);
+    let nextMonth = direction === 'up' ? momentDate.add(1, 'M') : momentDate.subtract(1, 'M');
+    this.updateCalendarFacts(nextMonth.toDate())
   }
 
   render() {
-    const monthName = moment.months()[this.state.month];
+    const monthName   = moment.months()[this.state.month];
+    const changeMonth = this.changeMonth;
 
     const daysInMonth = this.state.daysInMonth;
     const startDay    = this.state.startDay;
+    let calendar      = new Array;
+    for(let i = 1; i < daysInMonth + startDay; i++) {
+      let day = i - startDay + 1;
 
-    let calendar = new Array;
-    for(let i = 1; i < daysInMonth + startDay + 7; i++) {
-      let day = i - startDay - 6;
-
-      if(i < (startDay + 7)) {
+      if(i < (startDay)) {
         calendar.push(<li className="emptyDay" key={i}></li>);
       } else {
-        calendar.push(<li className="calendarDay" key={i}>{day}</li>);
+        let date = moment(this.state.date).startOf('month').add(day - 1, 'd').toDate();
+        calendar.push(<li className="calendarDay" key={i} value={date}>{day}</li>);
       }
     }
 
-    const handleClick = this.handleClick;
 
     return (
       <div>
         <h1>Calendar Component</h1>
         <ul id="calendar">
           <ul id="datePicker">
-            <li onClick={() => this.handleClick('down')}><i className="fa fa-chevron-left"></i></li>
+            <li onClick={() => this.changeMonth('down')}><i className="fa fa-chevron-left"></i></li>
             <li>{monthName}</li>
-            <li onClick={() => this.handleClick('up')}><i className="fa fa-chevron-right"></i></li>
+            <li onClick={() => this.changeMonth('up')}><i className="fa fa-chevron-right"></i></li>
           </ul>
           <ul id="daysOfWeek">
             <li>Mon</li>

@@ -24,6 +24,9 @@
       grid-column: 7;
     }
   }
+  .emptyDay, .calendarDay {
+    height: 5rem;
+  }
   .calendarDay {
     background: white;
     justify-self: stretch;
