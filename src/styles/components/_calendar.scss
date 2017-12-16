@@ -24,10 +24,10 @@
       grid-column: 7;
     }
   }
-  .emptyDay, .calendarDay {
+  .emptyDay, .calendarDay, .selectedDate {
     height: 5rem;
   }
-  .calendarDay {
+  .calendarDay, .selectedDate {
     background: white;
     justify-self: stretch;
     padding: 0.5rem;
@@ -36,7 +36,29 @@
       background: lighten($primary-color, 90%);
     }
   }
+  .selectedDate {
+    background: $button-color;
+    &:hover {
+      background: $button-color;
+    }
+  }
   .emptyDay {
     background: none;
+  }
+  .clear-dates {
+    grid-column: span 7;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: $button-color;
+    cursor: pointer;
+    &:hover {
+      background: lighten($button-color, 10%);
+    }
+    li {
+      cursor: pointer;
+    }
   }
 }

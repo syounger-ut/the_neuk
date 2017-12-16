@@ -2547,17 +2547,34 @@ main {
     grid-column: span 5; }
   #calendar #datePicker li:last-child {
     grid-column: 7; }
-  #calendar .emptyDay, #calendar .calendarDay {
+  #calendar .emptyDay, #calendar .calendarDay, #calendar .selectedDate {
     height: 5rem; }
-  #calendar .calendarDay {
+  #calendar .calendarDay, #calendar .selectedDate {
     background: white;
     justify-self: stretch;
     padding: 0.5rem;
     cursor: pointer; }
-    #calendar .calendarDay:hover {
+    #calendar .calendarDay:hover, #calendar .selectedDate:hover {
       background: #e6e6e6; }
+  #calendar .selectedDate {
+    background: #5b9169; }
+    #calendar .selectedDate:hover {
+      background: #5b9169; }
   #calendar .emptyDay {
     background: none; }
+  #calendar .clear-dates {
+    grid-column: span 7;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #5b9169;
+    cursor: pointer; }
+    #calendar .clear-dates:hover {
+      background: #76a983; }
+    #calendar .clear-dates li {
+      cursor: pointer; }
 
 * {
   box-sizing: border-box; }

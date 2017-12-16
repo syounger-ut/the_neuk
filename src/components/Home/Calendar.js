@@ -18,6 +18,7 @@ class Calendar extends Component {
     this.updateCalendarFacts = this.updateCalendarFacts.bind(this);
     this.changeMonth         = this.changeMonth.bind(this);
     this.bookingDates        = this.bookingDates.bind(this);
+    this.clearCalendar       = this.clearCalendar.bind(this);
   }
 
   componentDidMount() {
@@ -54,22 +55,35 @@ class Calendar extends Component {
       this.setState({
         bookingStart: date
       })
-    } else if(dateFormatted === Date.parse(startDate)) {
+    } else if( dateFormatted < Date.parse(startDate)) {
       this.setState({
         bookingStart: date
       })
-    } else if(date > Date.parse(startDate)) {
+    } else if(dateFormatted === Date.parse(startDate)) {
+      this.setState({
+        bookingStart: ''
+      })
+    } else if(dateFormatted === Date.parse(endDate)) {
+      this.setState({
+        bookingEnd: ''
+      })
+    } else if(dateFormatted > Date.parse(startDate)) {
       this.setState({
         bookingEnd: date
       })
     }
-    debugger
-    console.log(this.state)
+  }
+
+  clearCalendar() {
+    this.setState({
+      bookingStart: '',
+      bookingEnd:   ''
+    })
   }
 
   render() {
-    console.log(this.state)
     const monthName   = moment.months()[this.state.month];
+    const year        = moment(this.state.date).format("YYYY")
     const changeMonth = this.changeMonth;
 
     const daysInMonth = this.state.daysInMonth;
@@ -82,10 +96,15 @@ class Calendar extends Component {
         calendar.push(<li className="emptyDay" key={i}></li>);
       } else {
         let date = moment(this.state.date).startOf('month').add(day - 1, 'd').toDate();
-        calendar.push(<li className="calendarDay" key={i} onClick={() => this.bookingDates(date)}>{day}</li>);
+        let dateMatch =
+          Date.parse(this.state.bookingStart) === Date.parse(date) ||
+          Date.parse(this.state.bookingEnd) === Date.parse(date) ||
+          Date.parse(date)  >= Date.parse(this.state.bookingStart) &&
+          Date.parse(date)  <= Date.parse(this.state.bookingEnd);
+        let backgroundColor = dateMatch ? "selectedDate" : "calendarDay";
+        calendar.push(<li className={backgroundColor} key={i} onClick={() => this.bookingDates(date)}>{day}</li>);
       }
     }
-
 
     return (
       <div>
@@ -93,7 +112,7 @@ class Calendar extends Component {
         <ul id="calendar">
           <ul id="datePicker">
             <li onClick={() => this.changeMonth('down')}><i className="fa fa-chevron-left"></i></li>
-            <li>{monthName}</li>
+            <li>{`${monthName} ${year}`}</li>
             <li onClick={() => this.changeMonth('up')}><i className="fa fa-chevron-right"></i></li>
           </ul>
           <ul id="daysOfWeek">
@@ -106,6 +125,9 @@ class Calendar extends Component {
             <li>Sun</li>
           </ul>
           {calendar}
+          <ul className="clear-dates" onClick={() => this.clearCalendar()}>
+            <li>Clear Dates</li>
+          </ul>
         </ul>
       </div>
     );
