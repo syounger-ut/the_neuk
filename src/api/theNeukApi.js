@@ -79,12 +79,31 @@ module.exports = {
       method: 'put',
       url: requestUrl,
       headers: { 'Authorization': TOKEN },
-      data: { 'user': user },
+      data: { 'user': user }
     }).then(function(response) {
       return response.data;
     }).catch(function(error) {
       if(error.response.status === 401) {
         throw new Error("Your details were not updated. Please try again");
+      } else {
+        throw new Error(error.message);
+      }
+    });
+  },
+
+  submitBooking: function(booking) {
+    var requestUrl = `${THE_NEUK_API_URL}/bookings`;
+
+    return axios({
+      method: 'post',
+      url: requestUrl,
+      headers: { 'Authorization': TOKEN },
+      data: { 'booking': booking }
+    }).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      if(errorp.response.status === 401) {
+        throw new Error("Your booking failed. Please try again");
       } else {
         throw new Error(error.message);
       }

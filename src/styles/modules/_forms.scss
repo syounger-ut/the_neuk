@@ -1,27 +1,54 @@
 form {
-  min-width: 30rem;
   display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  grid-gap: 16px;
-  .input input, label {
-    line-height: 2.5rem;
-  }
   label {
-    grid-column: 1 / 2;
-    border: 1px solid transparent;
+    display: grid;
+    grid-template-columns: 10rem auto;
+    align-items: center;
+    input, textarea {
+      width: 15rem;
+      &.read-only {
+        cursor: default;
+      }
+    }
+    textarea {
+      resize: none;
+      height: 5rem;
+      margin: 1rem 0;
+      border: thin solid lightgrey;
+    }
   }
-  .input {
-    grid-column: 2 / 3;
-  }
-  input {
+  input[type="submit"] {
+    background: $button-color;
     width: 100%;
-    padding-left: 0.2rem;
-  }
-  .button {
-    grid-column: span 2;
+    height: 2.1rem;
+    align-self: end;
   }
 }
+
+// form {
+//   min-width: 30rem;
+//   display: grid;
+//   grid-template-columns: auto 1fr;
+//   align-items: center;
+//   grid-gap: 16px;
+//   .input input, label {
+//     line-height: 2.5rem;
+//   }
+//   label {
+//     grid-column: 1 / 2;
+//     border: 1px solid transparent;
+//   }
+//   .input {
+//     grid-column: 2 / 3;
+//   }
+//   input {
+//     width: 100%;
+//     padding-left: 0.2rem;
+//   }
+//   .button {
+//     grid-column: span 2;
+//   }
+// }
 
 // no all border highlight on focus
 input:focus,

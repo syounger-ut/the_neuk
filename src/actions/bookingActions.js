@@ -1,3 +1,5 @@
+import theNeukApi from 'theNeukApi';
+
 export const setBookingStart = (date) => {
   return {
     type: "BOOKING_START",
@@ -11,3 +13,18 @@ export const setBookingEnd = (date) => {
     payload: date
   };
 };
+
+export const setBooking = (booking) => {
+  return {
+    type: "SET_BOOKING",
+    payload: booking
+  }
+}
+
+export const submitBooking = (booking) => {
+  return (dispatch) => {
+    return theNeukApi.submitBooking(booking).then(response => {
+      dispatch(setBooking(response))
+    });
+  }
+}

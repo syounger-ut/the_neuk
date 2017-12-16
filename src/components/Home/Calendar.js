@@ -93,29 +93,26 @@ class Calendar extends Component {
     }
 
     return (
-      <div>
-        <h1>Calendar Component</h1>
-        <ul id="calendar">
-          <ul id="datePicker">
-            <li onClick={() => this.changeMonth('down')}><i className="fa fa-chevron-left"></i></li>
-            <li>{`${monthName} ${year}`}</li>
-            <li onClick={() => this.changeMonth('up')}><i className="fa fa-chevron-right"></i></li>
-          </ul>
-          <ul id="daysOfWeek">
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
-            <li>Sun</li>
-          </ul>
-          {calendar}
-          <ul className="clear-dates" onClick={() => this.clearCalendar()}>
-            <li>Clear Dates</li>
-          </ul>
+      <ul id="calendar">
+        <ul id="datePicker">
+          <li onClick={() => this.changeMonth('down')}><i className="fa fa-chevron-left"></i></li>
+          <li>{`${monthName} ${year}`}</li>
+          <li onClick={() => this.changeMonth('up')}><i className="fa fa-chevron-right"></i></li>
         </ul>
-      </div>
+        <ul id="daysOfWeek">
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+          <li>Sun</li>
+        </ul>
+        {calendar}
+        <ul className="clear-dates" onClick={() => this.clearCalendar()}>
+          <li>Clear Dates</li>
+        </ul>
+      </ul>
     );
   }
 }
