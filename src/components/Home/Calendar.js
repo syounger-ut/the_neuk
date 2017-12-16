@@ -17,8 +17,6 @@ class Calendar extends Component {
     };
     this.updateCalendarFacts = this.updateCalendarFacts.bind(this);
     this.changeMonth         = this.changeMonth.bind(this);
-    this.bookingDates        = this.bookingDates.bind(this);
-    this.clearCalendar       = this.clearCalendar.bind(this);
   }
 
   componentDidMount() {
@@ -48,37 +46,25 @@ class Calendar extends Component {
 
   bookingDates(date) {
     let dateFormatted = Date.parse(date);
-    let startDate = this.state.bookingStart;
-    let endDate   = this.state.bookingEnd;
+    let startDate = this.props.booking.start;
+    let endDate   = this.props.booking.end;
 
-    if(startDate === "") {
-      this.setState({
-        bookingStart: date
-      })
+    if (!this.props.booking.start) {
+      this.props.bookingStart(date);
     } else if( dateFormatted < Date.parse(startDate)) {
-      this.setState({
-        bookingStart: date
-      })
+      this.props.bookingStart(date);
     } else if(dateFormatted === Date.parse(startDate)) {
-      this.setState({
-        bookingStart: ''
-      })
+      this.props.bookingStart('');
     } else if(dateFormatted === Date.parse(endDate)) {
-      this.setState({
-        bookingEnd: ''
-      })
+      this.props.bookingEnd('');
     } else if(dateFormatted > Date.parse(startDate)) {
-      this.setState({
-        bookingEnd: date
-      })
+      this.props.bookingEnd(date);
     }
   }
 
   clearCalendar() {
-    this.setState({
-      bookingStart: '',
-      bookingEnd:   ''
-    })
+    this.props.bookingStart('');
+    this.props.bookingEnd('');
   }
 
   render() {
@@ -97,10 +83,10 @@ class Calendar extends Component {
       } else {
         let date = moment(this.state.date).startOf('month').add(day - 1, 'd').toDate();
         let dateMatch =
-          Date.parse(this.state.bookingStart) === Date.parse(date) ||
-          Date.parse(this.state.bookingEnd) === Date.parse(date) ||
-          Date.parse(date)  >= Date.parse(this.state.bookingStart) &&
-          Date.parse(date)  <= Date.parse(this.state.bookingEnd);
+          Date.parse(this.props.booking.start) === Date.parse(date) ||
+          Date.parse(this.props.booking.end) === Date.parse(date) ||
+          Date.parse(date)  >= Date.parse(this.props.booking.start) &&
+          Date.parse(date)  <= Date.parse(this.props.booking.end);
         let backgroundColor = dateMatch ? "selectedDate" : "calendarDay";
         calendar.push(<li className={backgroundColor} key={i} onClick={() => this.bookingDates(date)}>{day}</li>);
       }
