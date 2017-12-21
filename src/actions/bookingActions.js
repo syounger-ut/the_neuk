@@ -25,6 +25,7 @@ export const submitBooking = (booking) => {
   return (dispatch) => {
     return theNeukApi.submitBooking(booking).then(response => {
       dispatch(setBooking(response))
+      return true
     });
   }
 }

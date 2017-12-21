@@ -6,7 +6,6 @@ class BookingForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: '',
       start_date: '',
       end_date: '',
       occupants: '',
@@ -19,8 +18,10 @@ class BookingForm extends Component {
   componentWillReceiveProps(nextProps) {
     if(Object.keys(nextProps.booking).length !== 0) {
       this.setState({
-        start_date: nextProps.booking.start,
-        end_date: nextProps.booking.end
+        start_date: nextProps.booking.start_date,
+        end_date: nextProps.booking.end_date,
+        occupants: nextProps.booking.occupants,
+        special_instructions: nextProps.booking.special_instructions
       })
     }
   }
@@ -39,9 +40,8 @@ class BookingForm extends Component {
   }
 
   render() {
-    console.log(this.state)
-    let bookingStart = this.props.booking.start ? moment(this.props.booking.start).format("DD-MM-YYYY") : '';
-    let bookingEnd   = this.props.booking.end ? moment(this.props.booking.end).format("DD-MM-YYYY") : '';
+    let bookingStart = this.props.booking.start_date ? moment(this.props.booking.start_date).format("DD-MM-YYYY") : '';
+    let bookingEnd   = this.props.booking.end_date ? moment(this.props.booking.end_date).format("DD-MM-YYYY") : '';
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
