@@ -14,11 +14,9 @@ class BookingsController < ApplicationController
   def create
     booking = @current_user.bookings.new(booking_params)
 
-    if booking.save && !!booking.paid
+    if booking.save
       UserMailer.booking_email(@current_user, @booking).deliver_later
       render json: { booking: BookingSerializer.new(booking) }, status: :created
-    elsif !booking.paid
-      render json: { paid: "The booking is unpaid. Please pay" }
     else
       render json: booking.errors.full_messages, status: :unprocessable_entity
     end
