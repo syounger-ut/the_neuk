@@ -2424,25 +2424,33 @@ input, button, select, textarea, optgroup, option {
     opacity: 1; }
 
 form {
-  display: grid; }
+  display: grid;
+  justify-items: center; }
   form label {
     display: grid;
     grid-template-columns: 10rem auto;
-    align-items: center; }
-    form label input, form label textarea {
-      width: 15rem; }
-      form label input.read-only, form label textarea.read-only {
-        cursor: default; }
+    align-items: center;
+    justify-self: stretch;
+    margin: 0.5rem 0; }
+    form label span {
+      height: 100%; }
+      form label span input {
+        width: 100%;
+        height: 100%; }
+    form label input.read-only, form label textarea.read-only {
+      cursor: default;
+      background: #e6e6e6; }
     form label textarea {
       resize: none;
       height: 5rem;
-      margin: 1rem 0;
       border: thin solid lightgrey; }
   form input[type="submit"] {
     background: #5b9169;
     width: 100%;
     height: 2.1rem;
     align-self: end; }
+    form input[type="submit"]:hover {
+      background: #76a983; }
 
 input:focus,
 select:focus,

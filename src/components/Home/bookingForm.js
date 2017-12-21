@@ -46,23 +46,20 @@ class BookingForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Booking Start:
-          <input className="read-only" placeholder="dd-mm-yyyy" value={bookingStart} readOnly={true}/>
+          <span><input className="read-only" placeholder="dd-mm-yyyy" value={bookingStart} readOnly={true}/></span>
         </label>
-        <br/>
         <label>
           Booking End:
-          <input className="read-only" placeholder="dd-mm-yyyy" value={bookingEnd} readOnly={true}/>
+          <span><input className="read-only" placeholder="dd-mm-yyyy" value={bookingEnd} readOnly={true}/></span>
         </label>
-        <br/>
         <label>
           Occupants:
-          <input type="number" min="1" max="6" placeholder="1 to 6" name="occupants" onChange={this.handleChange}/>
+          <span><input type="number" min="1" max="6" placeholder="1 to 6" name="occupants" onChange={this.handleChange}/></span>
         </label>
         <label>
           Special Instructions:
           <textarea name="special_instructions" onChange={this.handleChange}/>
         </label>
-        <br/>
         <input type="submit" value="Submit"/>
       </form>
     );

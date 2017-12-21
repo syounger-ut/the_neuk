@@ -50,39 +50,39 @@ class UpdateUser extends Component {
 
     return (
       <form className="loginForm" onSubmit={this.handleSubmit}>
-          <label htmlFor="first_name">First Name:</label>
-          <div className="input">
-            <input
+          <label>
+            First Name:
+            <span><input
               name="first_name"
               value={first_name}
               onChange={this.handleChange}
-              placeholder="First Name" />
-          </div>
-          <label htmlFor="last_name">Last Name:</label>
-          <div className="input">
-            <input
+              placeholder="First Name" /></span>
+          </label>
+          <label>
+            Last Name:
+            <span><input
               name="last_name"
               value={last_name}
               onChange={this.handleChange}
-              placeholder="Last Name" />
-          </div>
-          <label htmlFor="email">Email:</label>
-          <div className="input">
-            <input
+              placeholder="Last Name" /></span>
+          </label>
+          <label>
+            Email:
+            <span><input
               type="email"
               name="email"
               value={email}
               onChange={this.handleChange}
-              placeholder="Email" />
-          </div>
-          <label htmlFor="phone_number">Phone Number:</label>
-          <div className="input">
-            <input
+              placeholder="Email" /></span>
+          </label>
+          <label>
+            Phone Number:
+            <span><input
               name="phone_number"
               value={phone_number}
               onChange={this.handleChange}
-              placeholder="Phone Number" />
-          </div>
+              placeholder="Phone Number" /></span>
+          </label>
         <input className="button" type="submit" value="Submit"/>
       </form>
     )
