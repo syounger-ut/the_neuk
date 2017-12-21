@@ -12,6 +12,9 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 gem 'jwt'
 gem 'active_model_serializers'
 
+# Payment
+gem 'stripe', '~> 3.9', '>= 3.9.1'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.6'
