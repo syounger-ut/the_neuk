@@ -25,17 +25,6 @@ class Calendar extends Component {
     this.updateCalendarFacts(date);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const booking = nextProps.booking;
-    if(booking) {
-      this.setState({
-        start_date: booking.start_date,
-        end_date: booking.end_date
-      })
-    }
-  }
-
-
   updateCalendarFacts(date) {
     const month       = date.getMonth();
     const daysInMonth = moment(date).daysInMonth();
@@ -61,7 +50,7 @@ class Calendar extends Component {
     let startDate = booking ? Date.parse(booking.start_date) : '';
     let endDate   = booking ? Date.parse(booking.end_date) : '';
 
-    if (!this.props.booking) {
+    if (!booking || isNaN(startDate)) {
       this.props.bookingStart(date);
     } else if( dateFormatted < startDate) {
       this.props.bookingStart(date);
@@ -80,6 +69,7 @@ class Calendar extends Component {
   }
 
   render() {
+    console.log(this.props.booking)
     const monthName   = moment.months()[this.state.month];
     const year        = moment(this.state.date).format("YYYY")
     const changeMonth = this.changeMonth;
