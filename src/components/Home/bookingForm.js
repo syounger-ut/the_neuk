@@ -11,19 +11,25 @@ class BookingForm extends Component {
       occupants: '',
       special_instructions: ''
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.setBookingState = this.setBookingState.bind(this);
+    this.handleSubmit    = this.handleSubmit.bind(this);
+    this.handleChange    = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    const booking = this.props.booking;
+    if(booking) { this.setBookingState(booking) }
   }
 
   componentWillReceiveProps(nextProps) {
-    if(Object.keys(nextProps.booking).length !== 0) {
-      this.setState({
-        start_date: nextProps.booking.start_date,
-        end_date: nextProps.booking.end_date,
-        occupants: nextProps.booking.occupants,
-        special_instructions: nextProps.booking.special_instructions
-      })
-    }
+    const booking = nextProps.booking;
+    if(booking) { this.setBookingState(booking) }
+  }
+
+  setBookingState(booking) {
+    Object.entries(booking).forEach(([key, value]) => {
+      this.setState({[key]: value})
+    });
   }
 
   handleSubmit(event) {
@@ -40,25 +46,27 @@ class BookingForm extends Component {
   }
 
   render() {
-    let bookingStart = this.props.booking.start_date ? moment(this.props.booking.start_date).format("DD-MM-YYYY") : '';
-    let bookingEnd   = this.props.booking.end_date ? moment(this.props.booking.end_date).format("DD-MM-YYYY") : '';
+    const start_date = this.state.start_date !== "" ? moment(this.state.start_date).format("DD-MM-YYYY") : "";
+    const end_date   = this.state.end_date !== "" ? moment(this.state.end_date).format("DD-MM-YYYY") : "";
+    const { occupants, special_instructions } = this.state;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
           Booking Start:
-          <span><input className="read-only" placeholder="dd-mm-yyyy" value={bookingStart} readOnly={true}/></span>
+          <span><input className="read-only" name="start_date" placeholder="dd-mm-yyyy" value={start_date} readOnly={true}/></span>
         </label>
         <label>
           Booking End:
-          <span><input className="read-only" placeholder="dd-mm-yyyy" value={bookingEnd} readOnly={true}/></span>
+          <span><input className="read-only" name="end_date" placeholder="dd-mm-yyyy" value={end_date} readOnly={true}/></span>
         </label>
         <label>
           Occupants:
-          <span><input type="number" min="1" max="6" placeholder="1 to 6" name="occupants" onChange={this.handleChange}/></span>
+          <span><input type="number" min="1" max="6" placeholder="1 to 6" name="occupants" value={occupants} onChange={this.handleChange}/></span>
         </label>
         <label>
           Special Instructions:
-          <textarea name="special_instructions" onChange={this.handleChange}/>
+          <textarea name="special_instructions" value={special_instructions} onChange={this.handleChange}/>
         </label>
         <input type="submit" value="Submit"/>
       </form>

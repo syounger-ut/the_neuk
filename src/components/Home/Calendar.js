@@ -46,18 +46,17 @@ class Calendar extends Component {
 
   bookingDates(date) {
     let dateFormatted = Date.parse(date);
-    let startDate = this.props.booking.start_date;
-    let endDate   = this.props.booking.end_date;
+    let booking = this.props.booking;
 
-    if (!this.props.booking.start_date) {
+    if (!this.props.booking) {
       this.props.bookingStart(date);
-    } else if( dateFormatted < Date.parse(startDate)) {
+    } else if( dateFormatted < Date.parse(booking.start_date)) {
       this.props.bookingStart(date);
-    } else if(dateFormatted === Date.parse(startDate)) {
+    } else if(dateFormatted === Date.parse(booking.start_date)) {
       this.props.bookingStart('');
-    } else if(dateFormatted === Date.parse(endDate)) {
+    } else if(dateFormatted === Date.parse(booking.end_date)) {
       this.props.bookingEnd('');
-    } else if(dateFormatted > Date.parse(startDate)) {
+    } else if(dateFormatted > Date.parse(booking.start_date)) {
       this.props.bookingEnd(date);
     }
   }
@@ -82,12 +81,18 @@ class Calendar extends Component {
         calendar.push(<li className="emptyDay" key={i}></li>);
       } else {
         let date = moment(this.state.date).startOf('month').add(day - 1, 'd').toDate();
-        let dateMatch =
+        let backgroundColor;
+        if(this.props.booking) {
+          let dateMatch =
           Date.parse(this.props.booking.start_date) === Date.parse(date) ||
           Date.parse(this.props.booking.end_date) === Date.parse(date) ||
           Date.parse(date)  >= Date.parse(this.props.booking.start_date) &&
           Date.parse(date)  <= Date.parse(this.props.booking.end_date);
-        let backgroundColor = dateMatch ? "selectedDate" : "calendarDay";
+          backgroundColor = dateMatch ? "selectedDate" : "calendarDay";
+
+        } else {
+          backgroundColor = "calendarDay";
+        }
         calendar.push(<li className={backgroundColor} key={i} onClick={() => this.bookingDates(date)}>{day}</li>);
       }
     }
