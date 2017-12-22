@@ -34,26 +34,17 @@ class BookingView extends Component {
     const start_date = booking.start_date !== "" ? moment(booking.start_date).format("DD-MM-YYYY") : "";
     const end_date   = booking.end_date !== "" ? moment(booking.end_date).format("DD-MM-YYYY") : "";
     return (
-      <section className="pay">
-        <h2>Booking View component</h2>
-        <h2>Booking</h2>
-        <div>
-          <p>Start Date</p>
-          <p>{start_date}</p>
-        </div>
-        <div>
-          <p>End Date</p>
-          <p>{end_date}</p>
-        </div>
-        <div>
-          <p>Occupants</p>
-          <p>{booking.occupants}</p>
-        </div>
-        <div>
-          <p>Special Instructions</p>
-          <p>{booking.special_instructions}</p>
-        </div>
-      </section>
+      <div className="booking">
+        <h4>Your Booking</h4>
+        <p>Start Date</p>
+        <p>{start_date}</p>
+        <p>End Date</p>
+        <p>{end_date}</p>
+        <p>Occupants</p>
+        <p>{booking.occupants}</p>
+        <p>Special Instructions</p>
+        <p>{booking.special_instructions}</p>
+      </div>
     );
   }
 };

@@ -1,9 +1,20 @@
 .pay {
-  div {
+  display: grid;
+  justify-items: center;
+  .booking {
+    border: 1px solid $primary-color;
+    margin: 1rem;
+    padding: 1rem;
+    // background: blue;
+    max-width: 500px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-  }
-  .stripe-form {
-    width: 950px;
+    h4 {
+      grid-column: span 2;
+      justify-self: center;
+    }
+    p {
+      margin: 1rem;
+    }
   }
 }

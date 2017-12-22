@@ -2522,16 +2522,29 @@ nav ul {
     align-self: start;
     width: 20rem; }
 
+.stripe-form {
+  width: 35rem;
+  margin: 1rem; }
+
 .home {
   display: grid;
   grid-template-columns: 1fr 1fr; }
 
-.pay div {
+.pay {
   display: grid;
-  grid-template-columns: 1fr 1fr; }
-
-.pay .stripe-form {
-  width: 950px; }
+  justify-items: center; }
+  .pay .booking {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem;
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; }
+    .pay .booking h4 {
+      grid-column: span 2;
+      justify-self: center; }
+    .pay .booking p {
+      margin: 1rem; }
 
 .message {
   text-align: center;

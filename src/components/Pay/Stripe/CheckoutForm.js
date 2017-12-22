@@ -32,7 +32,7 @@ class CheckoutForm extends Component {
       <form onSubmit={this.handleSubmit} className='stripe-form'>
         {/* <AddressSection /> */}
         <CardSection />
-        <button className="button">Confirm order</button>
+        <button className="button">Pay</button>
       </form>
     );
   }

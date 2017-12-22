@@ -9,13 +9,9 @@ class Stripe extends Component {
     const booking = this.props.booking;
     const user    = this.props.user
     return (
-      <div>
-        <h2>Stripe Component</h2>
-        <br/>
-        <StripeProvider apiKey="pk_test_hzMZJGOvNikFW1uWIlD91Zkt">
-          <MyStoreCheckout booking={booking} user={user}/>
-        </StripeProvider>
-      </div>
+      <StripeProvider apiKey="pk_test_hzMZJGOvNikFW1uWIlD91Zkt">
+        <MyStoreCheckout booking={booking} user={user}/>
+      </StripeProvider>
     );
   }
 }
