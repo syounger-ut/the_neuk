@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import {StripeProvider} from 'react-stripe-elements';
 
 import { connect } from 'react-redux';
-// import * as bookingActions from 'bookingActions';
 
 // Components
-import MyStoreCheckout from 'Pay/MyStoreCheckout';
+import Stripe      from 'Pay/Stripe';
+import BookingView from 'Pay/BookingView';
 
 class Pay extends Component {
   render() {
@@ -14,40 +13,8 @@ class Pay extends Component {
 
     return (
       <section className="pay">
-        <h1>Hello Pay component</h1>
-        <h2>Booking</h2>
-        <div>
-          <p>Start Date</p>
-          <p>{booking.start_date}</p>
-        </div>
-        <div>
-          <p>End Date</p>
-          <p>{booking.end_date}</p>
-        </div>
-        <div>
-          <p>Occupants</p>
-          <p>{booking.occupants}</p>
-        </div>
-        <div>
-          <p>Special Instructions</p>
-          <p>{booking.special_instructions}</p>
-        </div>
-
-        <form action="/your-server-side-code" method="POST">
-          <script
-            src="https://checkout.stripe.com/checkout.js" className="stripe-button"
-            data-key="pk_test_hzMZJGOvNikFW1uWIlD91Zkt"
-            data-amount="999"
-            data-name="the_neuk"
-            data-description="Widget"
-            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-            data-locale="auto"
-            data-currency="gbp">
-          </script>
-        </form>
-        <StripeProvider apiKey="pk_test_hzMZJGOvNikFW1uWIlD91Zkt">
-          <MyStoreCheckout/>
-        </StripeProvider>
+        <BookingView booking={booking}/>
+        <Stripe/>
       </section>
     );
   }

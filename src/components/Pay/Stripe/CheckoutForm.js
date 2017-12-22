@@ -4,7 +4,7 @@ import {injectStripe} from 'react-stripe-elements';
 import theNeukApi from 'theNeukApi';
 
 // import AddressSection from './AddressSection';
-import CardSection from 'Pay/CardSection';
+import CardSection from 'Pay/Stripe/CardSection';
 
 class CheckoutForm extends Component {
   constructor(props) {

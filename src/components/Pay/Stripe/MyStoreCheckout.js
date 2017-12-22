@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Elements} from 'react-stripe-elements';
 
-import CheckoutForm from 'Pay/CheckoutForm';
+import CheckoutForm from 'Pay/Stripe/CheckoutForm';
 
 class MyStoreCheckout extends Component {
   render() {
