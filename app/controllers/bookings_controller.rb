@@ -12,9 +12,12 @@ class BookingsController < ApplicationController
   end
 
   def create
+    # Remote tok_visa later, for testing only
+    payment = StripeService.charge("tok_visa", params[:booking][:description], params[:booking][:price])
+    # payment = StripeService.charge(params[:stripe_token], params[:booking][:description], params[:price])
     booking = @current_user.bookings.new(booking_params)
 
-    if booking.save
+    if payment && booking.save
       UserMailer.booking_email(@current_user, @booking).deliver_later
       render json: { booking: BookingSerializer.new(booking) }, status: :created
     else
@@ -35,7 +38,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :occupants, :special_instructions, :booking_source, :paid)
+    params.require(:booking).permit(:start_date, :end_date, :occupants, :special_instructions, :booking_source)
   end
 
 end
