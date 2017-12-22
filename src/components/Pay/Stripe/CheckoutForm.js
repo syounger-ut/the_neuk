@@ -18,7 +18,7 @@ class CheckoutForm extends Component {
     // tokenize, since there's only one in this group.
     this.props.stripe.createToken({name: 'Jenny Rosen'}).then(({token}) => {
       console.log('Received Stripe token:', token);
-      theNeukApi.pay(token).then(response => {
+      theNeukApi.pay(token.id, booking).then(response => {
         console.log(response);
       })
     });
@@ -29,10 +29,10 @@ class CheckoutForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='stripe-form'>
         {/* <AddressSection /> */}
         <CardSection />
-        <button>Confirm order</button>
+        <button className="button">Confirm order</button>
       </form>
     );
   }

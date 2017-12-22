@@ -10,25 +10,21 @@ import BookingForm from 'Home/BookingForm'
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.submitBooking = this.submitBooking.bind(this);
+    this.setBooking = this.setBooking.bind(this);
   }
 
-  submitBooking(booking) {
-    this.props.submitBooking(booking).then(response => {
-      // Returns true if the booking was successful
-      if(response === true) {
-        // Redirect to the pay page
-        this.props.history.push("/pay")
-      }
-    });
+  setBooking(booking) {
+    this.props.setBooking(booking)
+    // Redirect to the pay page
+    this.props.history.push("/pay")
   }
 
   render() {
-    const bookingStart  = this.props.bookingStart;
-    const bookingEnd    = this.props.bookingEnd;
-    const booking       = this.props.booking;
-    const user          = this.props.user;
-    const submitBooking = this.submitBooking;
+    const bookingStart = this.props.bookingStart;
+    const bookingEnd   = this.props.bookingEnd;
+    const booking      = this.props.booking;
+    const user         = this.props.user;
+    const setBooking   = this.setBooking;
 
     return (
       <div className="home">
@@ -41,7 +37,7 @@ class Home extends Component {
           className="bookingForm"
           booking={booking}
           user={user}
-          submitBooking={submitBooking}/>
+          setBooking={setBooking}/>
       </div>
     );
   }
@@ -59,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     bookingStart: date => dispatch(bookingActions.setBookingStart(date)),
     bookingEnd:   date => dispatch(bookingActions.setBookingEnd(date)),
-    submitBooking: booking => dispatch(bookingActions.submitBooking(booking))
+    setBooking: booking => dispatch(bookingActions.setBooking(booking))
   }
 };
 

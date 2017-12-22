@@ -14,7 +14,7 @@ class Pay extends Component {
     return (
       <section className="pay">
         <BookingView booking={booking}/>
-        <Stripe/>
+        <Stripe booking={booking} user={user}/>
       </section>
     );
   }

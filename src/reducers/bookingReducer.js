@@ -6,7 +6,7 @@ const bookingReducer = (state = null, action) => {
     case 'BOOKING_END':
       return Object.assign({}, state, Object.assign({}, state.end, { end_date: action.payload }))
     case 'SET_BOOKING':
-      return Object.assign({}, state, action.payload.booking)
+      return Object.assign({}, state, action.payload)
     case 'REST_BOOKING':
       return Object.assign({}, state, null)
     default:

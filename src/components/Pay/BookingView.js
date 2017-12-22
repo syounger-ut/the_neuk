@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import moment from 'moment';
+
 class BookingView extends Component {
   constructor(props) {
     super(props);
@@ -29,17 +31,19 @@ class BookingView extends Component {
 
   render() {
     const booking = this.state;
+    const start_date = booking.start_date !== "" ? moment(booking.start_date).format("DD-MM-YYYY") : "";
+    const end_date   = booking.end_date !== "" ? moment(booking.end_date).format("DD-MM-YYYY") : "";
     return (
       <section className="pay">
         <h2>Booking View component</h2>
         <h2>Booking</h2>
         <div>
           <p>Start Date</p>
-          <p>{booking.start_date}</p>
+          <p>{start_date}</p>
         </div>
         <div>
           <p>End Date</p>
-          <p>{booking.end_date}</p>
+          <p>{end_date}</p>
         </div>
         <div>
           <p>Occupants</p>

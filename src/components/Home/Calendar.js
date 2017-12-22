@@ -25,6 +25,17 @@ class Calendar extends Component {
     this.updateCalendarFacts(date);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const booking = nextProps.booking;
+    if(booking) {
+      this.setState({
+        start_date: booking.start_date,
+        end_date: booking.end_date
+      })
+    }
+  }
+
+
   updateCalendarFacts(date) {
     const month       = date.getMonth();
     const daysInMonth = moment(date).daysInMonth();
@@ -46,17 +57,19 @@ class Calendar extends Component {
 
   bookingDates(date) {
     let dateFormatted = Date.parse(date);
-    let booking = this.props.booking;
+    let booking   = this.props.booking;
+    let startDate = booking ? Date.parse(booking.start_date) : '';
+    let endDate   = booking ? Date.parse(booking.end_date) : '';
 
     if (!this.props.booking) {
       this.props.bookingStart(date);
-    } else if( dateFormatted < Date.parse(booking.start_date)) {
+    } else if( dateFormatted < startDate) {
       this.props.bookingStart(date);
-    } else if(dateFormatted === Date.parse(booking.start_date)) {
+    } else if(dateFormatted === startDate) {
       this.props.bookingStart('');
-    } else if(dateFormatted === Date.parse(booking.end_date)) {
+    } else if(dateFormatted === endDate) {
       this.props.bookingEnd('');
-    } else if(dateFormatted > Date.parse(booking.start_date)) {
+    } else if(dateFormatted > startDate) {
       this.props.bookingEnd(date);
     }
   }
@@ -71,6 +84,10 @@ class Calendar extends Component {
     const year        = moment(this.state.date).format("YYYY")
     const changeMonth = this.changeMonth;
 
+    const booking      = this.props.booking;
+    const bookingStart = booking ? Date.parse(booking.start_date) : '';
+    const bookingEnd   = booking ? Date.parse(booking.end_date) : '';
+
     const daysInMonth = this.state.daysInMonth;
     const startDay    = this.state.startDay;
     let calendar      = new Array;
@@ -82,14 +99,13 @@ class Calendar extends Component {
       } else {
         let date = moment(this.state.date).startOf('month').add(day - 1, 'd').toDate();
         let backgroundColor;
-        if(this.props.booking) {
+        if(booking) {
+          let dateFormatted = Date.parse(date);
           let dateMatch =
-          Date.parse(this.props.booking.start_date) === Date.parse(date) ||
-          Date.parse(this.props.booking.end_date) === Date.parse(date) ||
-          Date.parse(date)  >= Date.parse(this.props.booking.start_date) &&
-          Date.parse(date)  <= Date.parse(this.props.booking.end_date);
+          bookingStart === dateFormatted ||
+          bookingEnd === dateFormatted ||
+          dateFormatted  >= bookingStart && dateFormatted <= bookingEnd;
           backgroundColor = dateMatch ? "selectedDate" : "calendarDay";
-
         } else {
           backgroundColor = "calendarDay";
         }

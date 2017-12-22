@@ -5,9 +5,11 @@ import CheckoutForm from 'Pay/Stripe/CheckoutForm';
 
 class MyStoreCheckout extends Component {
   render() {
+    const booking = this.props.booking;
+    const user    = this.props.user;
     return (
       <Elements>
-        <CheckoutForm />
+        <CheckoutForm booking={booking} user={user}/>
       </Elements>
     );
   }

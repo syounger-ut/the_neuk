@@ -34,7 +34,7 @@ class BookingForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.submitBooking(this.state);
+    this.props.setBooking(this.state);
   }
 
   handleChange(event) {
