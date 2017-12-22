@@ -91,39 +91,19 @@ module.exports = {
     });
   },
 
-  submitBooking: function(booking) {
+  submitBooking: function(booking, stripeToken) {
     var requestUrl = `${THE_NEUK_API_URL}/bookings`;
 
     return axios({
       method: 'post',
       url: requestUrl,
       headers: { 'Authorization': TOKEN },
-      data: { 'booking': booking }
+      data: { 'booking': booking, 'stripe_token': stripeToken }
     }).then(function(response) {
       return response.data;
     }).catch(function(error) {
       if(error.response.status === 401) {
         throw new Error("Your booking failed. Please try again");
-      } else {
-        throw new Error(error.message);
-      }
-    });
-  },
-
-  pay: function(payData) {
-    var requestUrl = `${THE_NEUK_API_URL}/pay`;
-
-    return axios({
-      method: 'post',
-      url: requestUrl,
-      headers: { 'Authorization': TOKEN },
-      data: { 'pay': payData }
-    }).then(function(response) {
-      console.log(response)
-      return response.data;
-    }).catch(function(error) {
-      if(error.response.status === 401) {
-        throw new Error("Your payment failed. Please try again");
       } else {
         throw new Error(error.message);
       }

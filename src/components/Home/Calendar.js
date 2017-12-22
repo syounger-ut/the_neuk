@@ -69,7 +69,6 @@ class Calendar extends Component {
   }
 
   render() {
-    console.log(this.props.booking)
     const monthName   = moment.months()[this.state.month];
     const year        = moment(this.state.date).format("YYYY")
     const changeMonth = this.changeMonth;

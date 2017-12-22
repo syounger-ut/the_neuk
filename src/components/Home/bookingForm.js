@@ -9,7 +9,8 @@ class BookingForm extends Component {
       start_date: '',
       end_date: '',
       occupants: '',
-      special_instructions: ''
+      special_instructions: '',
+      price: ''
     };
     this.setBookingState = this.setBookingState.bind(this);
     this.handleSubmit    = this.handleSubmit.bind(this);
@@ -23,7 +24,18 @@ class BookingForm extends Component {
 
   componentWillReceiveProps(nextProps) {
     const booking = nextProps.booking;
-    if(booking) { this.setBookingState(booking) }
+    if(booking) {
+      this.setBookingState(booking)
+      if (booking.start_date && booking.end_date) {
+        const bookingStart = moment(booking.start_date);
+        const bookingEnd   = moment(booking.end_date);
+        const daysBetween = bookingEnd.diff(bookingStart, 'days') + 1;
+        this.setState({
+          // PRICE TO BE UPDATED LATER TO BE DYNAMIC FROM SERVER
+          price: daysBetween * 200
+        })
+      }
+    }
   }
 
   setBookingState(booking) {
@@ -48,10 +60,10 @@ class BookingForm extends Component {
   render() {
     const start_date = this.state.start_date !== "" ? moment(this.state.start_date).format("DD-MM-YYYY") : "";
     const end_date   = this.state.end_date !== "" ? moment(this.state.end_date).format("DD-MM-YYYY") : "";
-    const { occupants, special_instructions } = this.state;
+    const { occupants, special_instructions, price } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="booking-form">
         <label>
           Booking Start:
           <span><input className="read-only" name="start_date" placeholder="dd-mm-yyyy" value={start_date} readOnly={true}/></span>
@@ -67,6 +79,10 @@ class BookingForm extends Component {
         <label>
           Special Instructions:
           <textarea name="special_instructions" value={special_instructions} onChange={this.handleChange}/>
+        </label>
+        <label>
+          Price (GBP):
+          <span><input  className="price" name="price" value={price.toLocaleString()} readOnly={true}/></span>
         </label>
         <input type="submit" value="Submit"/>
       </form>

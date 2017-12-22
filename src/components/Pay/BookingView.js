@@ -9,7 +9,8 @@ class BookingView extends Component {
       start_date: '',
       end_date: '',
       occupants: '',
-      special_instructions: ''
+      special_instructions: '',
+      price: ''
     }
   }
 
@@ -44,6 +45,8 @@ class BookingView extends Component {
         <p>{booking.occupants}</p>
         <p>Special Instructions</p>
         <p>{booking.special_instructions}</p>
+        <p>Price</p>
+        <p>{booking.price.toLocaleString()}</p>
       </div>
     );
   }

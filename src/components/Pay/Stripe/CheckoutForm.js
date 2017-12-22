@@ -18,7 +18,7 @@ class CheckoutForm extends Component {
     // tokenize, since there's only one in this group.
     this.props.stripe.createToken({name: 'Jenny Rosen'}).then(({token}) => {
       console.log('Received Stripe token:', token);
-      theNeukApi.pay(token.id, booking).then(response => {
+      theNeukApi.submitBooking(this.props.booking, token.id).then(response => {
         console.log(response);
       })
     });
