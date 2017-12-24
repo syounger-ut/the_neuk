@@ -12,9 +12,9 @@ class BookingsController < ApplicationController
   end
 
   def create
-    # Remote tok_visa later, for testing only
+    # Remove tok_visa later, for testing only
     payment = StripeService.charge("tok_visa", params[:booking][:description], params[:booking][:price])
-    # payment = StripeService.charge(params[:stripe_token], params[:booking][:description], params[:price])
+    # payment = StripeService.charge(params[:stripe_token], params[:booking][:description], params[:booking][:price])
     booking = @current_user.bookings.new(booking_params)
 
     if payment && booking.save
