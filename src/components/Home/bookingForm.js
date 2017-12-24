@@ -10,7 +10,7 @@ class BookingForm extends Component {
       end_date: '',
       occupants: '',
       special_instructions: '',
-      price: ''
+      price: 0
     };
     this.setBookingState = this.setBookingState.bind(this);
     this.handleSubmit    = this.handleSubmit.bind(this);
@@ -34,6 +34,8 @@ class BookingForm extends Component {
           // PRICE TO BE UPDATED LATER TO BE DYNAMIC FROM SERVER
           price: daysBetween * 200
         })
+      } else {
+        this.setState({ price: 0 })
       }
     }
   }
