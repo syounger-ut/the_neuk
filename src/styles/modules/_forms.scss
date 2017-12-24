@@ -30,7 +30,6 @@ form {
     background: $button-color;
     width: 100%;
     height: 2.1rem;
-    align-self: end;
     &:hover {
       background: lighten($button-color, 10%);
     }

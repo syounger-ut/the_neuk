@@ -12,11 +12,11 @@
 @import 'modules/buttons';
 @import 'modules/forms';
 @import 'modules/nav';
-@import 'modules/login';
 @import 'modules/stripe-form';
 
 // Components
 @import 'components/home';
+@import 'components/authentication';
 @import 'components/pay';
 @import 'components/message';
 @import 'components/main';

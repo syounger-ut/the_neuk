@@ -2447,8 +2447,7 @@ form {
   form input[type="submit"] {
     background: #5b9169;
     width: 100%;
-    height: 2.1rem;
-    align-self: end; }
+    height: 2.1rem; }
     form input[type="submit"]:hover {
       background: #76a983; }
 
@@ -2494,18 +2493,21 @@ nav ul {
         nav ul .loginButton:hover li:nth-child(2):hover {
           background: #5b9169; }
 
-.login {
-  height: calc(100vh - 3rem);
+.stripe-form {
+  width: 100%;
+  margin: 1rem; }
+
+.home {
   display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-rows: 1fr 0.1fr 4fr;
-  grid-gap: 2rem; }
-  .login h2 {
-    align-self: end;
-    justify-self: center; }
+  grid-template-columns: 1fr 1fr; }
+
+.login {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  margin: 2rem; }
   .login ul {
     line-height: 2.5rem;
+    height: 2.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 0.5rem;
@@ -2518,26 +2520,17 @@ nav ul {
       cursor: pointer; }
       .login ul li:hover {
         opacity: 1; }
-  .login form {
-    align-self: start;
-    width: 20rem; }
-
-.stripe-form {
-  width: 35rem;
-  margin: 1rem; }
-
-.home {
-  display: grid;
-  grid-template-columns: 1fr 1fr; }
 
 .pay {
+  margin: 0 auto;
   display: grid;
-  justify-items: center; }
+  justify-items: center;
+  max-width: 35rem; }
   .pay .booking {
     border: 1px solid black;
     margin: 1rem;
     padding: 1rem;
-    max-width: 500px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr; }
     .pay .booking h4 {
@@ -2614,6 +2607,9 @@ main {
   border: none;
   border-top: 1px solid black;
   letter-spacing: 1px; }
+
+.booking-form input[type="submit"] {
+  align-self: end; }
 
 * {
   box-sizing: border-box; }

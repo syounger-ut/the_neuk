@@ -32,24 +32,25 @@ class Login extends Component {
     let password = this.state.password;
 
     return (
-      <form className="loginForm" onSubmit={this.handleSubmit}>
-        <label htmlFor="username">Email:</label>
-        <div className="input">
-          <input
-            type="text"
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Email:
+          <span><input
+            type="email"
             name="username"
             onChange={this.handleChange}
             value={username}
-            placeholder="Username" />
-        </div>
-        <label htmlFor="password">Password:</label>
-        <div className="input">
-          <input type="password"
+            placeholder="Username" /></span>
+        </label>
+        <label>
+          Password:
+          <span><input
+            type="password"
             name="password"
             onChange={this.handleChange}
             value={password}
-            placeholder="Password" />
-        </div>
+            placeholder="Password" /></span>
+        </label>
         <input className="button" type="submit" value="Submit"/>
       </form>
     );

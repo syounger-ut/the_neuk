@@ -34,51 +34,50 @@ class Register extends Component {
     const {username, first_name, last_name, email, phone_number, password} = this.state;
 
     return (
-      <form className="registerForm" onSubmit={this.handleSubmit}>
-        <label htmlFor="first_name">First Name:</label>
-        <div className="input">
-          <input
-            type="text"
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          First Name:
+          <span><input
             name="first_name"
             value={first_name}
             onChange={this.handleChange}
-            placeholder="First Name" />
-        </div>
-        <label htmlFor="last_name">Last Name:</label>
-        <div className="input">
-          <input
-            type="text"
+            placeholder="First Name" /></span>
+        </label>
+        <label>
+          Last Name:
+          <span><input
             name="last_name"
             value={last_name}
             onChange={this.handleChange}
-            placeholder="Last Name" />
-        </div>
-        <label htmlFor="email">Email:</label>
-        <div className="input">
-          <input
-            type="text"
+            placeholder="Last Name" /></span>
+        </label>
+        <label>
+          Email:
+          <span><input
+            type="email"
             name="email"
             value={email}
             onChange={this.handleChange}
-            placeholder="Email" />
-        </div>
-        <label htmlFor="phone_number">Phone Number:</label>
-        <div className="input">
-          <input
-            type="text"
+            placeholder="Email" /></span>
+        </label>
+        <label>
+          Phone Number:
+          <span><input
+            type="tel"
             name="phone_number"
             value={phone_number}
             onChange={this.handleChange}
-            placeholder="Phone Number" />
-        </div>
-        <label htmlFor="password">Password:</label>
-        <div className="input">
-          <input type="password"
+            placeholder="Phone Number" /></span>
+        </label>
+        <label>
+          Password:
+          <span><input
+            type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
-            placeholder="Password" />
-        </div>
+            placeholder="Password" /></span>
+        </label>
         <input className="button" type="submit" value="Submit"/>
       </form>
     )
