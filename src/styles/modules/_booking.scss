@@ -1,0 +1,13 @@
+.bookings {
+  .booking {
+    background: yellow;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    max-width: 30rem;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px solid $primary-color;
+    background: lighten($primary-color, 90%);
+  }
+}
