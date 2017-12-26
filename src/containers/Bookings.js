@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 
 // Components
 import Booking from 'Booking/Booking';
+import Events  from 'Booking/Events';
 
 class Bookings extends Component {
   render() {
     const user = this.props.user;
     return (
       <section className="bookings">
+        <h1>Events Container</h1>
+        <Events/>
         <h1>Bookings</h1>
         <Booking user={user}/>
       </section>
@@ -24,14 +27,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-// Maps actions to props
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     bookingStart: date => dispatch(bookingActions.setBookingStart(date)),
-//     bookingEnd:   date => dispatch(bookingActions.setBookingEnd(date)),
-//     setBooking: booking => dispatch(bookingActions.setBooking(booking))
-//   }
-// };
-
 export default connect(mapStateToProps)(Bookings);
-// export default connect(mapStateToProps, mapDispatchToProps)(Bookings);

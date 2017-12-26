@@ -108,5 +108,24 @@ module.exports = {
         throw new Error(error.message);
       }
     });
+  },
+
+  getEvents: function(start, end) {
+    var requestUrl = `${THE_NEUK_API_URL}/events`;
+
+    return axios({
+      method: 'get',
+      url: requestUrl,
+      headers: { 'Authorization': TOKEN },
+      params: { start_date: start, end_date: end }
+    }).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      if(error.response.status === 401) {
+        throw new Error("Your booking failed. Please try again");
+      } else {
+        throw new Error(error.message);
+      }
+    });
   }
 }
