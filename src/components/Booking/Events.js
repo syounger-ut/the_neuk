@@ -27,9 +27,20 @@ class Events extends Component {
 
   render() {
     console.log(this.state)
+    let events;
+    if(this.state.events.length !== 0) {
+      events = this.state.events.map(event => {
+        return (
+          <ul key={event.event_id}>
+            <li>{event.name}</li>
+            <li>{event.descriptions[0].description}</li>
+          </ul>
+        );
+      });
+    }
     return (
       <section className="events">
-        <h1>Events</h1>
+        {events}
       </section>
     );
   }
