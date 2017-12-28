@@ -9,10 +9,12 @@ import Events  from 'Booking/Events';
 
 class Bookings extends Component {
 
-  componentDidMount() {
-    let start = new Date();
-    let end   = new Date();
-    this.props.findEvents(start, end)
+  componentWillReceiveProps(nextProps) {
+    const user = nextProps.user;
+    if(user) {
+      const booking = user.bookings[0];
+      this.props.findEvents(booking.start_date, booking.end_date)
+    }
   }
 
   render() {
