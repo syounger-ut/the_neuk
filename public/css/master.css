@@ -2507,17 +2507,25 @@ nav ul {
   border: 1px solid black;
   background: #e6e6e6; }
 
-.events .event {
+.events {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-  max-width: 30rem;
-  margin: 1rem auto;
-  padding: 1rem;
-  border: 1px solid black;
-  background: #e6e6e6; }
-  .events .event img {
-    width: 100%; }
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem; }
+  .events .event {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 1rem;
+    max-width: 30rem;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px solid black;
+    background: #e6e6e6; }
+    .events .event .eventImage {
+      width: 100%;
+      object-fit: cover;
+      grid-column: span 2; }
+      .events .event .eventImage img {
+        height: 20rem; }
 
 .home {
   display: grid;
