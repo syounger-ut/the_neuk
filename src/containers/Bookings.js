@@ -8,27 +8,12 @@ import Booking from 'Booking/Booking';
 import Events  from 'Booking/Events';
 
 class Bookings extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     events: []
-  //   };
-  // }
 
   componentDidMount() {
     let start = new Date();
     let end   = new Date();
     this.props.findEvents(start, end)
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   const events = nextProps.events;
-  //   if(events) {
-  //     this.setState({
-  //       events: events
-  //     })
-  //   }
-  // }
 
   render() {
     const user   = this.props.user;
