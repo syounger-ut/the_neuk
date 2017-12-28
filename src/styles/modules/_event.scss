@@ -1,5 +1,5 @@
-.bookings {
-  .booking {
+.events {
+  .event {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
@@ -8,5 +8,8 @@
     padding: 1rem;
     border: 1px solid $primary-color;
     background: lighten($primary-color, 90%);
+    img {
+      width: 100%;
+    }
   }
 }

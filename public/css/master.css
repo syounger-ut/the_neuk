@@ -2498,7 +2498,6 @@ nav ul {
   margin: 1rem; }
 
 .bookings .booking {
-  background: yellow;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
@@ -2507,6 +2506,18 @@ nav ul {
   padding: 1rem;
   border: 1px solid black;
   background: #e6e6e6; }
+
+.events .event {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  max-width: 30rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid black;
+  background: #e6e6e6; }
+  .events .event img {
+    width: 100%; }
 
 .home {
   display: grid;
