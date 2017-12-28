@@ -4,8 +4,8 @@ class EventsController < ApplicationController
     headers  = { Authorization: "Bearer #{ENV['LIST_API_KEY']}" }
 
     # Coordinates of Kames, with 5 mile radius
-    list_params = { near: '55.8850849, -5.2365178', _distance: '5', min_date: params[:start_date], max_date: params[:end_date] }
-    response = HTTParty.get('https://api.list.co.uk/v1/events', headers: headers, params: list_params)
+    list_params = { near: '55.8853827,-5.235613/50', min_date: params[:start_date], max_date: params[:end_date] }
+    response = HTTParty.get('https://api.list.co.uk/v1/events', headers: headers, query: list_params)
 
     if response
       render json: response.parsed_response
