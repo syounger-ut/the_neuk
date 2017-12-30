@@ -18,6 +18,9 @@ gem 'stripe', '~> 3.9', '>= 3.9.1'
 # Third party
 gem 'httparty', '~> 0.15.6'
 
+# Engines
+gem 'admin', path: 'engines/admin'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.6'

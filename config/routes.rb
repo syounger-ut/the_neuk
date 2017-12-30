@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     get  'events',   to: 'events#index'
     post 'login',    to: 'authentication#login'
     post 'register', to: 'authentication#register'
+
+    # Engines
+    mount Admin::Engine, at: '/admin', as: 'admin'
   end
 end
