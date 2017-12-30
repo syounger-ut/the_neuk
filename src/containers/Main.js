@@ -6,6 +6,7 @@ import Authentication from 'Authentication';
 import User           from 'User';
 import Bookings       from 'Bookings';
 import Pay            from 'Pay';
+import About          from 'About';
 
 class Main extends Component {
   render() {
@@ -13,6 +14,7 @@ class Main extends Component {
       <Switch>
         <Route exact path='/'   component={Home}/>
         <Route path='/Authentication' component={Authentication}/>
+        <Route path='/About' component={About}/>
         <Route path='/user'     component={User}/>
         <Route path='/bookings' component={Bookings}/>
         <Route path='/pay'      component={Pay}/>
