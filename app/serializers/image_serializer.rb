@@ -4,9 +4,11 @@ class ImageSerializer < ActiveModel::Serializer
   def thumb_photo_url
     object.photo.url(:thumb)
   end
+
   def square_photo_url
     object.photo.url(:square)
   end
+
   def medium_photo_url
     object.photo.url(:medium)
   end

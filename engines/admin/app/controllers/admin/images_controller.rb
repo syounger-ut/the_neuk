@@ -7,7 +7,7 @@ class Admin::ImagesController < Admin::ApplicationController
 
   def show
     image = Image.find(params[:id])
-    render json: ImageSerializer.new(image)
+    render json: { photo: ImageSerializer.new(image) }
   end
 
   def create
