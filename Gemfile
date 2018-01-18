@@ -17,6 +17,10 @@ gem 'stripe', '~> 3.9', '>= 3.9.1'
 
 # Third party
 gem 'httparty', '~> 0.15.6'
+gem 'aws-sdk', '~> 2.3' # required for paperclip
+
+# Image Handling
+gem 'paperclip', '~> 5.1'
 
 # Engines
 gem 'admin', path: 'engines/admin'
