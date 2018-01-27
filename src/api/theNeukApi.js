@@ -110,14 +110,13 @@ module.exports = {
     });
   },
 
-  getEvents: function(start, end) {
+  getEvents: function() {
     var requestUrl = `${THE_NEUK_API_URL}/events`;
 
     return axios({
       method: 'get',
       url: requestUrl,
-      headers: { 'Authorization': TOKEN },
-      params: { start_date: start, end_date: end }
+      headers: { 'Authorization': TOKEN }
     }).then(function(response) {
       return response.data;
     }).catch(function(error) {

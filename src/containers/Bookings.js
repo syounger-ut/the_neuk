@@ -9,12 +9,8 @@ import Events  from 'Booking/Events';
 
 class Bookings extends Component {
 
-  componentWillReceiveProps(nextProps) {
-    const user = nextProps.user;
-    if(user) {
-      const booking = user.bookings[0];
-      this.props.findEvents(booking.start_date, booking.end_date)
-    }
+  componentDidMount() {
+    this.props.findEvents();
   }
 
   render() {
@@ -42,7 +38,7 @@ const mapStateToProps = (state, ownProps) => {
 // Maps actions to props
 const mapDispatchToProps = (dispatch) => {
   return {
-    findEvents: (start, end) => dispatch(eventActions.findEvents(start, end)),
+    findEvents: () => dispatch(eventActions.findEvents()),
   }
 };
 

@@ -7,9 +7,9 @@ export const setEvents = (events) => {
   }
 }
 
-export const findEvents = (start, end) => {
+export const findEvents = () => {
   return (dispatch) => {
-    return theNeukApi.getEvents(start, end).then(response => {
+    return theNeukApi.getEvents().then(response => {
       dispatch(setEvents(response))
       return true
     });
