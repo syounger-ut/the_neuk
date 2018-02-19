@@ -11,30 +11,30 @@ class Nav extends Component {
         <li>
           <Link to='/user'>{user.email}</Link>
           <ul className="hidden">
-            <li><a href='/' onClick={logout}>Admin</a></li>
-            <li><a href='/' onClick={logout}>Logout</a></li>
+            <li><Link to='/admin'>Admin</Link></li>
+            <li><Link to='/' onClick={logout}>Logout</Link></li>
           </ul>
         </li>
       )
     } else if(user) {
       loginButton = (
-        <ul className="hidden">
-          <li><Link to='/user'>{user.email}</Link></li>
-          <li><a href='/' onClick={logout}>Logout</a></li>
-        </ul>
+        <li>
+          <ul className="hidden">
+            <li><Link to='/user'>{user.email}</Link></li>
+            <li><Link to='/' onClick={logout}>Logout</Link></li>
+          </ul>
+        </li>
       )
     } else {
       loginButton = (
-        <ul className="hidden">
-          <li><Link to='/authentication'>Login</Link></li>
-        </ul>
+        <li><Link to='/authentication'>Login</Link></li>
       )
     }
 
     return (
       <nav>
         {/* THESE TWO BUTTONS ARE FOR MOBILE RESPONSIVE. NOT SET UP YET */}
-        <label for="show-menu" class="show-menu">Show Menu</label>
+        <label htmlFor="show-menu" className="show-menu">Show Menu</label>
         <input type="checkbox" id="show-menu" role="button"/>
         <ul>
           {loginButton}
