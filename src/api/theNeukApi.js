@@ -144,5 +144,28 @@ module.exports = {
         throw new Error(error.message);
       }
     });
+  },
+
+  uploadImage: function(image) {
+    var requestUrl = `${THE_NEUK_API_URL}/admin/users`;
+
+    return axios({
+      method: 'post',
+      url: requestUrl,
+      headers: { 'Authorization': TOKEN },
+      data: {
+        name: image.name,
+        description: image.description,
+        file: image.file
+      }
+    }).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      if(error.response.status === 401) {
+        throw new Error("Failed to upload image");
+      } else {
+        throw new Error(error.message);
+      }
+    });
   }
 }

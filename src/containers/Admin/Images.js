@@ -12,4 +12,18 @@ class Images extends Component{
   }
 }
 
-export default Images;
+// Maps state from store to props
+const mapStateToProps = (state, ownProps) => {
+  return {
+    user: state.user,
+  }
+};
+
+// Maps actions to props
+const mapDispatchToProps = (dispatch) => {
+  return {
+    uploadImage: (imageDetails) => dispatch(adminActions.uploadImage(imageDetails))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Images);

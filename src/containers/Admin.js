@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Link }      from 'react-router-dom'
+import { Route }            from 'react-router-dom'
 
-import { connect } from 'react-redux';
+import { connect }       from 'react-redux';
 import * as adminActions from 'adminActions';
 
 // Components
@@ -39,6 +39,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUsers: () => dispatch(adminActions.getUsers()),
+    uploadImage: (imageDetails) => dispatch(adminActions.uploadImage(imageDetails))
   }
 };
 

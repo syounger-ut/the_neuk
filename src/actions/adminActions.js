@@ -7,6 +7,15 @@ export const setUsers = (users) => {
   };
 };
 
+export const uploadImage = (image) => {
+  return (dispatch) => {
+    return theNeukApi.uploadImage(image).then(response => {
+      dispatch(setImage(response))
+      return true
+    });
+  }
+}
+
 export const getUsers = () => {
   return (dispatch) => {
     return theNeukApi.getUsers().then(response => {
