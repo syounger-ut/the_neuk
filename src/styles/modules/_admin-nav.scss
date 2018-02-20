@@ -1,0 +1,19 @@
+.admin-nav {
+  display: inline-block;
+  ul {
+    width: auto;
+    li {
+      float: none;
+      display: block;
+      margin: 0 0 1px 0;
+      a {
+        text-align: left;
+        padding-left: 1rem;
+        background-color: rgba($admin-color, 0.5);
+        &:hover {
+          background-color: rgba($admin-color, 1);
+        }
+      }
+    }
+  }
+}

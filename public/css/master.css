@@ -2527,6 +2527,21 @@ nav {
   .show-menu {
     display: block; } }
 
+.admin-nav {
+  display: inline-block; }
+  .admin-nav ul {
+    width: auto; }
+    .admin-nav ul li {
+      float: none;
+      display: block;
+      margin: 0 0 1px 0; }
+      .admin-nav ul li a {
+        text-align: left;
+        padding-left: 1rem;
+        background-color: rgba(255, 165, 0, 0.5); }
+        .admin-nav ul li a:hover {
+          background-color: orange; }
+
 .stripe-form {
   width: 100%;
   margin: 1rem; }
@@ -2696,6 +2711,12 @@ main {
     letter-spacing: 1px; }
   .booking-form input[type="submit"] {
     align-self: end; }
+
+.admin-template {
+  display: grid;
+  grid-template-columns: 10rem auto; }
+  .admin-template .admin {
+    display: inline-block; }
 
 * {
   box-sizing: border-box; }

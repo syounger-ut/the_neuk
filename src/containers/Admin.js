@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { Route, Link }      from 'react-router-dom'
 
 import { connect } from 'react-redux';
 import * as adminActions from 'adminActions';
 
 // Components
+import AdminNav from 'Admin/Nav';
+import Home     from 'Admin/Home';
 import Bookings from 'Admin/Bookings';
+import Images   from 'Admin/Images';
 
 class Admin extends Component{
   componentWillMount() {
@@ -14,9 +18,11 @@ class Admin extends Component{
   render() {
     const user = this.props.user;
     return (
-      <div>
-        <h1>Admin Container</h1>
-        <Bookings user={user}/>
+      <div className='admin-template'>
+        <AdminNav/>
+        <Route exact path='/admin'    component={Home}/>
+        <Route path='/admin/images'   component={Images}/>
+        <Route path='/admin/bookings' component={Bookings}/>
       </div>
     );
   }
@@ -36,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Admin);;
+export default connect(mapStateToProps, mapDispatchToProps)(Admin);

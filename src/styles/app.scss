@@ -12,6 +12,7 @@
 @import 'modules/buttons';
 @import 'modules/forms';
 @import 'modules/nav';
+@import 'modules/admin-nav';
 @import 'modules/stripe-form';
 @import 'modules/booking';
 @import 'modules/event';
@@ -24,6 +25,7 @@
 @import 'components/main';
 @import 'components/calendar';
 @import 'components/booking-form';
+@import 'components/admin/admin';
 
 * {
   box-sizing: border-box;
