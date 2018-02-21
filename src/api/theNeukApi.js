@@ -153,11 +153,12 @@ module.exports = {
       method: 'post',
       url: requestUrl,
       headers: { 'Authorization': TOKEN },
-      data: {
-        name: image.name,
-        description: image.description,
-        photo: image.file
-      }
+      data: image
+      // data: {
+      //   name: image.name,
+      //   description: image.description,
+      //   photo: image.file
+      // }
     }).then(function(response) {
       return response.data;
     }).catch(function(error) {
