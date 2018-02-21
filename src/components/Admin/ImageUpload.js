@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // Components
 
-class Images extends Component {
+class ImageUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,10 +50,11 @@ class Images extends Component {
               placeholder='description' /></span>
           </label>
           <label>
-            File:
+            Photo:
             <span><input
               type='file'
               name='file'
+              multiple={true}
               onChange={this.handleChange}/></span>
           </label>
           <input className='button' type='submit' value='Submit'/>
@@ -63,4 +64,4 @@ class Images extends Component {
   }
 }
 
-export default Images;
+export default ImageUpload;

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
+import { connect }       from 'react-redux';
+import * as adminActions from 'adminActions';
+
 // Components
+import ImageUpload from 'Admin/ImageUpload';
 
 class Images extends Component{
   render() {
     return (
       <div>
-        <h1>Images Container</h1>
+        <ImageUpload uploadImage={this.props.uploadImage}/>
       </div>
     );
   }

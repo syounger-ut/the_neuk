@@ -147,7 +147,7 @@ module.exports = {
   },
 
   uploadImage: function(image) {
-    var requestUrl = `${THE_NEUK_API_URL}/admin/users`;
+    var requestUrl = `${THE_NEUK_API_URL}/admin/images`;
 
     return axios({
       method: 'post',
@@ -156,7 +156,7 @@ module.exports = {
       data: {
         name: image.name,
         description: image.description,
-        file: image.file
+        photo: image.file
       }
     }).then(function(response) {
       return response.data;
