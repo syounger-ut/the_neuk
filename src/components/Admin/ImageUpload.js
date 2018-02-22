@@ -25,30 +25,19 @@ class ImageUpload extends Component {
 
   handleImageChange(event) {
     const file = event.target.files[0];
-
-    let reader = new FileReader();
-
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-      });
-    }
+    this.setState({
+      file: file
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     var formData = new FormData();
-    // formData.append('photo', this.state.file);
-    // formData.append('name', this.state.name);
-    // formData.append('description', this.state.description);
-
-    this.props.uploadImage(this.state.file);
-    // this.props.uploadImage(this.state);
+    this.props.uploadImage(this.state);
   }
 
   render() {
     const name = this.state.first_name;
-    console.log(this.state)
     return (
       <div className='admin'>
         <h1>Images Component</h1>
@@ -76,7 +65,7 @@ class ImageUpload extends Component {
               id='photoFile'
               name='file'
               multiple={true}
-              onChange={this.handleSubmit}/></span>
+              onChange={this.handleImageChange}/></span>
           </label>
           <input className='button' type='submit' value='Submit'/>
         </form>

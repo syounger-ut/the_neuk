@@ -149,16 +149,21 @@ module.exports = {
   uploadImage: function(image) {
     var requestUrl = `${THE_NEUK_API_URL}/admin/images`;
 
+    // Requered to send an image to the Back End
+    var formData = new FormData();
+    formData.append('photo', image.file);
+    formData.append('name', image.name);
+    formData.append('description', image.description);
+
     return axios({
       method: 'post',
       url: requestUrl,
-      headers: { 'Authorization': TOKEN },
-      data: image
-      // data: {
-      //   name: image.name,
-      //   description: image.description,
-      //   photo: image.file
-      // }
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
+        'Authorization': TOKEN
+      },
+      data: formData
     }).then(function(response) {
       return response.data;
     }).catch(function(error) {
