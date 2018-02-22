@@ -14,7 +14,7 @@ class Admin::ImagesController < Admin::ApplicationController
     image = Image.new(image_params)
 
     if image.save
-      render json: ImageSerializer.new(image)
+      render json: { photo: ImageSerializer.new(image) }
     else
       render json: { errors: image.errors.full_messages }, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class Admin::ImagesController < Admin::ApplicationController
     if image.update(image_params)
       render json: { image: ImageSerializer.new(image) }, status: :ok
     else
-      render json: image.errors.full_messages, status: :unprocessable_entity
+      render json: { error: image.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -36,7 +36,7 @@ class Admin::ImagesController < Admin::ApplicationController
     if image.destroy
       render json: { image: "Image deleted" }, status: :ok
     else
-      render json: image.errors.full_messages, status: :unprocessable_entity
+      render json: { error: image.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
