@@ -20,9 +20,9 @@ class Admin extends Component{
     return (
       <div className='admin-template'>
         <AdminNav/>
-        <Route exact path='/admin'    component={Home}/>
-        <Route path='/admin/images'   component={Images}/>
-        <Route path='/admin/bookings' component={Bookings}/>
+        <Route exact path='/admin'      component={Home}/>
+        <Route path='/admin/images'     component={Images}/>
+        <Route path='/admin/bookings'   component={Bookings}/>
       </div>
     );
   }

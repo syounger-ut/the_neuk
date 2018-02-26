@@ -146,6 +146,24 @@ module.exports = {
     });
   },
 
+  getImages: function() {
+    var requestUrl = `${THE_NEUK_API_URL}/admin/images`
+
+    return axios({
+      method: 'get',
+      url: requestUrl,
+      headers: { 'Authorization': TOKEN }
+    }).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      if (error.response.status === 401) {
+        throw new Error("Failed to get images");
+      } else {
+        throw new Error(error.message);
+      }
+    });
+  },
+
   uploadImage: function(image) {
     var requestUrl = `${THE_NEUK_API_URL}/admin/images`;
 

@@ -7,6 +7,13 @@ export const setUsers = (users) => {
   };
 };
 
+export const setImage = (images) => {
+  return {
+    type: 'SET_IMAGE',
+    payload: image
+  }
+}
+
 export const uploadImage = (image) => {
   return (dispatch) => {
     return theNeukApi.uploadImage(image).then(response => {

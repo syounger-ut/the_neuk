@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
+import { Route, Link }            from 'react-router-dom'
 
 import { connect }       from 'react-redux';
 import * as adminActions from 'adminActions';
 
 // Components
 import ImageUpload from 'Admin/ImageUpload';
+import AdminImages from 'Admin/AdminImages';
 
 class Images extends Component{
   render() {
     return (
       <div>
-        <ImageUpload uploadImage={this.props.uploadImage}/>
+        <nav>
+          <li><Link to='/admin/images'>Images</Link></li>
+          <li><Link to='/admin/images/new'>New Image</Link></li>
+        </nav>
+        <Route exact path='/admin/images' component={AdminImages}/>
+        <Route path='/admin/images/new'   component={ImageUpload}/>
       </div>
     );
   }
@@ -26,7 +33,8 @@ const mapStateToProps = (state, ownProps) => {
 // Maps actions to props
 const mapDispatchToProps = (dispatch) => {
   return {
-    uploadImage: (imageDetails) => dispatch(adminActions.uploadImage(imageDetails))
+    uploadImage: (imageDetails) => dispatch(adminActions.uploadImage(imageDetails)),
+    getImages: () => dispatch(adminActions.getImages())
   }
 };
 
