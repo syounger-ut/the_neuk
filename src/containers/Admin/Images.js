@@ -5,18 +5,23 @@ import { connect }       from 'react-redux';
 import * as adminActions from 'adminActions';
 
 // Components
-import ImageUpload from 'Admin/ImageUpload';
-import AdminImages from 'Admin/AdminImages';
+import ImageUpload from 'Admin/Images/Upload';
+import AdminImages from 'Admin/Images/Images';
 
-class Images extends Component{
+class Images extends Component {
+  componentWillMount() {
+    this.props.getImages();
+  }
   render() {
+    const images = this.props.images
     return (
       <div>
         <nav>
           <li><Link to='/admin/images'>Images</Link></li>
           <li><Link to='/admin/images/new'>New Image</Link></li>
         </nav>
-        <Route exact path='/admin/images' component={AdminImages}/>
+        <Route exact path='/admin/images' render={() =><AdminImages images={images}/>}/>
+        {/* <Route exact path='/admin/images' component={AdminImages}/> */}
         <Route path='/admin/images/new'   component={ImageUpload}/>
       </div>
     );
@@ -27,6 +32,7 @@ class Images extends Component{
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state.user,
+    images: state.images
   }
 };
 

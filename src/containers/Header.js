@@ -23,7 +23,7 @@ class Header extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     // You can now say this.props.user
-    user: state.user
+    user: state.currentUser
   }
 };
 

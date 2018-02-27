@@ -6,7 +6,7 @@ const THE_NEUK_API_URL = 'http://localhost:3000/api'
 let TOKEN = localStorage.getItem("auth_token");
 
 module.exports = {
-  getUser: function() {
+  currentUser: function() {
     var requestUrl = `${THE_NEUK_API_URL}/users/me`;
 
     return axios({
