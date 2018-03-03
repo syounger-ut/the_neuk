@@ -7,14 +7,14 @@ class Admin::ImagesController < Admin::ApplicationController
 
   def show
     image = Image.find(params[:id])
-    render json: { photo: ImageSerializer.new(image) }
+    render json: { image: ImageSerializer.new(image) }
   end
 
   def create
     image = Image.new(image_params)
 
     if image.save
-      render json: { photo: ImageSerializer.new(image) }
+      render json: { image: ImageSerializer.new(image) }
     else
       render json: { errors: image.errors.full_messages }, status: :unprocessable_entity
     end
