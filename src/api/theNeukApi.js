@@ -191,5 +191,38 @@ module.exports = {
         throw new Error(error.message);
       }
     });
+  },
+
+  deleteImage: function(imageId) {
+    var requestUrl = `${THE_NEUK_API_URL}/admin/images/${imageId}`;
+
+    return axios.delete({
+      url: requestUrl,
+      headers: {
+        'Authorization': TOKEN,
+        'Content-Type': 'application/json'
+      },
+      data: null
+    }).then(function(response) {
+      console.log(response)
+    }).catch(function(error) {
+      console.log(error)
+    })
+  },
+
+  updateImage: function(image) {
+    var requestUrl = `${THE_NEUK_API_URL}/admin/images/${image}`;
+
+    return axios.put({
+      url: requestUrl,
+      headers: {
+        'Authorization': TOKEN,
+        'Content-Type': 'application/json'
+      }
+    }).then(function(response) {
+      console.log(response)
+    }).catch(function(error) {
+      console.log(error)
+    })
   }
 }

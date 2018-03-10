@@ -24,6 +24,14 @@ export const uploadImage = (image) => {
   }
 }
 
+export const deleteImage = (imageId) => {
+  return (dispatch) => {
+    return theNeukApi.deleteImage(imageId).then(response => {
+      dispatch(deleteImage(imageId))
+    })
+  }
+}
+
 export const getImages = () => {
   return (dispatch) => {
     return theNeukApi.getImages().then(response => {
@@ -37,6 +45,15 @@ export const getUsers = () => {
   return (dispatch) => {
     return theNeukApi.getUsers().then(response => {
       dispatch(userActions.setUsers(response))
+      return true
+    });
+  }
+}
+
+export const updateImage = (image) => {
+  return (dispatch) => {
+    return theNeukApi.updateImage(image).then(response => {
+      dispatch(updateImage(response))
       return true
     });
   }

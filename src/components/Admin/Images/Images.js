@@ -6,7 +6,6 @@ import { Link }             from 'react-router-dom'
 class AdminImages extends Component {
   render() {
     const images = this.props.images;
-    console.log(this.props)
     let imagesTile;
     if(images) {
       imagesTile = Object.entries(images).map(([index, image]) => {
