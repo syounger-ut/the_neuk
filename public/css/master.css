@@ -2478,7 +2478,8 @@ nav {
     position: absolute;
     margin: 0;
     padding: 0;
-    width: 100%; }
+    width: 100%;
+    z-index: 1; }
   nav li {
     display: inline-block;
     float: right;

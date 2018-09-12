@@ -15,6 +15,7 @@ class Authentication extends Component {
     }
     this.toggleLogin = this.toggleLogin.bind(this);
   }
+
   componentWillReceiveProps(nextProps) {
     // Redirect to home if login succeeds
     if(nextProps.loggedIn) {
@@ -53,7 +54,7 @@ class Authentication extends Component {
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    loggedIn: state.loggedIn,
+    loggedIn: state.currentUser,
   }
 };
 
