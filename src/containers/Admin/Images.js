@@ -14,6 +14,7 @@ class Images extends Component {
     super(props);
     this.uploadImage = this.uploadImage.bind(this);
     this.deleteImage = this.deleteImage.bind(this);
+    this.updateImage = this.updateImage.bind(this);
   }
   componentWillMount() {
     this.props.getImages();
@@ -35,6 +36,14 @@ class Images extends Component {
     })
   }
 
+  updateImage(image) {
+    this.props.updateImage(image).then(result => {
+      
+    }).catch(error => {
+      console.log(error)
+    })
+  }
+
   render() {
     const images = this.props.images;
     const match  = this.props.match;
@@ -48,6 +57,7 @@ class Images extends Component {
             (props) => <AdminImage {...props}
               images={images}
               deleteImage={this.deleteImage}
+              updateImage={this.updateImage}
             />}/>
       </div>
     );

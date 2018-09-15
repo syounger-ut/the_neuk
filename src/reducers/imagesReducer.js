@@ -11,6 +11,11 @@ const imageReducer = (state = null, action) => {
       return Object.assign({}, state, newState)
     default:
       return state
+    case 'SET_UPDATED_IMAGE':
+      let id = action.payload.id;
+      return Object.assign({}, state, {
+        [id]: Object.assign({}, state[id], action.payload)
+      });
   }
 }
 

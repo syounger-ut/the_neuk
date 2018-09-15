@@ -31,6 +31,7 @@ class AdminImage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.setState({ edit: false })
     const id    = this.props.match.params.id;
     const image = nextProps.images[id];
     if(image) { this.setImageState(image) }
@@ -62,7 +63,6 @@ class AdminImage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('SUBMIT HAPPENED');
     this.props.updateImage(this.state)
   }
 
@@ -71,8 +71,8 @@ class AdminImage extends Component {
     let editForm;
     let imageTitles;
     if (this.state.edit) {
-      const name        = this.state.name;
-      const description = this.state.description;
+      const name        = this.state.name || "";
+      const description = this.state.description || "";
       editForm = (
         <div>
           <form className="editImageForm" onSubmit={this.handleSubmit}>

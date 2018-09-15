@@ -15,6 +15,13 @@ export const setImage = (image) => {
   }
 }
 
+export const setUpdatedImage = (image) => {
+  return {
+    type: "SET_UPDATED_IMAGE",
+    payload: image
+  }
+}
+
 export const uploadImage = (image) => {
   return (dispatch) => {
     return theNeukApi.uploadImage(image).then(response => {
@@ -53,8 +60,8 @@ export const getUsers = () => {
 export const updateImage = (image) => {
   return (dispatch) => {
     return theNeukApi.updateImage(image).then(response => {
-      dispatch(updateImage(response))
-      return true
+      dispatch(setUpdatedImage(response.image))
+      return response.image
     });
   }
 }
