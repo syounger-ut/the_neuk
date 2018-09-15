@@ -11,7 +11,7 @@ class Admin::ImagesController < Admin::ApplicationController
   end
 
   def create
-    image = Image.new(image_params)
+    image = Image.new(photo_params)
 
     if image.save
       render json: { image: ImageSerializer.new(image) }
@@ -42,8 +42,12 @@ class Admin::ImagesController < Admin::ApplicationController
 
   private
 
-  def image_params
+  def photo_params
     params.permit(:photo, :name, :description)
+  end
+
+  def image_params
+    params.require(:image).permit(:photo, :name, :description)
   end
 
 end
