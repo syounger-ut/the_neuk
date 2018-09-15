@@ -1,7 +1,9 @@
 const authenticationReducer = (state = false, action) => {
   switch (action.type) {
-    case 'LOGGED_IN':
-      return  action.payload
+    case 'SET_CURRENT_USER':
+      return Object.assign({}, state, action.payload)
+    case 'UNSET_CURRENT_USER':
+      return state = action.payload;
     default:
       return state
   }

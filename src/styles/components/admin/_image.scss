@@ -1,0 +1,37 @@
+.images {
+  text-align: center;
+  height: calc(100vh - 48px);
+  .imageContainer {
+    img {
+      width: 100%;
+      padding: 1rem;
+    }
+    p {
+      padding: 1rem;
+    }
+  }
+  .image {
+    display: inline-block;
+    margin: 1rem;
+  }
+  .editImageForm {
+    display: inline-block;
+    input[name='name'] {
+      font-size: 3rem;
+    }
+  }
+  .button {
+    list-style: none;
+    width: 10rem;
+    height: 2.1rem;
+    margin: 1rem auto;
+    border: 1px solid white;
+    a {
+      display: block;
+      height: 100%;
+      line-height: 2.5rem;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}

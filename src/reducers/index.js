@@ -1,18 +1,18 @@
 import { combineReducers }   from 'redux'
-import userReducer           from './userReducer'
+import usersReducer           from './usersReducer'
 import authenticationReducer from './authenticationReducer'
 import messageReducer        from './messageReducer'
 import bookingReducer        from './bookingReducer'
 import eventReducer          from './eventReducer'
-import adminReducer          from './adminReducer'
+import imagesReducer         from './imagesReducer'
 
 const allReducers = combineReducers({
-  loggedIn: authenticationReducer,
-  user:     userReducer,
-  message:  messageReducer,
-  booking:  bookingReducer,
-  events:   eventReducer,
-  admin:    adminReducer
+  currentUser: authenticationReducer,
+  users:       usersReducer,
+  message:     messageReducer,
+  booking:     bookingReducer,
+  events:      eventReducer,
+  images:      imagesReducer
 })
 
 export default allReducers

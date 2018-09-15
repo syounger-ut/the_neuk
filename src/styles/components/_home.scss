@@ -1,9 +1,6 @@
 .home {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  object-fit: cover;
   .home-image {
-    background: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e") no-repeat center center fixed;
+    background: url("https://s3.eu-west-2.amazonaws.com/theneuk/images/photos/000/000/028/original/Photo_17-07-2016__15_22_52.jpg?1537011938") no-repeat center center fixed;
     background-size: cover;
     margin-top: -3rem;
     width: 100%;
@@ -24,5 +21,17 @@
     p {
       padding: 1rem;
     }
+  }
+  .home-booking-title {
+    grid-column: span 2;
+    h2 {
+      text-align: center;
+    }
+  }
+  .home-booking-form {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem 0;
   }
 }

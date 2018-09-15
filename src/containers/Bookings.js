@@ -14,7 +14,7 @@ class Bookings extends Component {
   }
 
   render() {
-    const user   = this.props.user;
+    const user   = this.props.currentUser;
     const events = this.props.events;
     return (
       <section className="bookings">
@@ -30,8 +30,8 @@ class Bookings extends Component {
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    user: state.user,
-    events: state.events
+    currentUser: state.currentUser,
+    events:      state.events
   }
 };
 

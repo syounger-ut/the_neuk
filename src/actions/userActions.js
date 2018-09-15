@@ -1,10 +1,17 @@
 import theNeukApi from 'theNeukApi';
 import * as messageActions from 'messageActions';
 
-export const setUser = (user) => {
+export const setCurrentUser = (user) => {
   return {
     type: "SET_USER",
     payload: user
+  };
+};
+
+export const setUsers = (users) => {
+  return {
+    type: "SET_USERS",
+    payload: users
   };
 };
 
@@ -15,10 +22,11 @@ export const unsetUser = () => {
   }
 }
 
-export const getUser = () => {
+export const currentUser = () => {
+  console.log('currentUser')
   return (dispatch) => {
-    return theNeukApi.getUser().then(response => {
-      dispatch(setUser(response))
+    return theNeukApi.currentUser().then(response => {
+      dispatch(setCurrentUser(response))
     });
   }
 }
