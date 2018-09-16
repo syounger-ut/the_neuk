@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :users, only: [ :update, :destroy ]
     resources :bookings
     resources :pay
+    resources :locations, only: :index
     resources :images, only: [ :index, :show ]
     get  'events',   to: 'events#index'
     post 'login',    to: 'authentication#login'
