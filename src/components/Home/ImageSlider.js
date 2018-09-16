@@ -4,24 +4,27 @@ import ImageGallery from 'react-image-gallery';
 class ImageSlider extends Component {
 
   render() {
+    const locations = this.props.locations
 
-    const images = [
-      {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-      }
-    ]
+    let images;
+
+    if(locations) {
+      const home   = locations["Home"];
+
+      images = Object.entries(home.images).map(([index, image]) => {
+        return {
+          original: image.original_photo_url,
+          thumbnail: image.thumb_photo_url,
+          description: image.description,
+          originalTitle: image.name
+        }
+      })
+    }
 
     return (
-      <ImageGallery items={images} />
+      <div className="image-gallery-container">
+        <ImageGallery items={images} />
+      </div>
     );
   }
 

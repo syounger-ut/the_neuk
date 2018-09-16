@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux';
 import * as bookingActions from 'bookingActions';
+import * as locationActions from 'locationActions';
 
 // Components
 import Calendar    from 'Home/Calendar'
@@ -12,6 +13,10 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.setBooking = this.setBooking.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.getLocations();
   }
 
   setBooking(booking) {
@@ -26,6 +31,7 @@ class Home extends Component {
     const booking      = this.props.booking;
     const user         = this.props.user;
     const setBooking   = this.setBooking;
+    const locations    = this.props.locations;
 
     return (
       <div className="home">
@@ -37,7 +43,7 @@ class Home extends Component {
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
 
-        <ImageSlider />
+        <ImageSlider locations={locations} />
 
         <div className="home-booking-title">
           <h2>Place your booking</h2>
@@ -62,7 +68,8 @@ class Home extends Component {
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    booking: state.booking
+    booking: state.booking,
+    locations: state.locations
   }
 };
 
@@ -71,7 +78,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     bookingStart: date => dispatch(bookingActions.setBookingStart(date)),
     bookingEnd:   date => dispatch(bookingActions.setBookingEnd(date)),
-    setBooking: booking => dispatch(bookingActions.setBooking(booking))
+    setBooking: booking => dispatch(bookingActions.setBooking(booking)),
+    getLocations: () => dispatch(locationActions.getLocations())
   }
 };
 

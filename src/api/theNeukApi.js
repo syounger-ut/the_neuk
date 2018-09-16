@@ -232,5 +232,23 @@ module.exports = {
     }).catch(function(error) {
       console.log(error)
     })
+  },
+
+  getLocations: function() {
+    var requestUrl = `${THE_NEUK_API_URL}/locations`;
+
+    return axios({
+      method: 'get',
+      url: requestUrl,
+      headers: { 'Authorization': TOKEN }
+    }).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      if (error.response.status === 401) {
+        throw new Error("Failed to get locations");
+      } else {
+        throw new Error(error.message);
+      }
+    });
   }
 }

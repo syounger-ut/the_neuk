@@ -23,7 +23,6 @@ export const unsetUser = () => {
 }
 
 export const currentUser = () => {
-  console.log('currentUser')
   return (dispatch) => {
     return theNeukApi.currentUser().then(response => {
       dispatch(setCurrentUser(response))
