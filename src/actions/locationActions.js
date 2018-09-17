@@ -7,6 +7,13 @@ export const setLocations = (locations) => {
   };
 };
 
+export const setDefaultLocation = (locationName) => {
+  return {
+    type: "SET_DEFAULT_LOCATION",
+    payload: locationName
+  }
+}
+
 
 export const getLocations = () => {
   return (dispatch) => {
