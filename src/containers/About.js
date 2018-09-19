@@ -5,6 +5,7 @@ import * as locationActions from 'locationActions';
 
 // Components
 import MainPhoto from 'About/MainPhoto';
+import LocationsTile from 'About/LocationsTile';
 
 class About extends Component {
   componentWillMount() {
@@ -18,7 +19,8 @@ class About extends Component {
     return (
       <section className="about">
         <h1>Gallery</h1>
-        <MainPhoto locations={locations} setDefaultLocation={setDefaultLocation}/>
+        <MainPhoto locations={locations} setDefaultLocation={setDefaultLocation} />
+        <LocationsTile locations={locations} setDefaultLocation={setDefaultLocation} />
       </section>
     );
   }
