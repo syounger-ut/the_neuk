@@ -4,11 +4,6 @@ import React, { Component } from 'react';
 import ImageThumb from 'About/ImageThumb';
 
 class LocationsTile extends Component {
-  changeLocation(locationName, imageName) {
-    console.log(locationName);
-    console.log(imageName);
-  }
-
   render() {
     const locations = this.props.locations;
 
@@ -17,22 +12,21 @@ class LocationsTile extends Component {
 
     if(locations) {
       locationsTile = Object.entries(locations).map(([index, location]) => {
-        // images = Object.entries(location.images).map(([index, image]) => {
-        //   return <img key={index} href={image.thumb_photo_url}/>
-        // });
-
         return (
-          <section key={index} className="image">
-            <ImageThumb />
+          <section key={index} className="locationsTile">
+            <h3>{location.name}</h3>
+            <ImageThumb
+              images={location.images}
+              changeImage={this.props.setDefaultLocation}/>
           </section>
         );
       });
     }
 
     return (
-      <section className="photos-file">
+      <div>
         {locationsTile}
-      </section>
+      </div>
     );
   }
 }

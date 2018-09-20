@@ -2955,6 +2955,12 @@ nav {
   grid-template-columns: 1fr 1fr;
   padding: 1rem 0; }
 
+.about .locationsTile .images {
+  height: auto;
+  text-align: left; }
+  .about .locationsTile .images img {
+    margin: 0 1rem; }
+
 .login {
   display: grid;
   grid-template-rows: 1fr 4fr;
