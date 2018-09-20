@@ -8,7 +8,7 @@ const locationsReducer = (state = null, action) => {
       })
       return Object.assign({}, state, initialState)
     case 'SET_DEFAULT_LOCATION':
-      return Object.assign(state, { defaultLocation: action.payload })
+      return Object.assign({}, state, { "defaultLocation": action.payload })
     default:
       return state
   }

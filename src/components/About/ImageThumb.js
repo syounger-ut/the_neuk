@@ -9,6 +9,7 @@ class ImageThumb extends Component {
   changeImage(image, event) {
     // Work to do here. Pass the Image to the ImageReducer to change the DefaultImage
     // debugger
+    this.props.changeImage(image.name);
   }
 
   render() {

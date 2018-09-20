@@ -3,37 +3,51 @@ import React, { Component } from 'react';
 import ImageGallery from 'react-image-gallery';
 
 class MainPhoto extends Component {
-  componentWillReceiveProps(nextProps) {
-    const firstLocation = Object.keys(nextProps.locations)[0]
-    this.props.setDefaultLocation(firstLocation);
+  constructor(props) {
+    super(props);
+    this.state = {
+      defaultImage: null
+    }
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  changeLocation(locationName, imageName) {
-    console.log(locationName);
-    console.log(imageName);
+  componentWillReceiveProps(nextProps) {
+    const firstLocation = Object.keys(nextProps.locations)[0]
+    const locations = this.props.locations || {};
+    if(!locations.defaultLocation) {
+      this.props.setDefaultLocation(firstLocation);
+    } else {
+      this.setState({ defaultImage: locations[locations.defaultLocation] })
+
+      console.log(this.state)
+    }
   }
 
   render() {
-    const locations = this.props.locations;
+    const defaultImage = this.state.defaultImage;
+    // const locations = this.props.locations;
 
     let images;
 
-    if(locations) {
-      const imageLocation = locations[this.props.locations.defaultLocation];
-
-      images = Object.entries(imageLocation.images).map(([index, image]) => {
-        return {
-          original: image.original_photo_url,
-          thumbnail: image.thumb_photo_url,
-          description: image.description,
-          originalTitle: image.name
-        }
-      })
+    if(defaultImage) {
+      // console.log(this.state)
+      // const imageLocation = this.state.defaultImage;
+      // const imageLocation = locations[this.props.locations.defaultLocation];
+      // if(imageLocation) {
+        images = Object.entries(defaultImage.images).map(([index, image]) => {
+          return {
+            original: image.original_photo_url,
+            thumbnail: image.thumb_photo_url,
+            description: image.description,
+            originalTitle: image.name
+          }
+        })
+      // }
     }
 
     return (
       <section className="photos">
-        <ImageGallery items={images} />
+        <ImageGallery items={images} showThumbnails={false} showPlayButton={false}/>
       </section>
     );
   }

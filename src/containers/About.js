@@ -9,7 +9,13 @@ import LocationsTile from 'About/LocationsTile';
 
 class About extends Component {
   componentWillMount() {
-    this.props.getLocations();
+    if(this.props.locations === null) {
+      this.props.getLocations();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps)
   }
 
   render() {
