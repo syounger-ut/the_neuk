@@ -6,43 +6,32 @@ class MainPhoto extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      defaultImage: null
+      defaultImage: ''
     }
-    // this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    if(this.props.locations) {
+      this.setState({ defaultImage: this.props.locations.defaultLocation })
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    const firstLocation = Object.keys(nextProps.locations)[0]
-    const locations = this.props.locations || {};
-    if(!locations.defaultLocation) {
-      this.props.setDefaultLocation(firstLocation);
-    } else {
-      this.setState({ defaultImage: locations[locations.defaultLocation] })
-
-      console.log(this.state)
-    }
+    this.setState({ defaultImage: nextProps.locations.defaultLocation })
   }
 
   render() {
     const defaultImage = this.state.defaultImage;
-    // const locations = this.props.locations;
 
     let images;
 
     if(defaultImage) {
-      // console.log(this.state)
-      // const imageLocation = this.state.defaultImage;
-      // const imageLocation = locations[this.props.locations.defaultLocation];
-      // if(imageLocation) {
-        images = Object.entries(defaultImage.images).map(([index, image]) => {
-          return {
-            original: image.original_photo_url,
-            thumbnail: image.thumb_photo_url,
-            description: image.description,
-            originalTitle: image.name
-          }
-        })
-      // }
+      images =  [{
+          original: defaultImage.original_photo_url,
+          thumbnail: defaultImage.thumb_photo_url,
+          description: defaultImage.description,
+          originalTitle: defaultImage.name
+      }]
     }
 
     return (

@@ -5,12 +5,16 @@ import ImageThumb from 'About/ImageThumb';
 
 class LocationsTile extends Component {
   render() {
-    const locations = this.props.locations;
-
+    const locations = Object.assign({}, this.props.locations);
     let locationsTile;
     let images;
 
     if(locations) {
+
+      // Remove the default location from the tile
+
+      delete locations["defaultLocation"];
+
       locationsTile = Object.entries(locations).map(([index, location]) => {
         return (
           <section key={index} className="locationsTile">

@@ -14,10 +14,6 @@ class About extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    // console.log(nextProps)
-  }
-
   render() {
     const locations = this.props.locations;
     const setDefaultLocation = this.props.setDefaultLocation;
