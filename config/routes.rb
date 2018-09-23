@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :pay
     resources :locations, only: :index
     resources :images, only: [ :index, :show ]
+    resources :things_to_dos, only: :index
     get  'events',   to: 'events#index'
     post 'login',    to: 'authentication#login'
     post 'register', to: 'authentication#register'
