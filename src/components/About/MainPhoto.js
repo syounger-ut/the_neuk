@@ -27,16 +27,15 @@ class MainPhoto extends Component {
 
     if(defaultImage) {
       images =  [{
-          original: defaultImage.original_photo_url,
-          thumbnail: defaultImage.thumb_photo_url,
-          description: defaultImage.description,
-          originalTitle: defaultImage.name
+          original: defaultImage.original_photo_url
       }]
     }
 
     return (
-      <section className="photos">
+      <section className="image-gallery-container">
         <ImageGallery items={images} showThumbnails={false} showPlayButton={false}/>
+        <h4>{defaultImage.name}</h4>
+        <p>{defaultImage.description}</p>
       </section>
     );
   }
