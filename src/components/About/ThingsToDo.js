@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Map extends Component {
+class ThingsToDo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,12 +10,11 @@ class Map extends Component {
 
   render() {
     return (
-      <section className="map">
-        <h2>Where is it?</h2>
-        <div id="map"></div>
+      <section className="things-to-do">
+        <h2>Things To Do</h2>
       </section>
     );
   }
 }
 
-export default Map;
+export default ThingsToDo;

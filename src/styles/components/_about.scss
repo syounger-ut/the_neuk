@@ -1,4 +1,7 @@
 .about {
+  h2 {
+    text-align: center;
+  }
   max-width: 50rem;
   margin: 0 auto;
   .locationsTile {
@@ -9,5 +12,9 @@
         margin: 0 1rem;
       }
     }
+  }
+  .map-container {
+    position: relative;
+    height: 35rem;
   }
 }
