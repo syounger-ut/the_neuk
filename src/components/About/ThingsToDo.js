@@ -13,7 +13,9 @@ class ThingsToDo extends Component {
             <h4>{thingToDo.name}</h4>
             <img src={thingToDo.image.thumb_photo_url}/>
             <p>{thingToDo.description}</p>
-            <p>{thingToDo.website_url}</p>
+            <p><a
+              href={thingToDo.website_url}
+              target="_blank">{thingToDo.website_url}</a></p>
           </div>
         );
       });

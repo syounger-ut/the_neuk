@@ -17,4 +17,23 @@
     position: relative;
     height: 35rem;
   }
+  .things-to-do {
+    margin: 1rem 0;
+    .thing-to-do {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      h4 {
+        grid-column: span 2;
+        padding: 1rem 0;
+      }
+      img {
+        grid-column-start: 1;
+        grid-row: span 2;
+        margin: 0 1rem 0 0;
+      }
+      p {
+        grid-column-start: 2;
+      }
+    }
+  }
 }
