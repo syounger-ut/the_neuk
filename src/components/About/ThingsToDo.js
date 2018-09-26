@@ -23,6 +23,7 @@ class ThingsToDo extends Component {
 
     return (
       <section className="things-to-do">
+        <h2>Things to do</h2>
         {thingsToDoList}
       </section>
     );
