@@ -17,7 +17,9 @@ class MainPhoto extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ defaultImage: nextProps.locations.defaultLocation })
+    if(nextProps.locations) {
+      this.setState({ defaultImage: nextProps.locations.defaultLocation })
+    }
   }
 
   render() {

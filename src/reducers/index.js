@@ -6,6 +6,7 @@ import bookingReducer        from './bookingReducer'
 import eventReducer          from './eventReducer'
 import imagesReducer         from './imagesReducer'
 import locationsReducer      from './locationsReducer'
+import thingsToDoReducer     from './thingsToDoReducer'
 
 const allReducers = combineReducers({
   currentUser: authenticationReducer,
@@ -14,7 +15,8 @@ const allReducers = combineReducers({
   booking:     bookingReducer,
   events:      eventReducer,
   images:      imagesReducer,
-  locations:   locationsReducer
+  locations:   locationsReducer,
+  thingsToDo:  thingsToDoReducer
 })
 
 export default allReducers
