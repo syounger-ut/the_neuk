@@ -1,9 +1,8 @@
 class Admin::BookingsController < Admin::ApplicationController
 
   def index
-    bookings = Booking.all
-    bookings_serialized = bookings.map{ |booking| BookingSerializer.new(booking) }
-    render json: { bookings: bookings_serialized }
+    bookings = Booking.all.order(start_date: :desc)
+    render json: bookings, each_serializer: BookingSerializer
   end
 
   def show
