@@ -1,7 +1,7 @@
 class Image < ApplicationRecord
 
   # Assocations
-  belongs_to :imageable, polymorphic: true
+  belongs_to :imageable, polymorphic: true, optional: true
 
   has_attached_file :photo, styles: {
     thumb: '100x100>',
