@@ -2955,6 +2955,36 @@ nav {
   grid-template-columns: 1fr 1fr;
   padding: 1rem 0; }
 
+.about {
+  max-width: 50rem;
+  margin: 0 auto; }
+  .about h2 {
+    text-align: center; }
+  .about .locationsTile .images {
+    height: auto;
+    text-align: left; }
+    .about .locationsTile .images img {
+      margin: 0 1rem; }
+  .about .map-container {
+    position: relative;
+    height: 35rem; }
+  .about .things-to-do {
+    margin: 1rem 0; }
+    .about .things-to-do .thing-to-do {
+      display: grid;
+      grid-template-columns: 5rem auto;
+      grid-gap: 0 0.5rem; }
+      .about .things-to-do .thing-to-do h4 {
+        grid-column: span 2;
+        padding: 1rem 0; }
+      .about .things-to-do .thing-to-do img {
+        grid-column-start: 1;
+        grid-row: span 2;
+        margin: 0 1rem 0 0;
+        max-width: 100%; }
+      .about .things-to-do .thing-to-do p {
+        grid-column-start: 2; }
+
 .login {
   display: grid;
   grid-template-rows: 1fr 4fr;
@@ -3010,19 +3040,29 @@ main {
 
 .image-gallery-container {
   padding: 1rem; }
+  .image-gallery-container h4, .image-gallery-container p {
+    text-align: center; }
   .image-gallery-container .image-gallery {
     max-width: 60rem;
     margin: 0 auto; }
-    .image-gallery-container .image-gallery .image-gallery-image {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      height: 30rem; }
-      .image-gallery-container .image-gallery .image-gallery-image img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover; }
+    .image-gallery-container .image-gallery .image-gallery-content {
+      height: 100%; }
+      .image-gallery-container .image-gallery .image-gallery-content .image-gallery-image {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        height: 30rem; }
+        .image-gallery-container .image-gallery .image-gallery-content .image-gallery-image img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover; }
+      .image-gallery-container .image-gallery .image-gallery-content.fullscreen .image-gallery-image {
+        height: 100vh; }
+        .image-gallery-container .image-gallery .image-gallery-content.fullscreen .image-gallery-image img {
+          height: 100%;
+          width: auto;
+          margin: 0 auto; }
 
 #calendar {
   background: #cccccc;

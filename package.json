@@ -21,6 +21,7 @@
     "axios": "^0.16.2",
     "express": "^4.16.2",
     "font-awesome": "^4.7.0",
+    "google-maps-react": "^2.0.2",
     "moment": "^2.19.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

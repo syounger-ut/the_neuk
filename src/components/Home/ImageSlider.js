@@ -15,7 +15,7 @@ class ImageSlider extends Component {
         return {
           original: image.original_photo_url,
           thumbnail: image.thumb_photo_url,
-          description: image.description,
+          description: image.name,
           originalTitle: image.name
         }
       })
