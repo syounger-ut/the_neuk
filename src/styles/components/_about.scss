@@ -22,6 +22,7 @@
     .thing-to-do {
       display: grid;
       grid-template-columns: 5rem auto;
+      grid-gap: 0 0.5rem;
       h4 {
         grid-column: span 2;
         padding: 1rem 0;
@@ -30,6 +31,7 @@
         grid-column-start: 1;
         grid-row: span 2;
         margin: 0 1rem 0 0;
+        max-width: 100%;
       }
       p {
         grid-column-start: 2;

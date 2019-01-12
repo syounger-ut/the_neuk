@@ -8,10 +8,12 @@ class ThingsToDo extends Component {
 
     if(thingsToDo) {
       thingsToDoList = Object.entries(thingsToDo).map(([index, thingToDo]) => {
+        let image = thingToDo.image || {};
+
         return (
           <div key={index} className="thing-to-do">
             <h4>{thingToDo.name}</h4>
-            <img src={thingToDo.image.thumb_photo_url}/>
+            <img src={image.thumb_photo_url || "./images/placeholder-image.jpg"} />
             <p>{thingToDo.description}</p>
             <p><a
               href={thingToDo.website_url}
