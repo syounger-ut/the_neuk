@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux';
-import * as bookingActions from 'bookingActions';
+import * as bookingActions from 'liveBookingActions';
 import * as locationActions from 'locationActions';
 
 // Components
@@ -68,7 +68,7 @@ class Home extends Component {
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    booking: state.booking,
+    booking: state.liveBooking,
     locations: state.locations
   }
 };

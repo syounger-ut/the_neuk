@@ -1,5 +1,6 @@
 import theNeukApi from 'theNeukApi';
 import * as userActions from 'userActions';
+import * as bookingActions from 'bookingActions';
 
 export const setImages = (images) => {
   return {
@@ -52,6 +53,15 @@ export const getUsers = () => {
   return (dispatch) => {
     return theNeukApi.getUsers().then(response => {
       dispatch(userActions.setUsers(response))
+      return true
+    });
+  }
+}
+
+export const getBookings = () => {
+  return (dispatch) => {
+    return theNeukApi.getAllBookings().then(response => {
+      dispatch(bookingActions.setBookings(response))
       return true
     });
   }

@@ -23,7 +23,7 @@ class Pay extends Component {
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    booking: state.booking,
+    booking: state.liveBooking,
     user: state.user
   }
 };

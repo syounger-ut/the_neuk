@@ -2769,6 +2769,21 @@ input, button, select, textarea, optgroup, option {
   .button:hover {
     opacity: 1; }
 
+table th, table td {
+  padding: 0.5rem;
+  max-width: 15rem; }
+
+table thead tr {
+  border-bottom: 1px solid #5b9169; }
+  table thead tr th {
+    font-weight: bold; }
+
+table tbody tr:hover {
+  background: #b5d0bc; }
+
+table tbody tr td {
+  border-bottom: 1px solid #e6e6e6; }
+
 form {
   display: grid;
   justify-items: center; }
@@ -3128,6 +3143,10 @@ main {
   grid-template-columns: 10rem auto; }
   .admin-template .admin {
     display: inline-block; }
+
+.admin-bookings {
+  display: grid;
+  justify-content: center; }
 
 .images {
   text-align: center;
