@@ -1,9 +1,6 @@
 class Admin::UsersController < Admin::ApplicationController
-
   def index
-    users = User.all
-    users_serialized = users.map { |user| UserSerializer.new(user) }
-    render json: { users: users_serialized }
+    users = User.all.order(last_name: :asc, first_name: :asc)
+    render json: users, each_serializer: UserSerializer
   end
-
 end

@@ -7,14 +7,14 @@ class Admin::BookingsController < Admin::ApplicationController
 
   def show
     booking = booking.find(params[:id])
-    render json: { booking: BookingSerializer.new(booking) }
+    render json: BookingSerializer.new(booking)
   end
 
   def create
     booking = Booking.new(booking_params)
 
     if booking.save
-      render json: { booking: BookingSerializer.new(booking) }
+      render json: BookingSerializer.new(booking)
     else
       render json: booking.errors.full_messages, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class Admin::BookingsController < Admin::ApplicationController
   def update
     booking = Booking.find(params[:id])
     if booking.update(booking_params)
-      render json: { booking: BookingSerializer.new(booking) }
+      render json: BookingSerializer.new(booking)
     else
       render json: booking.errors.full_messages, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class Admin::BookingsController < Admin::ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :occupants, :special_instructions, :booking_source)
+    params.require(:booking).permit(:start_date, :end_date, :occupants, :special_instructions, :booking_source, :user_id)
   end
 
 end
