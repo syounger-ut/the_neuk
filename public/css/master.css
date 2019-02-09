@@ -2765,7 +2765,8 @@ input, button, select, textarea, optgroup, option {
   border: none;
   height: 2.5rem;
   width: 100%;
-  border-radius: 0; }
+  border-radius: 0;
+  padding: 0; }
   .button:hover {
     opacity: 1; }
 
@@ -3147,6 +3148,24 @@ main {
 .admin-bookings {
   display: grid;
   justify-content: center; }
+  .admin-bookings table .booking-edit {
+    vertical-align: middle;
+    text-align: center; }
+    .admin-bookings table .booking-edit .booking-edit-link {
+      padding: 0.2rem 1.5rem;
+      background: #5b9169; }
+  .admin-bookings button {
+    margin-top: 1rem;
+    line-height: 2.5rem; }
+    .admin-bookings button a {
+      display: block;
+      height: 100%; }
+
+.admin-booking-form {
+  max-width: 25rem;
+  margin: 0 auto; }
+  .admin-booking-form textarea {
+    width: 100%; }
 
 .images {
   text-align: center;

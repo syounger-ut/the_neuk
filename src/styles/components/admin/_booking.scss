@@ -1,4 +1,30 @@
 .admin-bookings {
   display: grid;
   justify-content: center;
+  table {
+    .booking-edit {
+      vertical-align: middle;
+      text-align: center;
+      .booking-edit-link {
+        padding: 0.2rem 1.5rem;
+        background: $admin-color;
+      }
+    }
+  }
+  button {
+    margin-top: 1rem;
+    line-height: 2.5rem;
+    a {
+      display: block;
+      height: 100%;
+    }
+  }
+}
+
+.admin-booking-form {
+  max-width: 25rem;
+  margin: 0 auto;
+  textarea {
+    width: 100%;
+  }
 }

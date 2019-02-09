@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // Components
 
-class AdminBooking extends Component {
+class AdminNewBooking extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,19 +11,10 @@ class AdminBooking extends Component {
       occupants: '',
       special_instructions: '',
       start_date: '',
-      user: ''
+      user_id: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    const id     = this.props.match.params.id;
-    const bookings = this.props.bookings;
-    if(bookings) {
-      const booking = bookings[id];
-      this.setBookingState(booking)
-    }
   }
 
   handleChange(event) {
@@ -36,16 +27,7 @@ class AdminBooking extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.updateBooking(this.state)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ edit: false })
-    const id    = this.props.match.params.id;
-    if (nextProps.bookings) {
-      const booking = nextProps.bookings[id];
-      if(booking) { this.setBookingState(booking) }
-    }
+    this.props.submitBooking(this.state)
   }
 
   setBookingState(booking) {
@@ -55,22 +37,42 @@ class AdminBooking extends Component {
       occupants: booking.occupants,
       special_instructions: booking.special_instructions,
       start_date: booking.start_date,
-      user: booking.user
+      user_id: booking.user.id
     });
   }
 
   render() {
+    const users = this.props.users;
     const booking = this.state;
     const {
-      end_date, occupants, special_instructions, start_date
+      end_date, occupants, special_instructions, start_date, user_id
     } = this.state;
+
+    let usersSelect;
+
+    if(users) {
+      usersSelect = Object.keys(users).map((key, index) => {
+        let user = users[key];
+        return (
+          <option
+            key={key}
+            value={user.id}>
+            {user.full_name}
+          </option>
+        )
+      })
+    }
 
     return (
       <form className="admin-booking-form" onSubmit={this.handleSubmit}>
-        <h2>Edit booking</h2>
+        <h2>New booking</h2>
+
         <label>
-          Booked by:
-          <span>{booking.user.full_name}</span>
+          Select a user:
+          <select id="user-select" name="user_id" onChange={this.handleChange} value={user_id}>
+              <option value="">--Please choose a user--</option>
+              {usersSelect}
+          </select>
         </label>
         <label>
           Start Date:
@@ -112,4 +114,4 @@ class AdminBooking extends Component {
   }
 }
 
-export default AdminBooking;
+export default AdminNewBooking;

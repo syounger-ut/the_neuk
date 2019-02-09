@@ -23,6 +23,13 @@ export const setUpdatedImage = (image) => {
   }
 }
 
+export const setUpdatedBooking = (booking) => {
+  return {
+    type: "SET_UPDATED_BOOKING",
+    payload: booking
+  }
+}
+
 export const uploadImage = (image) => {
   return (dispatch) => {
     return theNeukApi.uploadImage(image).then(response => {
@@ -72,6 +79,24 @@ export const updateImage = (image) => {
     return theNeukApi.updateImage(image).then(response => {
       dispatch(setUpdatedImage(response.image))
       return response.image
+    });
+  }
+}
+
+export const updateBooking = (booking) => {
+  return (dispatch) => {
+    return theNeukApi.updateAdminBooking(booking).then(response => {
+      dispatch(setUpdatedBooking(response.booking))
+      return response.booking
+    });
+  }
+}
+
+export const submitBooking = (booking) => {
+  return (dispatch) => {
+    return theNeukApi.submitAdminBooking(booking).then(response => {
+      dispatch(setUpdatedBooking(response))
+      return response
     });
   }
 }

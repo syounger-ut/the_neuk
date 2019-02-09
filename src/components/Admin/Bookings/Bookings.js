@@ -21,8 +21,11 @@ class AdminBookings extends Component {
             <td>{booking.occupants}</td>
             <td>{booking.special_instructions}</td>
             <td>"price here"</td>
-            <td>
-              <Link to={`/admin/bookings/${booking.id}`}>Edit</Link>
+            <td className="booking-edit">
+              <Link className="booking-edit-link"
+                to={`/admin/bookings/${booking.id}`}>
+                Edit
+              </Link>
             </td>
           </tr>
         )
@@ -39,8 +42,11 @@ class AdminBookings extends Component {
             <td>{booking.occupants}</td>
             <td>{booking.special_instructions}</td>
             <td>"price here"</td>
-            <td>
-              <Link to={`/admin/bookings/${booking.id}`}>Edit</Link>
+            <td className="booking-edit">
+              <Link className="booking-edit-link"
+                to={`/admin/bookings/${booking.id}`}>
+                Edit
+              </Link>
             </td>
           </tr>
         )
@@ -49,6 +55,9 @@ class AdminBookings extends Component {
 
     return (
       <div className="admin-bookings">
+        <button className="button">
+          <Link to="/admin/bookings/new">Create new booking</Link>
+        </button>
         <h2>Upcoming Bookings</h2>
         <table>
           <thead>
