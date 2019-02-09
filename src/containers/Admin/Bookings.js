@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Link }      from 'react-router-dom'
+import { Route }            from 'react-router-dom'
 
 import { connect }       from 'react-redux';
 import * as adminActions from 'adminActions';
 
 // Components
 import AdminBookings from 'Admin/Bookings/Bookings';
+import AdminBooking from 'Admin/Bookings/Booking';
 
 class Bookings extends Component {
   componentWillMount() {
@@ -39,6 +40,8 @@ class Bookings extends Component {
 
   render() {
     const bookings = this.props.bookings;
+    const match  = this.props.match;
+
     let upcomingBookings;
     let pastBookings;
 
@@ -48,10 +51,19 @@ class Bookings extends Component {
     }
 
     return (
-      <div className='images'>
-        <AdminBookings
+      <div className='admin-bookings'>
+        <Route
+          exact path={`${match.path}`}
+          render={(props) => <AdminBookings {...props}
           upcomingBookings={upcomingBookings}
-          pastBookings={pastBookings}/>
+          pastBookings={pastBookings}
+          />}/>
+        <Route
+          path={`${match.path}/:id(\\d+)`} // (\\d+) ensures the id is an integer & prevents clash with /new
+          render={
+            (props) => <AdminBooking {...props}
+            bookings={bookings}
+            />}/>
       </div>
     );
   }

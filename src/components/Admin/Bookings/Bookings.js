@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Link }             from 'react-router-dom'
 
 // Components
 
-class Bookings extends Component {
-
+class AdminBookings extends Component {
   render() {
     const upcomingBookingsProp = this.props.upcomingBookings;
     const pastBookingsProp = this.props.pastBookings;
+
     let upcomingBookings;
     let pastBookings;
 
@@ -20,6 +21,9 @@ class Bookings extends Component {
             <td>{booking.occupants}</td>
             <td>{booking.special_instructions}</td>
             <td>"price here"</td>
+            <td>
+              <Link to={`/admin/bookings/${booking.id}`}>Edit</Link>
+            </td>
           </tr>
         )
       })
@@ -35,6 +39,9 @@ class Bookings extends Component {
             <td>{booking.occupants}</td>
             <td>{booking.special_instructions}</td>
             <td>"price here"</td>
+            <td>
+              <Link to={`/admin/bookings/${booking.id}`}>Edit</Link>
+            </td>
           </tr>
         )
       })
@@ -51,6 +58,7 @@ class Bookings extends Component {
               <th>Occupants</th>
               <th>Special Instructions</th>
               <th>Price</th>
+              <th>Update Booking</th>
             </tr>
           </thead>
           <tbody>
@@ -68,6 +76,7 @@ class Bookings extends Component {
               <th>Occupants</th>
               <th>Special Instructions</th>
               <th>Price</th>
+              <th>Update Booking</th>
             </tr>
           </thead>
           <tbody>
@@ -79,4 +88,4 @@ class Bookings extends Component {
   }
 }
 
-export default Bookings;
+export default AdminBookings;
