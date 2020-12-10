@@ -201,6 +201,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin-19
 
 DEPENDENCIES
   active_model_serializers
@@ -228,4 +229,4 @@ DEPENDENCIES
   stripe (~> 3.9, >= 3.9.1)
 
 BUNDLED WITH
-   1.16.0
+   2.2.0
