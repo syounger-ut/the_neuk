@@ -1,0 +1,51 @@
+{
+  "name": "the_neuk_front",
+  "version": "1.0.0",
+  "description": "a property letting website for the neuk",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samyounger/the_neuk_front.git"
+  },
+  "author": "Sam Younger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samyounger/the_neuk_front/issues"
+  },
+  "homepage": "https://github.com/samyounger/the_neuk_front#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "express": "^4.16.2",
+    "font-awesome": "^4.7.0",
+    "google-maps-react": "^2.0.2",
+    "moment": "^2.19.3",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-image-gallery": "^0.8.11",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-stripe-elements": "^1.2.1",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "webpack-dev-middleware": "^1.12.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^3.1.0",
+    "gulp4": "^4.0.2",
+    "path": "^0.12.7",
+    "webpack": "^3.6.0"
+  }
+}

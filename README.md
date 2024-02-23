@@ -1,4 +1,4 @@
-# The Neuk API
+# The Neuk Server
 
     DESCRIPTION: The Neuk API is is an application that will be the back-end of the_neuk_frontend application. As a whole it is a website to manage the property The Neuk in Kames, Scotland which is to be let to holiday makers. It will give guests the ability to create bookings and pay, and view their bookings with relevant guest information. It will also serve as a blogging website and listing events to give guests information on the local area for site and attractions to visit.
 
@@ -27,3 +27,11 @@ And you should be good to go :thumbsup:
 ## User authentication
 
 Json Web Token (JWT) authentication has been implemented. Instructions on setup [HERE](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api)
+
+---
+
+The Neuk Client
+
+A property letting and management website for a property on the West Coast of Scotland, Kames.
+
+The front-end is built with ReactJS, Webpack, and Gulp.

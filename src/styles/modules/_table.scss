@@ -1,0 +1,25 @@
+table {
+  // display: grid;
+  th, td {
+    padding: 0.5rem;
+    max-width: 15rem;
+  }
+  thead {
+    tr {
+      border-bottom: 1px solid $admin-color;
+      th {
+        font-weight: bold;
+      }
+    }
+  }
+  tbody {
+    tr {
+      &:hover {
+        background: lighten($admin-color, 30%);
+      }
+      td {
+        border-bottom: 1px solid lighten($primary-color, 90%);
+      }
+    }
+  }
+}

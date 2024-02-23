@@ -1,0 +1,7 @@
+.admin-template {
+  display: grid;
+  grid-template-columns: 10rem auto;
+  .admin {
+    display: inline-block;
+  }
+}

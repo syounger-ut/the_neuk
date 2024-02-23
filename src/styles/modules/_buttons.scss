@@ -1,0 +1,12 @@
+.button {
+  background: $button-color;
+  opacity: 0.9;
+  border: none;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0;
+  padding: 0;
+  &:hover {
+    opacity: 1;
+  }
+}

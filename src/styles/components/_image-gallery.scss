@@ -1,0 +1,35 @@
+.image-gallery-container {
+  padding: 1rem;
+  h4, p {
+    text-align: center;
+  }
+  .image-gallery {
+    max-width: 60rem;
+    margin: 0 auto;
+    .image-gallery-content {
+      height: 100%;
+      .image-gallery-image {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        height: 30rem;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      &.fullscreen {
+        .image-gallery-image {
+          height: 100vh;
+          img {
+            height: 100%;
+            width: auto;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

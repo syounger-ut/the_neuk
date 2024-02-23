@@ -1,0 +1,23 @@
+.login {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  margin: 2rem;
+  ul {
+    line-height: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem;
+    justify-items: stretch;
+    align-items: stretch;
+    li {
+      background: $button-color;
+      opacity: 0.9;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

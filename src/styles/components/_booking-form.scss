@@ -1,0 +1,11 @@
+.booking-form {
+  margin: 0 1rem;
+  .price {
+    border: none;
+    border-top: 1px solid $primary-color;
+    letter-spacing: 1px;
+  }
+  input[type="submit"] {
+    align-self: end;
+  }
+}
