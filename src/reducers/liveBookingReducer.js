@@ -1,4 +1,4 @@
-const bookingReducer = (state = null, action) => {
+const liveBookingReducer = (state = null, action) => {
   switch (action.type) {
     case 'BOOKING_START':
       if (state === null) { state = {} }
@@ -12,4 +12,4 @@ const bookingReducer = (state = null, action) => {
   }
 }
 
-export default bookingReducer;
+export default liveBookingReducer;

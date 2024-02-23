@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link }            from 'react-router-dom'
+import { Route }      from 'react-router-dom'
 
 import { connect }       from 'react-redux';
 import * as adminActions from 'adminActions';
@@ -38,7 +38,7 @@ class Images extends Component {
 
   updateImage(image) {
     this.props.updateImage(image).then(result => {
-      
+
     }).catch(error => {
       console.log(error)
     })
@@ -49,7 +49,7 @@ class Images extends Component {
     const match  = this.props.match;
     return (
       <div className='images'>
-        <Route exact path={`${match.path}`} render={() =><AdminImages images={images} setImage={this.setImage}/>}/>
+        <Route exact path={`${match.path}`} render={() =><AdminImages images={images}/>}/>
         <Route path={`${match.path}/new`}   render={() =><ImageUpload uploadImage={this.uploadImage}/>}/>
         <Route
           path={`${match.path}/:id(\\d+)`} // (\\d+) ensures the id is an integer & prevents clash with /new

@@ -91,6 +91,20 @@ module.exports = {
     });
   },
 
+  getAllBookings: function() {
+    var requestUrl = `${THE_NEUK_API_URL}/admin/bookings`;
+
+    return axios({
+      method: "get",
+      url: requestUrl,
+      headers: { "Authorization": TOKEN }
+    }).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      throw new Error(error.message);
+    })
+  },
+
   submitBooking: function(booking, stripeToken) {
     var requestUrl = `${THE_NEUK_API_URL}/bookings`;
 
@@ -108,6 +122,46 @@ module.exports = {
         throw new Error(error.message);
       }
     });
+  },
+
+  updateAdminBooking: function(booking) {
+    var requestUrl = `${THE_NEUK_API_URL}/admin/bookings/${booking.id}`;
+
+    return axios(
+      {
+        method: 'put',
+        url: requestUrl,
+        headers: {
+          Authorization: TOKEN,
+          'Content-Type': 'application/json'
+        },
+        data: { booking }
+      }
+    ).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      console.log(error)
+    })
+  },
+
+  submitAdminBooking: function(booking) {
+    var requestUrl = `${THE_NEUK_API_URL}/admin/bookings`;
+
+    return axios(
+      {
+        method: 'post',
+        url: requestUrl,
+        headers: {
+          Authorization: TOKEN,
+          'Content-Type': 'application/json'
+        },
+        data: { booking }
+      }
+    ).then(function(response) {
+      return response.data;
+    }).catch(function(error) {
+      console.log(error)
+    })
   },
 
   getEvents: function() {
