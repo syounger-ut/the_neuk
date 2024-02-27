@@ -9,7 +9,7 @@
 This is a rails application. To start it on your local host, in your terminal run:
 
 ```
-$ git clone git@github.com:samyounger/the_neuk_api.git
+$ git clone git@github.com:samyounger/the_neuk.git
 
 $ bundle
 

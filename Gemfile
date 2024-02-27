@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.5'
+gem 'rails', '~> 7.1', '>= 7.1.3.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
@@ -10,7 +10,7 @@ gem 'rack-cors'
 # Authentication
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 gem 'jwt'
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.10.2'
 
 # Payment
 gem 'stripe', '~> 3.9', '>= 3.9.1'
@@ -18,9 +18,6 @@ gem 'stripe', '~> 3.9', '>= 3.9.1'
 # Third party
 gem 'httparty', '~> 0.15.6'
 gem 'aws-sdk', '~> 2.3' # required for paperclip
-
-# Image Handling
-gem 'paperclip', '~> 5.1'
 
 # Engines
 gem 'admin', path: 'engines/admin'
