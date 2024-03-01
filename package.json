@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/samyounger/the_neuk_front#readme",
   "dependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.23.3",
     "axios": "^1.6.7",
+    "babel-loader": "^9.1.3",
     "express": "^4.18.3",
     "font-awesome": "^4.7.0",
     "google-maps-react": "^2.0.6",
@@ -35,7 +39,6 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-loader": "^9.1.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",

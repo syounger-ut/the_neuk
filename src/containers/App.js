@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter }       from 'react-router-dom'
 
 // Redux
 import { connect } from 'react-redux';
@@ -42,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);

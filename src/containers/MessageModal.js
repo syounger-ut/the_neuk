@@ -20,4 +20,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-module.exports = connect(mapStateToProps)(MessageModal);
+export default connect(mapStateToProps)(MessageModal);
