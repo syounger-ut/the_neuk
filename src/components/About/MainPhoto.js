@@ -25,7 +25,7 @@ class MainPhoto extends Component {
   render() {
     const defaultImage = this.state.defaultImage;
 
-    let images;
+    let images = [];
 
     if(defaultImage) {
       images =  [{

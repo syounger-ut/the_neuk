@@ -6,7 +6,7 @@ class ImageSlider extends Component {
   render() {
     const locations = this.props.locations
 
-    let images;
+    let images = [];
 
     if(locations) {
       const home   = locations["Home"];
