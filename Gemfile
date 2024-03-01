@@ -24,7 +24,7 @@ gem 'admin', path: 'engines/admin'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-rails', '~> 6.1.1'
   gem 'pry'
   gem 'dotenv-rails'
 end
@@ -38,6 +38,6 @@ end
 group :test do
   gem 'factory_girl', '~> 4.8'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
   gem 'simplecov'
 end
