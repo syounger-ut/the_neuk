@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 7.1', '>= 7.1.3.2'
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.5', '>= 1.5.6'
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
 # Use Redis adapter to run Action Cable in production
