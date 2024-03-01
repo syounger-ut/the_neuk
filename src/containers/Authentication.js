@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { redirect } from "react-router-dom";
 
 import { connect } from 'react-redux';
 import * as authenticationActions from 'authenticationActions';
@@ -19,7 +20,7 @@ class Authentication extends Component {
   componentWillReceiveProps(nextProps) {
     // Redirect to home if login succeeds
     if(nextProps.loggedIn) {
-      this.props.history.push("/")
+      redirect("/")
     }
   }
 

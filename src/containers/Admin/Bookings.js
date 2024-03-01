@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route }            from 'react-router-dom'
+import { Route, redirect }  from 'react-router-dom'
 
 import { connect }       from 'react-redux';
 import * as adminActions from 'adminActions';
@@ -23,7 +23,7 @@ class Bookings extends Component {
 
   updateBooking(booking) {
     this.props.updateBooking(booking).then(result => {
-      this.props.history.push("/admin/bookings")
+      redirect("/admin/bookings")
     }).catch(error => {
       console.log(error)
     })
@@ -31,7 +31,7 @@ class Bookings extends Component {
 
   submitBooking(booking) {
     this.props.submitBooking(booking).then(result => {
-      this.props.history.push("/admin/bookings")
+      redirect("/admin/bookings")
     }).catch(error => {
       console.log(error)
     })
