@@ -8,7 +8,19 @@ require "database_cleaner"
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  SimpleCov.start
+  SimpleCov.formatter = SimpleCov::Formatter::Console
+  SimpleCov.start 'rails' do
+    add_filter "/channels/"
+    add_filter "/controllers/"
+    add_filter "/jobs/"
+    add_filter "/mailers/"
+    add_filter "/serializers/"
+    add_filter "/services/"
+    add_filter "/views/"
+    add_filter "/lib/"
+  end
+  SimpleCov.minimum_coverage 90
+  SimpleCov.minimum_coverage_by_file 90
 
   config.include FactoryBot::Syntax::Methods
 

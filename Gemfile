@@ -39,5 +39,6 @@ end
 group :test do
   gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
-  gem 'simplecov'
+  gem 'simplecov', '~> 0.22.0'
+  gem 'simplecov-console', '~> 0.9.1'
 end
