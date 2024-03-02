@@ -8,7 +8,6 @@ class SimpleCovHelper
         add_filter "/jobs/"
         add_filter "/mailers/"
         add_filter "/serializers/"
-        add_filter "/services/"
         add_filter "/views/"
         add_filter "/lib/"
       end
