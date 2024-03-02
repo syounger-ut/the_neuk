@@ -33,12 +33,11 @@ end
 group :development do
   gem "listen", "~> 3.9"
   gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
 end
 
 group :test do
-  gem "factory_girl", "~> 4.8"
-  gem "shoulda-matchers", "~> 3.1"
+  gem "factory_bot_rails", "~> 6.4", ">= 6.4.3"
   gem "database_cleaner", "~> 2.0", ">= 2.0.2"
-  gem "simplecov"
+  gem "simplecov", "~> 0.22.0"
+  gem "simplecov-console", "~> 0.9.1"
 end

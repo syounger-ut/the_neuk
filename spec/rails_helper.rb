@@ -1,4 +1,5 @@
 require "spec_helper"
+require "simple_cov_helper"
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -7,17 +8,10 @@ require "database_cleaner"
 
 ActiveRecord::Migration.maintain_test_schema!
 
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
-  end
-end
-
 RSpec.configure do |config|
-  SimpleCov.start
+  SimpleCovHelper.setup(config)
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
