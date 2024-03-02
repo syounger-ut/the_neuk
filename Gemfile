@@ -23,11 +23,11 @@ gem "aws-sdk", "~> 2.3" # required for paperclip
 gem "admin", path: "engines/admin"
 
 group :development, :test do
-  gem "byebug", platform: :mri
-  gem "rspec-rails", "~> 6.1.1"
-  gem "pry"
-  gem "dotenv-rails"
-  gem "standard"
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 6.1.1'
+  gem 'pry'
+  gem 'dotenv-rails'
+  gem 'standard'
 end
 
 group :development do
