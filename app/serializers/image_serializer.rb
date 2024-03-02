@@ -16,4 +16,5 @@ class ImageSerializer < ActiveModel::Serializer
   def original_photo_url
     object.photo.url(:original)
   end
+
 end

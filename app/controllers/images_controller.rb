@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+
   def index
     images = Image.all
     render json: images, each_serializer: ImageSerializer
@@ -6,6 +7,7 @@ class ImagesController < ApplicationController
 
   def show
     image = Image.find(params[:id])
-    render json: {photo: ImageSerializer.new(image)}
+    render json: { photo: ImageSerializer.new(image) }
   end
+
 end
