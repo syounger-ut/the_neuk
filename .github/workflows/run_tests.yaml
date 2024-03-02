@@ -1,5 +1,11 @@
 name: run-tests
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    types: [ opened, synchronize, reopened ]
+
 jobs:
   test:
     runs-on: ubuntu-latest
