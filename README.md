@@ -6,6 +6,19 @@
 
 ## Get Started
 
+Set these environment variables:
+
+```shell
+# Where to store images that get rendered to various sections of the page
+S3_BUCKET_NAME
+# Create an AWS role to access an S3 bucket
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_REGION
+# Required for JWT authentication, generate a random hex
+AUTH_SECRET
+```
+
 This is a rails application. To start it on your local host, in your terminal run:
 
 ```
@@ -30,8 +43,14 @@ Json Web Token (JWT) authentication has been implemented. Instructions on setup 
 
 ---
 
-The Neuk Client
+# The Neuk Client
 
 A property letting and management website for a property on the West Coast of Scotland, Kames.
 
 The front-end is built with ReactJS, Webpack, and Gulp.
+
+Start the project:
+
+```shell
+$ yarn start
+```
