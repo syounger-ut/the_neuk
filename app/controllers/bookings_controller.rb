@@ -12,8 +12,8 @@ class BookingsController < ApplicationController
 
   def create
     # Remove tok_visa later, for testing only
-    payment = StripeService.charge("tok_visa", params[:booking][:description], params[:booking][:price])
-    # payment = StripeService.charge(params[:stripe_token], params[:booking][:description], params[:booking][:price])
+    payment = PaymentService.charge("tok_visa", params[:booking][:description], params[:booking][:price])
+    # payment = Payment.charge(params[:stripe_token], params[:booking][:description], params[:booking][:price])
     booking = @current_user.bookings.new(booking_params)
 
     if payment && booking.save

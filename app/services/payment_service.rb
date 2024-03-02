@@ -1,4 +1,4 @@
-class StripeService
+class PaymentService
   def self.charge(stripe_token, description, price)
     Stripe::Charge.create(
       amount: price,
