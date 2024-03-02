@@ -37,8 +37,7 @@ group :development do
 end
 
 group :test do
-  gem "factory_girl", "~> 4.8"
-  gem "shoulda-matchers", "~> 3.1"
-  gem "database_cleaner", "~> 2.0", ">= 2.0.2"
-  gem "simplecov"
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
+  gem 'simplecov'
 end
