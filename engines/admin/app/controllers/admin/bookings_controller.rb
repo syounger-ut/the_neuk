@@ -1,5 +1,4 @@
 class Admin::BookingsController < Admin::ApplicationController
-
   def index
     bookings = Booking.all.order(start_date: :desc)
     render json: bookings, each_serializer: BookingSerializer
@@ -34,5 +33,4 @@ class Admin::BookingsController < Admin::ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :occupants, :special_instructions, :booking_source, :user_id)
   end
-
 end
