@@ -10,7 +10,8 @@ class User < ApplicationRecord
   # Validations
   validates :first_name, :last_name, :phone_number, presence: true
   validates :password, presence: true, on: :create
-  validates :email, presence: true, uniqueness: true, if: :email_changed?
+  validates :email, presence: true
+  validates :email, uniqueness: true, if: :email_changed?
 
   before_create :format_text
 
