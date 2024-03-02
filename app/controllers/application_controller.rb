@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   before_action :authenticate_user!
 
   def authenticate_user!
-    render json: { errors: ["Unauthorized"] }, status: 401 unless
+    render json: {errors: ["Unauthorized"]}, status: 401 unless
     !!current_user
   end
 
@@ -23,9 +23,8 @@ class ApplicationController < ActionController::API
   end
 
   def token
-    @token ||= if request.headers['Authorization'].present?
-      request.headers['Authorization'].split.last
+    @token ||= if request.headers["Authorization"].present?
+      request.headers["Authorization"].split.last
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class Location < ApplicationRecord
-
   # Associations
   has_many :images, as: :imageable
 
