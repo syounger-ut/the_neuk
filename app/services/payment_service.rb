@@ -1,10 +1,9 @@
 class PaymentService
-  def self.charge(stripe_token, description, price)
-    Stripe::Charge.create(
-      amount: price,
-      currency: "gbp",
-      source: stripe_token, # obtained with Stripe.js
-      description: description
-    )
+  def initialize(adapter)
+    @adapter = adapter
+  end
+
+  def charge(stripe_token, description, price)
+    @adapter.charge(price, stripe_token, description)
   end
 end
