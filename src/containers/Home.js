@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { redirect } from "react-router-dom";
 
 import { connect } from 'react-redux';
 import * as bookingActions from 'liveBookingActions';
@@ -22,7 +23,7 @@ class Home extends Component {
   setBooking(booking) {
     this.props.setBooking(booking)
     // Redirect to the pay page
-    this.props.history.push("/pay")
+    redirect("/pay")
   }
 
   render() {

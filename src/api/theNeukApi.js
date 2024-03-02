@@ -5,7 +5,7 @@ import axios from 'axios';
 const THE_NEUK_API_URL = 'http://localhost:3000/api'
 let TOKEN = localStorage.getItem("auth_token");
 
-module.exports = {
+export default {
   currentUser: function() {
     var requestUrl = `${THE_NEUK_API_URL}/users/me`;
 

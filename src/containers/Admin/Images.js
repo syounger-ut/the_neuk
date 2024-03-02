@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route }      from 'react-router-dom'
+import { Route, redirect }      from 'react-router-dom'
 
 import { connect }       from 'react-redux';
 import * as adminActions from 'adminActions';
@@ -22,7 +22,7 @@ class Images extends Component {
 
   uploadImage(image) {
     this.props.uploadImage(image).then(result => {
-      this.props.history.push('/admin/images')
+      redirect('/admin/images')
     }).catch(error => {
       console.log(error)
     })
@@ -30,7 +30,7 @@ class Images extends Component {
 
   deleteImage(imageId) {
     this.props.deleteImage(imageId).then(result => {
-      this.props.history.push('/admin/images')
+      redirect('/admin/images')
     }).catch(error => {
       console.log(error)
     })

@@ -4,6 +4,7 @@ var path    = require('path')
 module.exports = {
   context: __dirname + "/src",
   entry: './index.js',
+  mode: 'development',
   output: {
     path: __dirname + '/public',
     publicPath: '/',
@@ -11,8 +12,19 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   module: {
-    loaders: [
-      {test: /\.(js|jsx)$/, exclude: /node_modules/, loaders: ['babel-loader']}
+    rules: [
+      {
+        test: /\.(?:js|jsx|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "defaults" }]
+            ]
+          }
+        }
+      }
     ]
   },
   resolve: {
