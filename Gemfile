@@ -23,11 +23,11 @@ gem "aws-sdk", "~> 2.3" # required for paperclip
 gem "admin", path: "engines/admin"
 
 group :development, :test do
-  gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 6.1.1'
-  gem 'pry'
-  gem 'dotenv-rails'
-  gem 'standard'
+  gem "byebug", platform: :mri
+  gem "rspec-rails", "~> 6.1.1"
+  gem "pry"
+  gem "dotenv-rails"
+  gem "standard"
 end
 
 group :development do
@@ -37,8 +37,8 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
-  gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
-  gem 'simplecov', '~> 0.22.0'
-  gem 'simplecov-console', '~> 0.9.1'
+  gem "factory_bot_rails", "~> 6.4", ">= 6.4.3"
+  gem "database_cleaner", "~> 2.0", ">= 2.0.2"
+  gem "simplecov", "~> 0.22.0"
+  gem "simplecov-console", "~> 0.9.1"
 end
