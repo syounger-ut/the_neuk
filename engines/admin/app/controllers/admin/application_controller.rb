@@ -2,11 +2,11 @@ class Admin::ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def authenticate_user!
-    render json: {errors: ["Unauthorized"]}, status: 401 unless !!current_user
+    render json: { errors: ["Unauthorized"] }, status: 401 unless !!current_user
   end
 
   def current_user
-    @current_user ||= User.where(id: decoded_token[:id], role: "admin").first if id_found?
+    @current_user ||= User.where(id: decoded_token[:id], role: 'admin').first if id_found?
   rescue
     nil
   end
@@ -22,8 +22,9 @@ class Admin::ApplicationController < ActionController::Base
   end
 
   def token
-    @token ||= if request.headers["Authorization"].present?
-      request.headers["Authorization"].split.last
+    @token ||= if request.headers['Authorization'].present?
+      request.headers['Authorization'].split.last
     end
   end
+
 end

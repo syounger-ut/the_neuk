@@ -5,14 +5,14 @@ require "admin/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name = "admin"
-  s.version = Admin::VERSION
-  s.authors = ["samyounger"]
-  s.email = ["sam.younger@gmail.com"]
-  s.homepage = ""
-  s.summary = ""
+  s.name        = "admin"
+  s.version     = Admin::VERSION
+  s.authors     = ["samyounger"]
+  s.email       = ["sam.younger@gmail.com"]
+  s.homepage    = ""
+  s.summary     = ""
   s.description = ""
-  s.license = "MIT"
+  s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
