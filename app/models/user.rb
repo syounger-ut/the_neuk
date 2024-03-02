@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :bookings
 
   # Enums
-  enum role: [ :guest, :family, :admin ]
+  enum role: [:guest, :family, :admin]
 
   # Validations
   validates :first_name, :last_name, :phone_number, presence: true
@@ -17,9 +17,8 @@ class User < ApplicationRecord
   private
 
   def format_text
-    self.first_name = self.first_name.downcase
-    self.last_name  = self.last_name.downcase
-    self.email      = self.email.downcase
+    self.first_name = first_name.downcase
+    self.last_name = last_name.downcase
+    self.email = email.downcase
   end
-
 end

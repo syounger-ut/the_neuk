@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -19,17 +19,15 @@ Bundler.require(*Rails.groups)
 
 module TheNeukApi
   class Application < Rails::Application
-
-    config.time_zone = 'London'
+    config.time_zone = "London"
     config.api_only = true
-    config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join("lib")
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+        origins "*"
+        resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
-
   end
 end
