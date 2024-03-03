@@ -10,9 +10,13 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  devtool: 'inline-source-map',
+  devtool: "source-map",
   module: {
     rules: [
+      // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
+      { test: /\.tsx?$/, loader: "ts-loader" },
+      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      { test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.(?:js|jsx|mjs|cjs)$/,
         exclude: /node_modules/,
@@ -24,7 +28,7 @@ module.exports = {
             ]
           }
         }
-      }
+      },
     ]
   },
   resolve: {
@@ -39,6 +43,6 @@ module.exports = {
       path.resolve(__dirname, 'src/containers'),
       path.resolve(__dirname, 'src/actions')
     ],
-    extensions: [".js", ".json", ".jsx", ".scss", ".css"]
+    extensions: [".js", ".json", ".jsx", ".ts", ".tsx", ".scss", ".css"]
   }
 }
