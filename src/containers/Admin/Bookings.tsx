@@ -9,7 +9,17 @@ import AdminBookings from 'Admin/Bookings/Bookings';
 import AdminBooking from 'Admin/Bookings/Booking';
 import AdminNewBooking from 'Admin/Bookings/New';
 
-class Bookings extends React.Component {
+type Props = {
+  getBookings: () => void;
+  getUsers: () => void;
+  updateBooking: (booking: any) => any;
+  submitBooking: (booking: any) => any;
+  bookings: any[];
+  users: any[];
+  match: Record<string, string>;
+}
+
+class Bookings extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.updateBooking = this.updateBooking.bind(this);

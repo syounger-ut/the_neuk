@@ -2,11 +2,27 @@ import * as React from 'react';
 
 import ImageGallery from 'react-image-gallery';
 
-class MainPhoto extends React.Component {
+type Props = {
+  locations: { defaultLocation: any };
+}
+
+type State = {
+  defaultImage: {
+    name: string;
+    description: string;
+    original_photo_url: string;
+  };
+}
+
+class MainPhoto extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      defaultImage: ''
+      defaultImage: {
+        name: '',
+        description: '',
+        original_photo_url: '',
+      },
     }
   }
 
@@ -25,7 +41,7 @@ class MainPhoto extends React.Component {
   render() {
     const defaultImage = this.state.defaultImage;
 
-    let images = [];
+    let images: any[] = [];
 
     if (defaultImage) {
       images = [{
