@@ -10,7 +10,18 @@ import LocationsTile from 'About/LocationsTile';
 import MapContainer from 'About/MapContainer';
 import ThingsToDo from 'About/ThingsToDo';
 
-class About extends React.Component {
+type Props = {
+  getThingsToDo: () => void;
+  getLocations: () => void;
+  setDefaultLocation: (image: any) => void;
+}
+
+type State = {
+  locations: string;
+  thingsToDo: string;
+}
+
+class About extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {

@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-class ImageThumb extends React.Component {
+type Props = {
+  changeImage: (image: any) => void;
+  images: any[];
+}
+
+class ImageThumb extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.changeImage = this.changeImage.bind(this);

@@ -3,7 +3,12 @@ import * as React from 'react';
 // Components
 import ImageThumb from 'About/ImageThumb';
 
-class LocationsTile extends React.Component {
+type Props = {
+  locations: any[];
+  setDefaultLocation: (image: any) => void;
+}
+
+class LocationsTile extends React.Component<Props> {
   render() {
     const locations = Object.assign({}, this.props.locations);
     let locationsTile;
