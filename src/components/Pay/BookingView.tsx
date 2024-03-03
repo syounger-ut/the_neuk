@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 
 import moment from 'moment';
 
-class BookingView extends Component {
+class BookingView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,24 +16,24 @@ class BookingView extends Component {
 
   componentDidMount() {
     const booking = this.props.booking;
-    if(booking) { this.setBookingState(booking) }
+    if (booking) { this.setBookingState(booking) }
   }
 
   componentWillReceiveProps(nextProps) {
     const booking = nextProps.booking;
-    if(booking) { this.setBookingState(booking) }
+    if (booking) { this.setBookingState(booking) }
   }
 
   setBookingState(booking) {
     Object.entries(booking).forEach(([key, value]) => {
-      this.setState({[key]: value})
+      this.setState({ [key]: value })
     });
   }
 
   render() {
     const booking = this.state;
     const start_date = booking.start_date !== "" ? moment(booking.start_date).format("DD-MM-YYYY") : "";
-    const end_date   = booking.end_date !== "" ? moment(booking.end_date).format("DD-MM-YYYY") : "";
+    const end_date = booking.end_date !== "" ? moment(booking.end_date).format("DD-MM-YYYY") : "";
     return (
       <div className="booking">
         <h4>Your Booking</h4>

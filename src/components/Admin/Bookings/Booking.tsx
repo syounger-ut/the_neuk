@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 // Components
 
-class AdminBooking extends Component {
+class AdminBooking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,16 +18,16 @@ class AdminBooking extends Component {
   }
 
   componentDidMount() {
-    const id     = this.props.match.params.id;
+    const id = this.props.match.params.id;
     const bookings = this.props.bookings;
-    if(bookings) {
+    if (bookings) {
       const booking = bookings[id];
       this.setBookingState(booking)
     }
   }
 
   handleChange(event) {
-    let key   = event.target.name;
+    let key = event.target.name;
     let value = event.target.value;
     this.setState({
       [key]: value
@@ -41,10 +41,10 @@ class AdminBooking extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({ edit: false })
-    const id    = this.props.match.params.id;
+    const id = this.props.match.params.id;
     if (nextProps.bookings) {
       const booking = nextProps.bookings[id];
-      if(booking) { this.setBookingState(booking) }
+      if (booking) { this.setBookingState(booking) }
     }
   }
 
@@ -81,32 +81,32 @@ class AdminBooking extends Component {
             onChange={this.handleChange}
             placeholder="Start Date" /></span>
         </label>
-          <label>
-            End Date:
-            <span><input
-              type="date"
-              name="end_date"
-              value={end_date}
-              onChange={this.handleChange}
-              placeholder="End Date" /></span>
-          </label>
-          <label>
-            Occupants:
-            <span><input
-              name="occupants"
-              value={occupants}
-              onChange={this.handleChange}
-              placeholder="Occupants" /></span>
-          </label>
-          <label>
-            Special Instructions:
-            <span><textarea
-              name="special_instructions"
-              value={special_instructions}
-              onChange={this.handleChange}
-              placeholder="Special Instructions" /></span>
-          </label>
-        <input className="button" type="submit" value="Submit"/>
+        <label>
+          End Date:
+          <span><input
+            type="date"
+            name="end_date"
+            value={end_date}
+            onChange={this.handleChange}
+            placeholder="End Date" /></span>
+        </label>
+        <label>
+          Occupants:
+          <span><input
+            name="occupants"
+            value={occupants}
+            onChange={this.handleChange}
+            placeholder="Occupants" /></span>
+        </label>
+        <label>
+          Special Instructions:
+          <span><textarea
+            name="special_instructions"
+            value={special_instructions}
+            onChange={this.handleChange}
+            placeholder="Special Instructions" /></span>
+        </label>
+        <input className="button" type="submit" value="Submit" />
       </form>
     )
   }

@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 
-class Booking extends Component {
+class Booking extends React.Component {
   render() {
     const user = this.props.user;
 
     let bookings;
-    if(user) {
+    if (user) {
       bookings = user.bookings.map(booking => {
         return (
           <li key={booking.id} className="booking">

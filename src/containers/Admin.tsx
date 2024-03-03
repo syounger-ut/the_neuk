@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { Route }            from 'react-router-dom'
+import * as React from 'react';
+import { Route } from 'react-router-dom'
 
-import { connect }       from 'react-redux';
+import { connect } from 'react-redux';
 import * as adminActions from 'adminActions';
 
 // Components
 import AdminNav from 'Admin/Nav';
-import Home     from 'Admin/Home';
+import Home from 'Admin/Home';
 import Bookings from 'Admin/Bookings';
-import Images   from 'Admin/Images';
+import Images from 'Admin/Images';
 
-class Admin extends Component{
+class Admin extends React.Component {
   componentWillMount() {
     this.props.getUsers();
   }
@@ -19,10 +19,10 @@ class Admin extends Component{
     const user = this.props.user;
     return (
       <div className='admin-template'>
-        <AdminNav/>
-        <Route exact path='/admin'      component={Home}/>
-        <Route path='/admin/images'     component={Images}/>
-        <Route path='/admin/bookings'   component={Bookings}/>
+        <AdminNav />
+        <Route exact path='/admin' component={Home} />
+        <Route path='/admin/images' component={Images} />
+        <Route path='/admin/bookings' component={Bookings} />
       </div>
     );
   }

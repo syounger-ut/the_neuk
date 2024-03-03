@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 // Components
 import ImageThumb from 'About/ImageThumb';
 
-class LocationsTile extends Component {
+class LocationsTile extends React.Component {
   render() {
     const locations = Object.assign({}, this.props.locations);
     let locationsTile;
     let images;
 
-    if(locations) {
+    if (locations) {
 
       // Remove the default location from the tile
 
@@ -21,7 +21,7 @@ class LocationsTile extends Component {
             <h3>{location.name}</h3>
             <ImageThumb
               images={location.images}
-              changeImage={this.props.setDefaultLocation}/>
+              changeImage={this.props.setDefaultLocation} />
           </section>
         );
       });

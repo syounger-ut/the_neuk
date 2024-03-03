@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import * as React from 'react';
 import ImageGallery from 'react-image-gallery';
 
-class ImageSlider extends Component {
+class ImageSlider extends React.Component {
 
   render() {
     const locations = this.props.locations
 
     let images = [];
 
-    if(locations) {
-      const home   = locations["Home"];
+    if (locations) {
+      const home = locations["Home"];
 
       images = Object.entries(home.images).map(([index, image]) => {
         return {

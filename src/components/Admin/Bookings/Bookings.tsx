@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Link }             from 'react-router-dom'
+import * as React from 'react';
+import { Link } from 'react-router-dom'
 
 // Components
 
-class AdminBookings extends Component {
+class AdminBookings extends React.Component {
   render() {
     const upcomingBookingsProp = this.props.upcomingBookings;
     const pastBookingsProp = this.props.pastBookings;
@@ -11,7 +11,7 @@ class AdminBookings extends Component {
     let upcomingBookings;
     let pastBookings;
 
-    if(upcomingBookingsProp) {
+    if (upcomingBookingsProp) {
       upcomingBookings = Object.keys(upcomingBookingsProp).map((key, index) => {
         let booking = upcomingBookingsProp[key];
         return (
@@ -32,7 +32,7 @@ class AdminBookings extends Component {
       })
     }
 
-    if(pastBookingsProp) {
+    if (pastBookingsProp) {
       pastBookings = Object.keys(pastBookingsProp).map((key, index) => {
         let booking = pastBookingsProp[key];
         return (

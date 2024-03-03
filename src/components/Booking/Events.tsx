@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import moment from 'moment';
 
-class Events extends Component {
+class Events extends React.Component {
   render() {
     let events;
-    if(this.props.events) {
+    if (this.props.events) {
       events = Object.entries(this.props.events).map(([key, event]) => {
         return (
           <li key={key} className="event">
-            <div className="eventImage"><img src={ event.images ? event.images[0].url : ""}/></div>
+            <div className="eventImage"><img src={event.images ? event.images[0].url : ""} /></div>
             <p>Name</p>
             <p>{event.name}</p>
             <p>Description</p>

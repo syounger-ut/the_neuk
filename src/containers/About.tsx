@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { connect } from 'react-redux';
 import * as locationActions from 'locationActions';
@@ -10,7 +10,7 @@ import LocationsTile from 'About/LocationsTile';
 import MapContainer from 'About/MapContainer';
 import ThingsToDo from 'About/ThingsToDo';
 
-class About extends Component {
+class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,8 +42,8 @@ class About extends Component {
         <h1>Gallery</h1>
         <MainPhoto locations={locations} setDefaultLocation={setDefaultLocation} />
         <LocationsTile locations={locations} setDefaultLocation={setDefaultLocation} />
-        <MapContainer/>
-        <ThingsToDo thingsToDo={thingsToDo}/>
+        <MapContainer />
+        <ThingsToDo thingsToDo={thingsToDo} />
       </section>
     );
   }

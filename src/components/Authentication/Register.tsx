@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import * as authenticationActions from 'authenticationActions';
 
-class Register extends Component {
+class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,8 +17,8 @@ class Register extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event){
-    let key   = event.target.name;
+  handleChange(event) {
+    let key = event.target.name;
     let value = event.target.value;
     this.setState({
       [key]: value
@@ -31,7 +31,7 @@ class Register extends Component {
   }
 
   render() {
-    const {username, first_name, last_name, email, phone_number, password} = this.state;
+    const { username, first_name, last_name, email, phone_number, password } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -78,7 +78,7 @@ class Register extends Component {
             onChange={this.handleChange}
             placeholder="Password" /></span>
         </label>
-        <input className="button" type="submit" value="Submit"/>
+        <input className="button" type="submit" value="Submit" />
       </form>
     )
   }

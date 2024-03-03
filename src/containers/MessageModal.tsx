@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { connect } from 'react-redux';
 
-class MessageModal extends Component{
+class MessageModal extends React.Component {
   render() {
     const message = this.props.message;
     const className = `message ${message.style}`;

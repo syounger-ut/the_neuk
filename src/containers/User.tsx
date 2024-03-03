@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 // Redux
-import { connect }      from 'react-redux'
+import { connect } from 'react-redux'
 import * as userActions from 'userActions';
 
 // Components
-import UpdateUser  from 'User/UpdateUser';
+import UpdateUser from 'User/UpdateUser';
 import MessageModal from 'MessageModal';
 
-class User extends Component {
+class User extends React.Component {
   render() {
-    const user       = this.props.user;
+    const user = this.props.user;
     const updateUser = this.props.updateUser;
 
     const message = this.props.message;
     let updateMessage;
-    if(message) {
-      updateMessage = <MessageModal message={message.text} style={message.style}/>;
+    if (message) {
+      updateMessage = <MessageModal message={message.text} style={message.style} />;
     }
 
     return (
       <div>
         {updateMessage}
-        <UpdateUser user={user} updateUser={updateUser}/>
+        <UpdateUser user={user} updateUser={updateUser} />
       </div>
     )
   }

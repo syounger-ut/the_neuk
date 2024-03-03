@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { redirect } from "react-router-dom";
 
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import * as authenticationActions from 'authenticationActions';
 import Login from 'Authentication/Login';
 import Register from 'Authentication/Register';
 
-class Authentication extends Component {
+class Authentication extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ class Authentication extends Component {
 
   componentWillReceiveProps(nextProps) {
     // Redirect to home if login succeeds
-    if(nextProps.loggedIn) {
+    if (nextProps.loggedIn) {
       redirect("/")
     }
   }
@@ -35,10 +35,10 @@ class Authentication extends Component {
     const toggleLogin = this.toggleLogin;
 
     let form;
-    if(loginStatus) {
-      form = <Login login={this.props.login}/>
+    if (loginStatus) {
+      form = <Login login={this.props.login} />
     } else {
-      form = <Register register={this.props.register}/>
+      form = <Register register={this.props.register} />
     }
     return (
       <div className="login">

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
-export class MapContainer extends Component {
+export class MapContainer extends React.Component {
   render() {
     const style = {
       width: '100%',
@@ -22,7 +22,7 @@ export class MapContainer extends Component {
               lng: -5.235913
             }}>
 
-            <Marker position={{lat: 55.885260, lng: -5.235913}} />
+            <Marker position={{ lat: 55.885260, lng: -5.235913 }} />
           </Map>
         </section>
         <p>Address: The Neuk, Kames, Tighnabruaich, Argyll, PA212AG, United Kingdom</p>

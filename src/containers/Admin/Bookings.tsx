@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Route, redirect }  from 'react-router-dom'
+import * as React from 'react';
+import { Route, redirect } from 'react-router-dom'
 
-import { connect }       from 'react-redux';
+import { connect } from 'react-redux';
 import * as adminActions from 'adminActions';
 
 // Components
@@ -9,7 +9,7 @@ import AdminBookings from 'Admin/Bookings/Bookings';
 import AdminBooking from 'Admin/Bookings/Booking';
 import AdminNewBooking from 'Admin/Bookings/New';
 
-class Bookings extends Component {
+class Bookings extends React.Component {
   constructor(props) {
     super(props);
     this.updateBooking = this.updateBooking.bind(this);
@@ -59,13 +59,13 @@ class Bookings extends Component {
         return obj;
       }, {});
 
-      return filtered
+    return filtered
   }
 
   render() {
     const bookings = this.props.bookings;
     const users = this.props.users;
-    const match  = this.props.match;
+    const match = this.props.match;
 
     let upcomingBookings;
     let pastBookings;
@@ -80,23 +80,23 @@ class Bookings extends Component {
         <Route
           exact path={`${match.path}`}
           render={(props) => <AdminBookings {...props}
-          upcomingBookings={upcomingBookings}
-          pastBookings={pastBookings}
-          />}/>
+            upcomingBookings={upcomingBookings}
+            pastBookings={pastBookings}
+          />} />
         <Route
           path={`${match.path}/:id(\\d+)`} // (\\d+) ensures the id is an integer & prevents clash with /new
           render={
             (props) => <AdminBooking {...props}
-            bookings={bookings}
-            updateBooking={this.updateBooking}
-          />}/>
+              bookings={bookings}
+              updateBooking={this.updateBooking}
+            />} />
         <Route
           path={`${match.path}/new`}
           render={
             (props) => <AdminNewBooking {...props}
-            submitBooking={this.submitBooking}
-            users={users}
-          />}/>
+              submitBooking={this.submitBooking}
+              users={users}
+            />} />
       </div>
     );
   }

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-class ThingsToDo extends Component {
+class ThingsToDo extends React.Component {
   render() {
     const thingsToDo = this.props.thingsToDo;
 
     let thingsToDoList;
 
-    if(thingsToDo) {
+    if (thingsToDo) {
       thingsToDoList = Object.entries(thingsToDo).map(([index, thingToDo]) => {
         let image = thingToDo.image || {};
 

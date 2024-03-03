@@ -3,7 +3,7 @@ var path    = require('path')
 
 module.exports = {
   context: __dirname + "/src",
-  entry: './index.js',
+  entry: './index.tsx',
   mode: 'development',
   output: {
     path: __dirname + '/public',
@@ -14,21 +14,9 @@ module.exports = {
   module: {
     rules: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.(t|j)sx?$/, use: { loader: 'ts-loader' }, exclude: /node_modules/ },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { test: /\.js$/, loader: "source-map-loader" },
-      {
-        test: /\.(?:js|jsx|mjs|cjs)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
-      },
+      { enforce: "pre", test: /\.js$/, exclude: /node_modules/, loader: "source-map-loader" }
     ]
   },
   resolve: {
@@ -44,5 +32,9 @@ module.exports = {
       path.resolve(__dirname, 'src/actions')
     ],
     extensions: [".js", ".json", ".jsx", ".ts", ".tsx", ".scss", ".css"]
-  }
+  },
+  externals: {
+    react: "React",
+    "react-dom": "ReactDOM",
+  },
 }

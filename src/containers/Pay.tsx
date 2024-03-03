@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { connect } from 'react-redux';
 
 // Components
-import Stripe      from 'Pay/Stripe';
+import Stripe from 'Pay/Stripe';
 import BookingView from 'Pay/BookingView';
 
-class Pay extends Component {
+class Pay extends React.Component {
   render() {
     const booking = this.props.booking;
-    const user    = this.props.user;
+    const user = this.props.user;
 
     return (
       <section className="pay">
-        <BookingView booking={booking}/>
-        <Stripe booking={booking} user={user}/>
+        <BookingView booking={booking} />
+        <Stripe booking={booking} user={user} />
       </section>
     );
   }

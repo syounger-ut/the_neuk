@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import ImageGallery from 'react-image-gallery';
 
-class MainPhoto extends Component {
+class MainPhoto extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,13 +11,13 @@ class MainPhoto extends Component {
   }
 
   componentWillMount() {
-    if(this.props.locations) {
+    if (this.props.locations) {
       this.setState({ defaultImage: this.props.locations.defaultLocation })
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.locations) {
+    if (nextProps.locations) {
       this.setState({ defaultImage: nextProps.locations.defaultLocation })
     }
   }
@@ -27,15 +27,15 @@ class MainPhoto extends Component {
 
     let images = [];
 
-    if(defaultImage) {
-      images =  [{
-          original: defaultImage.original_photo_url
+    if (defaultImage) {
+      images = [{
+        original: defaultImage.original_photo_url
       }]
     }
 
     return (
       <section className="image-gallery-container">
-        <ImageGallery items={images} showThumbnails={false} showPlayButton={false}/>
+        <ImageGallery items={images} showThumbnails={false} showPlayButton={false} />
         <h4>{defaultImage.name}</h4>
         <p>{defaultImage.description}</p>
       </section>

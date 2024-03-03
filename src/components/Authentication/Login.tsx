@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Link }             from 'react-router-dom';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import * as authenticationActions from 'authenticationActions';
 
-class Login extends Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,8 +14,8 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event){
-    let key   = event.target.name;
+  handleChange(event) {
+    let key = event.target.name;
     let value = event.target.value;
     this.setState({
       [key]: value
@@ -51,7 +51,7 @@ class Login extends Component {
             value={password}
             placeholder="Password" /></span>
         </label>
-        <input className="button" type="submit" value="Submit"/>
+        <input className="button" type="submit" value="Submit" />
       </form>
     );
   };

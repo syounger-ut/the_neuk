@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { connect } from 'react-redux';
 import * as eventActions from 'eventActions';
 
 // Components
 import Booking from 'Booking/Booking';
-import Events  from 'Booking/Events';
+import Events from 'Booking/Events';
 
-class Bookings extends Component {
+class Bookings extends React.Component {
 
   componentDidMount() {
     this.props.findEvents();
   }
 
   render() {
-    const user   = this.props.currentUser;
+    const user = this.props.currentUser;
     const events = this.props.events;
     return (
       <section className="bookings">
         <h1>Events Container</h1>
-        <Events events={events}/>
+        <Events events={events} />
         <h1>Bookings</h1>
-        <Booking user={user}/>
+        <Booking user={user} />
       </section>
     );
   }
@@ -31,7 +31,7 @@ class Bookings extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.currentUser,
-    events:      state.events
+    events: state.events
   }
 };
 

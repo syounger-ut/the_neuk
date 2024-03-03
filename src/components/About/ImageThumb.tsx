@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-class ImageThumb extends Component {
+class ImageThumb extends React.Component {
   constructor(props) {
     super(props);
     this.changeImage = this.changeImage.bind(this);
@@ -17,13 +17,13 @@ class ImageThumb extends Component {
 
     let imageTile;
 
-    if(images) {
+    if (images) {
       imageTile = Object.entries(images).map(([index, image]) => {
         return (
           <img
             key={index}
             src={`http:${image.thumb_photo_url}`}
-            onClick={(event) => {this.changeImage(image, event)}}/>
+            onClick={(event) => { this.changeImage(image, event) }} />
         );
       });
     }

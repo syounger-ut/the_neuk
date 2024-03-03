@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Link }             from 'react-router-dom'
+import * as React from 'react';
+import { Link } from 'react-router-dom'
 
-class Nav extends Component {
+class Nav extends React.Component {
   render() {
-    let user   = this.props.user;
+    let user = this.props.user;
     let logout = this.props.logout;
     let loginButton;
     if (user && user.role === 'admin') {
@@ -16,7 +16,7 @@ class Nav extends Component {
           </ul>
         </li>
       )
-    } else if(user) {
+    } else if (user) {
       loginButton = (
         <li>
           <Link to='/user'>{user.email}</Link>
@@ -35,7 +35,7 @@ class Nav extends Component {
       <nav>
         {/* THESE TWO BUTTONS ARE FOR MOBILE RESPONSIVE. NOT SET UP YET */}
         <label htmlFor='show-menu' className='show-menu'>Show Menu</label>
-        <input type='checkbox' id='show-menu' role='button'/>
+        <input type='checkbox' id='show-menu' role='button' />
         <ul>
           {loginButton}
           <li><Link to='/bookings'>Bookings page</Link></li>

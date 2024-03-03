@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Link }             from 'react-router-dom'
+import * as React from 'react';
+import { Link } from 'react-router-dom'
 
 // Components
 
-class AdminImages extends Component {
+class AdminImages extends React.Component {
   render() {
     const images = this.props.images;
     let imagesTile;
-    if(images) {
+    if (images) {
       imagesTile = Object.entries(images).map(([index, image]) => {
         let imgUrl = `/admin/images/${image.id}`;
         return (
           <li key={index} className="image">
             <Link to={imgUrl}>
-              <img src={image.thumb_photo_url}/>
+              <img src={image.thumb_photo_url} />
             </Link>
           </li>
         )

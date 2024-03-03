@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { Link }             from 'react-router-dom'
+import * as React from 'react';
+import { Link } from 'react-router-dom'
 
 // Components
 
-class ImageUpload extends Component {
+class ImageUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name:        '',
+      name: '',
       description: '',
-      file:        ''
+      file: ''
     }
-    this.handleChange      = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
-    this.handleSubmit      = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     const target = event.target;
-    const name   = target.name;
+    const name = target.name;
     this.setState({
       [name]: target.value
     });
@@ -66,9 +66,9 @@ class ImageUpload extends Component {
               id='photoFile'
               name='file'
               multiple={true}
-              onChange={this.handleImageChange}/></span>
+              onChange={this.handleImageChange} /></span>
           </label>
-          <input className='button' type='submit' value='Submit'/>
+          <input className='button' type='submit' value='Submit' />
         </form>
       </div>
     );

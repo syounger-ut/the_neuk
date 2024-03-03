@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Link }             from 'react-router-dom'
+import * as React from 'react';
+import { Link } from 'react-router-dom'
 
-class AdminNav extends Component {
+class AdminNav extends React.Component {
   render() {
     return (
       <nav className='admin-nav'>

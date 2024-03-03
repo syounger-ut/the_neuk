@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 // Components
 
-class AdminHome extends Component {
+class AdminHome extends React.Component {
   render() {
     return (
       <div className='admin'>

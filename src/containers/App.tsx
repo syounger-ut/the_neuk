@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 // Redux
 import { connect } from 'react-redux';
 import * as authenticationActions from 'authenticationActions';
 
 // Components
-import Header      from 'Header';
-import Main        from 'Main';
+import Header from 'Header';
+import Main from 'Main';
 
-class App extends Component {
+class App extends React.Component {
 
   componentWillMount() {
     const token = localStorage.getItem('auth_token');
-    if(token) {
+    if (token) {
       this.props.authenticateToken();
     }
   }

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Route, redirect }      from 'react-router-dom'
+import * as React from 'react';
+import { Route, redirect } from 'react-router-dom'
 
-import { connect }       from 'react-redux';
+import { connect } from 'react-redux';
 import * as adminActions from 'adminActions';
 
 // Components
 import ImageUpload from 'Admin/Images/Upload';
 import AdminImages from 'Admin/Images/Images';
-import AdminImage  from 'Admin/Images/Image';
+import AdminImage from 'Admin/Images/Image';
 
-class Images extends Component {
+class Images extends React.Component {
   constructor(props) {
     super(props);
     this.uploadImage = this.uploadImage.bind(this);
@@ -46,11 +46,11 @@ class Images extends Component {
 
   render() {
     const images = this.props.images;
-    const match  = this.props.match;
+    const match = this.props.match;
     return (
       <div className='images'>
-        <Route exact path={`${match.path}`} render={() =><AdminImages images={images}/>}/>
-        <Route path={`${match.path}/new`}   render={() =><ImageUpload uploadImage={this.uploadImage}/>}/>
+        <Route exact path={`${match.path}`} render={() => <AdminImages images={images} />} />
+        <Route path={`${match.path}/new`} render={() => <ImageUpload uploadImage={this.uploadImage} />} />
         <Route
           path={`${match.path}/:id(\\d+)`} // (\\d+) ensures the id is an integer & prevents clash with /new
           render={
@@ -58,7 +58,7 @@ class Images extends Component {
               images={images}
               deleteImage={this.deleteImage}
               updateImage={this.updateImage}
-            />}/>
+            />} />
       </div>
     );
   }

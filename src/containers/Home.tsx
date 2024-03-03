@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import * as React from "react";
 import { redirect } from "react-router-dom";
 
 import { connect } from 'react-redux';
@@ -6,11 +6,11 @@ import * as bookingActions from 'liveBookingActions';
 import * as locationActions from 'locationActions';
 
 // Components
-import Calendar    from 'Home/Calendar'
-import BookingForm from 'Home/BookingForm'
-import ImageSlider from 'Home/ImageSlider'
+import Calendar from 'Home/Calendar';
+import BookingForm from 'Home/BookingForm';
+import ImageSlider from 'Home/ImageSlider';
 
-class Home extends Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.setBooking = this.setBooking.bind(this);
@@ -28,11 +28,11 @@ class Home extends Component {
 
   render() {
     const bookingStart = this.props.bookingStart;
-    const bookingEnd   = this.props.bookingEnd;
-    const booking      = this.props.booking;
-    const user         = this.props.user;
-    const setBooking   = this.setBooking;
-    const locations    = this.props.locations;
+    const bookingEnd = this.props.bookingEnd;
+    const booking = this.props.booking;
+    const user = this.props.user;
+    const setBooking = this.setBooking;
+    const locations = this.props.locations;
 
     return (
       <div className="home">
@@ -54,12 +54,12 @@ class Home extends Component {
             className="calendar"
             booking={booking}
             bookingStart={bookingStart}
-            bookingEnd={bookingEnd}/>
+            bookingEnd={bookingEnd} />
           <BookingForm
             className="bookingForm"
             booking={booking}
             user={user}
-            setBooking={setBooking}/>
+            setBooking={setBooking} />
         </div>
       </div>
     );
@@ -78,7 +78,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     bookingStart: date => dispatch(bookingActions.setBookingStart(date)),
-    bookingEnd:   date => dispatch(bookingActions.setBookingEnd(date)),
+    bookingEnd: date => dispatch(bookingActions.setBookingEnd(date)),
     setBooking: booking => dispatch(bookingActions.setBooking(booking)),
     getLocations: () => dispatch(locationActions.getLocations())
   }
