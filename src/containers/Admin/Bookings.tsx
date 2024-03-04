@@ -1,22 +1,26 @@
 import * as React from 'react';
-import { Route, redirect } from 'react-router-dom'
+import {Route, redirect, useLocation} from 'react-router-dom'
 
 import { connect } from 'react-redux';
-import * as adminActions from 'adminActions';
+import * as adminActions from '../../actions/adminActions';
 
 // Components
-import AdminBookings from 'Admin/Bookings/Bookings';
-import AdminBooking from 'Admin/Bookings/Booking';
-import AdminNewBooking from 'Admin/Bookings/New';
+import AdminBookings from '../../components/Admin/Bookings/Bookings';
+import AdminBooking from '../../components/Admin/Bookings/Booking';
+import AdminNewBooking from '../../components/Admin/Bookings/New';
+
+type Booking = {
+  id: number;
+  start_date: string;
+}
 
 type Props = {
   getBookings: () => void;
   getUsers: () => void;
   updateBooking: (booking: any) => any;
   submitBooking: (booking: any) => any;
-  bookings: any[];
+  bookings: Booking[];
   users: any[];
-  match: Record<string, string>;
 }
 
 class Bookings extends React.Component<Props> {
@@ -50,7 +54,7 @@ class Bookings extends React.Component<Props> {
   sortBookings(bookings, direction) {
     let currentTime = new Date(Date.now());
 
-    const filtered = Object.values(bookings)
+    const filtered = Object.values<Booking>(bookings)
       .filter(booking => {
         let bookingDate = new Date(booking.start_date);
         if (direction === ">") {
@@ -62,9 +66,10 @@ class Bookings extends React.Component<Props> {
       .reduce((obj, booking) => {
 
         // Sort the bookings by the original order
-        let bookingId = Object.entries(bookings).find(([id, bking]) => {
+        let bookingId = Object.entries<Booking>(bookings).find(([id, bking]) => {
           return bking.id === booking.id
-        })
+        }) || -1;
+
         obj[bookingId[0]] = booking;
         return obj;
       }, {});
@@ -75,7 +80,7 @@ class Bookings extends React.Component<Props> {
   render() {
     const bookings = this.props.bookings;
     const users = this.props.users;
-    const match = this.props.match;
+    const { pathname } = useLocation();
 
     let upcomingBookings;
     let pastBookings;
@@ -88,25 +93,18 @@ class Bookings extends React.Component<Props> {
     return (
       <div>
         <Route
-          exact path={`${match.path}`}
-          render={(props) => <AdminBookings {...props}
-            upcomingBookings={upcomingBookings}
-            pastBookings={pastBookings}
-          />} />
+          path={`${pathname}`}>
+          <AdminBookings pastBookings={pastBookings} upcomingBookings={upcomingBookings} />
+        </Route>
         <Route
-          path={`${match.path}/:id(\\d+)`} // (\\d+) ensures the id is an integer & prevents clash with /new
-          render={
-            (props) => <AdminBooking {...props}
-              bookings={bookings}
-              updateBooking={this.updateBooking}
-            />} />
+          // (\\d+) ensures the id is an integer & prevents clash with /new
+          path={`${pathname}/:id(\\d+)`}>
+          <AdminBooking bookings={bookings} updateBooking={this.updateBooking} />
+        </Route>
         <Route
-          path={`${match.path}/new`}
-          render={
-            (props) => <AdminNewBooking {...props}
-              submitBooking={this.submitBooking}
-              users={users}
-            />} />
+          path={`${pathname}/new`}>
+          <AdminNewBooking submitBooking={this.submitBooking} users={users} />
+        </Route>
       </div>
     );
   }

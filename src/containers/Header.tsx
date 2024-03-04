@@ -2,12 +2,22 @@ import * as React from 'react';
 
 // Redux
 import { connect } from 'react-redux'
-import * as authenticationActions from 'authenticationActions';
+import * as authenticationActions from '../actions/authenticationActions';
 
 // Components
-import Nav from 'Header/Nav';
+import Nav from '../components/Header/Nav';
 
-class Header extends React.Component {
+type Props = {
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    role: string;
+  };
+  logout: () => void;
+}
+
+class Header extends React.Component<Props> {
   render() {
     const user = this.props.user;
     const logout = this.props.logout;

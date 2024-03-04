@@ -2,7 +2,25 @@ import * as React from 'react';
 
 import moment from 'moment';
 
-class BookingView extends React.Component {
+type Props = {
+  booking: {
+    start_date: string;
+    end_date: string;
+    occupants: string;
+    special_instructions: string;
+    price: string;
+  };
+}
+
+type State = {
+  start_date: string;
+  end_date: string;
+  occupants: string;
+  special_instructions: string;
+  price: string;
+}
+
+class BookingView extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +44,10 @@ class BookingView extends React.Component {
 
   setBookingState(booking) {
     Object.entries(booking).forEach(([key, value]) => {
-      this.setState({ [key]: value })
+      this.setState({
+        ...this.state,
+        [key]: value,
+      })
     });
   }
 

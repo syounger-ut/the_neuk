@@ -1,6 +1,6 @@
-const bookingsReducer = (state = null, action) => {
+const bookingsReducer = (state = {}, action) => {
   switch (action.type) {
-    case "SET_BOOKINGS":
+    case 'SET_BOOKINGS':
       let initialState = {}
       action.payload.forEach(function(booking) {
         initialState[booking.id] = booking;

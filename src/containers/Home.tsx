@@ -2,15 +2,41 @@ import * as React from "react";
 import { redirect } from "react-router-dom";
 
 import { connect } from 'react-redux';
-import * as bookingActions from 'liveBookingActions';
-import * as locationActions from 'locationActions';
+import * as bookingActions from '../actions/liveBookingActions';
+import * as locationActions from '../actions/locationActions';
 
 // Components
-import Calendar from 'Home/Calendar';
-import BookingForm from 'Home/BookingForm';
-import ImageSlider from 'Home/ImageSlider';
+import Calendar from '../components/Home/Calendar';
+import BookingForm from '../components/Home/bookingForm';
+import ImageSlider from '../components/Home/ImageSlider';
 
-class Home extends React.Component {
+type Image = {
+  name: string;
+  original_photo_url: string;
+  thumb_photo_url: string;
+}
+
+type Props = {
+  getLocations: () => void;
+  setBooking: (booking: any) => void;
+  bookingStart: (date: string) => void;
+  bookingEnd: (date: string) => void;
+  booking: {
+    start_date: string,
+    end_date: string
+  };
+  user: {
+    name: string;
+    email: string;
+  };
+  locations: {
+    Home: {
+      images: Image[];
+    };
+  }[]
+};
+
+class Home extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.setBooking = this.setBooking.bind(this);
@@ -51,14 +77,11 @@ class Home extends React.Component {
         </div>
         <div className="home-booking-form">
           <Calendar
-            className="calendar"
             booking={booking}
             bookingStart={bookingStart}
             bookingEnd={bookingEnd} />
           <BookingForm
-            className="bookingForm"
             booking={booking}
-            user={user}
             setBooking={setBooking} />
         </div>
       </div>

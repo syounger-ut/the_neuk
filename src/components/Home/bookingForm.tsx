@@ -2,7 +2,20 @@ import * as React from 'react';
 
 import moment from 'moment';
 
-class BookingForm extends React.Component {
+type Props = {
+  booking: any,
+  setBooking: any
+}
+
+type State = {
+  start_date: string,
+  end_date: string,
+  occupants: string,
+  special_instructions: string,
+  price: number
+}
+
+class BookingForm extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +55,10 @@ class BookingForm extends React.Component {
 
   setBookingState(booking) {
     Object.entries(booking).forEach(([key, value]) => {
-      this.setState({ [key]: value })
+      this.setState({
+        ...this.state,
+        [key]: value,
+      })
     });
   }
 
@@ -55,7 +71,8 @@ class BookingForm extends React.Component {
     let key = event.target.name;
     let value = event.target.value;
     this.setState({
-      [key]: value
+      ...this.state,
+      [key]: value,
     })
   }
 

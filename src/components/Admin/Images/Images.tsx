@@ -2,8 +2,14 @@ import * as React from 'react';
 import { Link } from 'react-router-dom'
 
 // Components
+type Props = {
+  images: {
+    id: number;
+    thumb_photo_url: string;
+  }[]
+}
 
-class AdminImages extends React.Component {
+class AdminImages extends React.Component<Props> {
   render() {
     const images = this.props.images;
     let imagesTile;

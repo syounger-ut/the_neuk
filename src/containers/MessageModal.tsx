@@ -2,7 +2,14 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 
-class MessageModal extends React.Component {
+type Props = {
+  message: {
+    message: string;
+    style: string;
+  };
+}
+
+class MessageModal extends React.Component<Props> {
   render() {
     const message = this.props.message;
     const className = `message ${message.style}`;

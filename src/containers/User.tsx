@@ -2,13 +2,27 @@ import * as React from 'react';
 
 // Redux
 import { connect } from 'react-redux'
-import * as userActions from 'userActions';
+import * as userActions from '../actions/userActions';
 
 // Components
-import UpdateUser from 'User/UpdateUser';
-import MessageModal from 'MessageModal';
+import UpdateUser from '../components/User/UpdateUser';
+import MessageModal from './MessageModal';
 
-class User extends React.Component {
+type Props = {
+  user: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone_number: string;
+  };
+  updateUser: () => void;
+  message: {
+    text: string;
+    style: string;
+  };
+};
+
+class User extends React.Component<Props> {
   render() {
     const user = this.props.user;
     const updateUser = this.props.updateUser;
@@ -39,7 +53,7 @@ const mapStateToProps = (state, ownProps) => {
 // Maps actions to props
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (user, token) => dispatch(userActions.updateUser(user, token))
+    updateUser: (user, token) => dispatch(userActions.updateUser(user))
   }
 };
 

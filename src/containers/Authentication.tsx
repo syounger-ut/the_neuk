@@ -2,13 +2,22 @@ import * as React from 'react';
 import { redirect } from "react-router-dom";
 
 import { connect } from 'react-redux';
-import * as authenticationActions from 'authenticationActions';
+import * as authenticationActions from '../actions/authenticationActions';
 
 // Components
-import Login from 'Authentication/Login';
-import Register from 'Authentication/Register';
+import Login from '../components/Authentication/Login';
+import Register from '../components/Authentication/Register';
 
-class Authentication extends React.Component {
+type Props = {
+  login: () => void;
+  register: () => void;
+}
+
+type State = {
+  renderLogin: boolean;
+}
+
+class Authentication extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {

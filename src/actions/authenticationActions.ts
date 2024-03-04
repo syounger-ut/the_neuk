@@ -1,4 +1,4 @@
-import theNeukApi from 'theNeukApi';
+import theNeukApi from '../api/theNeukApi';
 
 export const setCurrentUser = (user) => {
   return {
@@ -26,7 +26,7 @@ export const login = (user) => {
   return (dispatch) => {
     return theNeukApi.loginUser(user).then(response => {
       localStorage.setItem('auth_token', response.token);
-      theNeukApi.currentUser(response).then(response => {
+      theNeukApi.currentUser().then(response => {
         dispatch(setCurrentUser(response));
       })
     });
@@ -37,7 +37,7 @@ export const register = (user) => {
   return (dispatch) => {
     return theNeukApi.registerUser(user).then(response => {
       localStorage.setItem('auth_token', response.token);
-      theNeukApi.currentUser(response).then(response => {
+      theNeukApi.currentUser().then(response => {
         dispatch(setCurrentUser(response));
       })
     });

@@ -1,27 +1,48 @@
 import * as React from 'react';
+import { useParams } from 'react-router-dom';
 
 // Components
 
-class AdminBooking extends React.Component {
+type Props = {
+  bookings: any;
+  updateBooking: (booking: any) => void;
+}
+
+type State = {
+  id: number;
+  end_date: string;
+  occupants: number;
+  special_instructions: string;
+  start_date: string;
+  user: {
+    full_name: string;
+  };
+  edit: boolean;
+}
+
+class AdminBooking extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
       end_date: '',
-      id: '',
-      occupants: '',
+      id: 0,
+      occupants: 0,
       special_instructions: '',
       start_date: '',
-      user: ''
+      user: {
+        full_name: ''
+      },
+      edit: false,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const { id } = useParams();
     const bookings = this.props.bookings;
     if (bookings) {
-      const booking = bookings[id];
+      const booking = bookings[id || -1];
       this.setBookingState(booking)
     }
   }
@@ -30,6 +51,7 @@ class AdminBooking extends React.Component {
     let key = event.target.name;
     let value = event.target.value;
     this.setState({
+      ...this.state,
       [key]: value
     });
   }
@@ -41,9 +63,9 @@ class AdminBooking extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({ edit: false })
-    const id = this.props.match.params.id;
+    const { id } = useParams();
     if (nextProps.bookings) {
-      const booking = nextProps.bookings[id];
+      const booking = nextProps.bookings[id || -1];
       if (booking) { this.setBookingState(booking) }
     }
   }

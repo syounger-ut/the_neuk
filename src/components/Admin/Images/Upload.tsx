@@ -2,12 +2,23 @@ import * as React from 'react';
 import { Link } from 'react-router-dom'
 
 // Components
+type Props = {
+  uploadImage: (image: any) => void
+}
 
-class ImageUpload extends React.Component {
+type State = {
+  first_name: string;
+  name: string;
+  description: string;
+  file: string;
+}
+
+class ImageUpload extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
+      first_name: '',
       description: '',
       file: ''
     }
@@ -20,6 +31,7 @@ class ImageUpload extends React.Component {
     const target = event.target;
     const name = target.name;
     this.setState({
+      ...this.state,
       [name]: target.value
     });
   }

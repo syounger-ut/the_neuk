@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
-import * as authenticationActions from 'authenticationActions';
+type Props = {
+  login: (user) => void;
+}
 
-class Login extends React.Component {
+type State = {
+  username: string;
+  password: string;
+}
+
+class Login extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +24,7 @@ class Login extends React.Component {
     let key = event.target.name;
     let value = event.target.value;
     this.setState({
+      ...this.state,
       [key]: value
     });
   }

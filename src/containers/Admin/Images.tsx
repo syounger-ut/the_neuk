@@ -1,15 +1,24 @@
 import * as React from 'react';
-import { Route, redirect } from 'react-router-dom'
+import {Route, redirect, useLocation} from 'react-router-dom'
 
 import { connect } from 'react-redux';
-import * as adminActions from 'adminActions';
+import * as adminActions from '../../actions/adminActions';
 
 // Components
-import ImageUpload from 'Admin/Images/Upload';
-import AdminImages from 'Admin/Images/Images';
-import AdminImage from 'Admin/Images/Image';
+import ImageUpload from '../../components/Admin/Images/Upload';
+import AdminImages from '../../components/Admin/Images/Images';
+import AdminImage from '../../components/Admin/Images/Image';
 
-class Images extends React.Component {
+type Props = {
+  user: any;
+  images: any;
+  uploadImage: (imageDetails: any) => any;
+  getImages: () => any;
+  deleteImage: (imageId: number) => any;
+  updateImage: (image: any) => any;
+}
+
+class Images extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.uploadImage = this.uploadImage.bind(this);
@@ -46,19 +55,20 @@ class Images extends React.Component {
 
   render() {
     const images = this.props.images;
-    const match = this.props.match;
+    const { pathname } = useLocation();
     return (
       <div className='images'>
-        <Route exact path={`${match.path}`} render={() => <AdminImages images={images} />} />
-        <Route path={`${match.path}/new`} render={() => <ImageUpload uploadImage={this.uploadImage} />} />
+        <Route path={`${pathname}`}>
+          <AdminImages images={images} />
+        </Route>
+        <Route path={`${pathname}/new`}>
+          <ImageUpload uploadImage={this.uploadImage} />
+        </Route>
         <Route
-          path={`${match.path}/:id(\\d+)`} // (\\d+) ensures the id is an integer & prevents clash with /new
-          render={
-            (props) => <AdminImage {...props}
-              images={images}
-              deleteImage={this.deleteImage}
-              updateImage={this.updateImage}
-            />} />
+          // (\\d+) ensures the id is an integer & prevents clash with /new
+          path={`${pathname}/:id(\\d+)`}>
+          <AdminImage images={images} deleteImage={this.deleteImage} updateImage={this.updateImage} />
+        </Route>
       </div>
     );
   }

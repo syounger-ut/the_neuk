@@ -5,9 +5,9 @@ import { BrowserRouter } from 'react-router-dom'
 // Redux setup
 import { Provider }      from 'react-redux'
 import configureStore    from './store/configureStore';
-const store = configureStore();
+const store = configureStore({});
 
-import App from 'App';
+import App from './containers/App';
 
 
 ReactDOM.render(

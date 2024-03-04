@@ -1,6 +1,6 @@
-import theNeukApi from 'theNeukApi';
-import * as userActions from 'userActions';
-import * as bookingActions from 'bookingActions';
+import theNeukApi from '../api/theNeukApi';
+import * as userActions from './userActions';
+import * as bookingActions from './bookingActions';
 
 export const setImages = (images) => {
   return {

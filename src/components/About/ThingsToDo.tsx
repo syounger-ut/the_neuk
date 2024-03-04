@@ -1,6 +1,17 @@
 import * as React from 'react';
 
-class ThingsToDo extends React.Component {
+type Props = {
+  thingsToDo: {
+    image: {
+      thumb_photo_url: string;
+    };
+    name: string;
+    description: string;
+    website_url: string;
+  }[]
+}
+
+class ThingsToDo extends React.Component<Props> {
   render() {
     const thingsToDo = this.props.thingsToDo;
 

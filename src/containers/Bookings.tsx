@@ -1,13 +1,48 @@
 import * as React from 'react';
 
 import { connect } from 'react-redux';
-import * as eventActions from 'eventActions';
+import * as eventActions from '../actions/eventActions';
 
 // Components
-import Booking from 'Booking/Booking';
-import Events from 'Booking/Events';
+import Booking from '../components/Booking/Booking';
+import Events from '../components/Booking/Events';
 
-class Bookings extends React.Component {
+type Props = {
+  findEvents: () => void;
+  currentUser: {
+    bookings: {
+      id: number,
+      start_date: string,
+      end_date: string,
+      occupants: number,
+      special_instructions: string,
+      price: number
+    }[];
+  };
+  events: {
+    name: string;
+    images: { url: string }[];
+    descriptions: { description: string }[];
+    schedules: {
+      start_ts: number;
+      end_ts: number;
+      ticket_summary: string;
+      place: {
+        name: string;
+        address: string;
+        town: string;
+        post_code: string;
+      }
+    }[];
+    website: string;
+  }[];
+}
+
+type State = {
+
+}
+
+class Bookings extends React.Component<Props, State> {
 
   componentDidMount() {
     this.props.findEvents();

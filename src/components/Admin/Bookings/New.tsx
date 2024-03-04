@@ -1,16 +1,32 @@
 import * as React from 'react';
 
 // Components
+type Props = {
+  submitBooking: (booking: any) => void;
+  users: {
+    id: number;
+    full_name: string;
+  }[];
+}
 
-class AdminNewBooking extends React.Component {
+type State = {
+  id: string;
+  user_id: string;
+  start_date: string;
+  end_date: string;
+  occupants: string;
+  special_instructions: string;
+}
+
+class AdminNewBooking extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      end_date: '',
       id: '',
       occupants: '',
       special_instructions: '',
       start_date: '',
+      end_date: '',
       user_id: ''
     }
     this.handleChange = this.handleChange.bind(this);
@@ -21,6 +37,7 @@ class AdminNewBooking extends React.Component {
     let key = event.target.name;
     let value = event.target.value;
     this.setState({
+      ...this.state,
       [key]: value
     });
   }

@@ -2,7 +2,27 @@ import * as React from 'react';
 
 import moment from 'moment';
 
-class Events extends React.Component {
+type Props = {
+  events: {
+    name: string;
+    images: { url: string }[];
+    descriptions: { description: string }[];
+    schedules: {
+      start_ts: number;
+      end_ts: number;
+      ticket_summary: string;
+      place: {
+        name: string;
+        address: string;
+        town: string;
+        post_code: string;
+      }
+    }[];
+    website: string;
+  }[]
+}
+
+class Events extends React.Component<Props> {
   render() {
     let events;
     if (this.props.events) {

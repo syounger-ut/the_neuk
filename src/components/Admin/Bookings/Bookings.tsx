@@ -2,8 +2,24 @@ import * as React from 'react';
 import { Link } from 'react-router-dom'
 
 // Components
+type Props = {
+  upcomingBookings: {
+    id: number;
+    start_date: string;
+    end_date: string;
+    occupants: number;
+    special_instructions: string;
+  };
+  pastBookings: {
+    id: number;
+    start_date: string;
+    end_date: string;
+    occupants: number;
+    special_instructions: string;
+  };
+}
 
-class AdminBookings extends React.Component {
+class AdminBookings extends React.Component<Props> {
   render() {
     const upcomingBookingsProp = this.props.upcomingBookings;
     const pastBookingsProp = this.props.pastBookings;

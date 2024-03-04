@@ -1,4 +1,9 @@
-const locationsReducer = (state = null, action) => {
+type Location = {
+  name: string;
+  images: string[];
+}
+
+const locationsReducer = (state = {}, action) => {
   let initialState = {}
 
   switch (action.type) {
@@ -10,7 +15,7 @@ const locationsReducer = (state = null, action) => {
       })
 
       // Assign a default Location
-      initialState["defaultLocation"] = Object.values(initialState)[0].images[0]
+      initialState["defaultLocation"] = Object.values<Location>(initialState)[0].images[0]
 
       return Object.assign({}, state, initialState)
     case 'SET_DEFAULT_LOCATION':

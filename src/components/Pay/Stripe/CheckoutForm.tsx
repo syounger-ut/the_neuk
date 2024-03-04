@@ -1,12 +1,26 @@
 import * as React from 'react';
 import { injectStripe } from 'react-stripe-elements';
 
-import theNeukApi from 'theNeukApi';
+import theNeukApi from '../../../api/theNeukApi';
 
-// import AddressSection from './AddressSection';
-import CardSection from 'Pay/Stripe/CardSection';
+import CardSection from '../../Pay/Stripe/CardSection';
 
-class CheckoutForm extends React.Component {
+type Props = {
+  stripe: {
+    createToken: ({ name }: { name: string }) => Promise<{ token: { id: string } }>;
+  };
+  booking: {
+    name: string;
+    email: string;
+    phone: string;
+    date: string;
+    time: string;
+    guests: number;
+    message: string;
+  }
+}
+
+class CheckoutForm extends React.Component<Props> {
   constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this);

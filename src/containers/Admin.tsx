@@ -2,15 +2,25 @@ import * as React from 'react';
 import { Route } from 'react-router-dom'
 
 import { connect } from 'react-redux';
-import * as adminActions from 'adminActions';
+import * as adminActions from '../actions/adminActions';
 
 // Components
-import AdminNav from 'Admin/Nav';
-import Home from 'Admin/Home';
-import Bookings from 'Admin/Bookings';
-import Images from 'Admin/Images';
+import AdminNav from '../components/Admin/Nav';
+import Home from '../components/Admin/Home';
+import Bookings from '../containers/Admin/Bookings';
+import Images from '../containers/Admin/Images';
 
-class Admin extends React.Component {
+type Props = {
+  getUsers: () => void;
+  user: {
+    id: number;
+    username: string;
+    email: string;
+    role: string;
+  };
+}
+
+class Admin extends React.Component<Props> {
   componentWillMount() {
     this.props.getUsers();
   }
@@ -20,9 +30,9 @@ class Admin extends React.Component {
     return (
       <div className='admin-template'>
         <AdminNav />
-        <Route exact path='/admin' component={Home} />
-        <Route path='/admin/images' component={Images} />
-        <Route path='/admin/bookings' component={Bookings} />
+        <Route path='/admin' element={<Home />} />
+        <Route path='/admin/images' element={<Images />} />
+        <Route path='/admin/bookings' element={<Bookings />} />
       </div>
     );
   }

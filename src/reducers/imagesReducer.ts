@@ -1,4 +1,4 @@
-const imageReducer = (state = null, action) => {
+const imageReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_IMAGES':
       let initialState = {}

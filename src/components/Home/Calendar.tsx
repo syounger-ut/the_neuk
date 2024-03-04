@@ -1,17 +1,34 @@
 import * as React from 'react';
 
-import GoogleCalendarApi from 'googleCalendarApi'
+import GoogleCalendarApi from '../../api/googleCalendarApi';
+import moment from 'moment';
 
-const moment = require('moment');
+type Props = {
+  booking: {
+    start_date: string,
+    end_date: string
+  };
+  bookingStart: (startDate: string) => void;
+  bookingEnd: (endDate: string) => void;
+}
 
-class Calendar extends React.Component {
+type State = {
+  date: string;
+  month: string;
+  daysInMonth: number;
+  startDay: number;
+  bookingStart: string;
+  bookingEnd: string;
+}
+
+class Calendar extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
       date: '',
       month: '',
-      daysInMonth: '',
-      startDay: '',
+      daysInMonth: 0,
+      startDay: 0,
       bookingStart: '',
       bookingEnd: ''
     };
@@ -47,8 +64,8 @@ class Calendar extends React.Component {
   bookingDates(date) {
     let dateFormatted = Date.parse(date);
     let booking = this.props.booking;
-    let startDate = booking ? Date.parse(booking.start_date) : '';
-    let endDate = booking ? Date.parse(booking.end_date) : '';
+    let startDate = booking ? Date.parse(booking.start_date) : 0;
+    let endDate = booking ? Date.parse(booking.end_date) : 0;
 
     if (!booking || isNaN(startDate)) {
       this.props.bookingStart(date);
@@ -74,8 +91,8 @@ class Calendar extends React.Component {
     const changeMonth = this.changeMonth;
 
     const booking = this.props.booking;
-    const bookingStart = booking ? Date.parse(booking.start_date) : '';
-    const bookingEnd = booking ? Date.parse(booking.end_date) : '';
+    const bookingStart = booking ? Date.parse(booking.start_date) : 0;
+    const bookingEnd = booking ? Date.parse(booking.end_date) : 0;
 
     const daysInMonth = this.state.daysInMonth;
     const startDay = this.state.startDay;
@@ -89,7 +106,7 @@ class Calendar extends React.Component {
         let date = moment(this.state.date).startOf('month').add(day - 1, 'd').toDate();
         let backgroundColor;
         if (booking) {
-          let dateFormatted = Date.parse(date);
+          let dateFormatted = Date.parse(date.toString());
           let dateMatch =
             bookingStart === dateFormatted ||
             bookingEnd === dateFormatted ||

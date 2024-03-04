@@ -1,6 +1,19 @@
 import * as React from 'react';
 
-class Booking extends React.Component {
+type Props = {
+  user: {
+    bookings: {
+      id: number,
+      start_date: string,
+      end_date: string,
+      occupants: number,
+      special_instructions: string,
+      price: number
+    }[];
+  };
+}
+
+class Booking extends React.Component<Props> {
   render() {
     const user = this.props.user;
 

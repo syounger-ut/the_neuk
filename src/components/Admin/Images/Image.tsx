@@ -1,12 +1,37 @@
 import * as React from 'react';
+import {useParams} from "react-router-dom";
 
 // Components
+type Props = {
+  images: {
+    id: number,
+    name: string,
+    description: string,
+    thumb_photo_url: string,
+    medium_photo_url: string,
+    square_photo_url: string,
+    original_photo_url: string
+  }[];
+  updateImage: (image: any) => void;
+  deleteImage: (imageId: number) => void;
+}
 
-class AdminImage extends React.Component {
+type State = {
+  id: number,
+  name: string,
+  description: string,
+  thumb_photo_url: string,
+  medium_photo_url: string,
+  square_photo_url: string,
+  original_photo_url: string,
+  edit: boolean
+}
+
+class AdminImage extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
+      id: 0,
       name: '',
       description: '',
       thumb_photo_url: '',
@@ -21,18 +46,18 @@ class AdminImage extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const { id } = useParams();
     const images = this.props.images;
     if (images) {
-      const image = images[id];
+      const image = images[id || -1];
       this.setImageState(image)
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({ edit: false })
-    const id = this.props.match.params.id;
-    const image = nextProps.images[id];
+    const { id } = useParams();
+    const image = nextProps.images[id || -1];
     if (image) { this.setImageState(image) }
   }
 
@@ -56,6 +81,7 @@ class AdminImage extends React.Component {
     let key = event.target.name;
     let value = event.target.value;
     this.setState({
+      ...this.state,
       [key]: value
     });
   }

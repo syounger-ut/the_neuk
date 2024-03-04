@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Components
-import ImageThumb from 'About/ImageThumb';
+import ImageThumb from './ImageThumb';
 
 type Props = {
-  locations: any[];
+  locations: { defaultLocation: any };
   setDefaultLocation: (image: any) => void;
 }
 

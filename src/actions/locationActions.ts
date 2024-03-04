@@ -1,4 +1,4 @@
-import theNeukApi from 'theNeukApi';
+import theNeukApi from '../api/theNeukApi';
 
 export const setLocations = (locations) => {
   return {

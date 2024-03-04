@@ -1,8 +1,19 @@
 import * as React from 'react';
 
-import * as authenticationActions from 'authenticationActions';
+type Props = {
+  register: (user: any) => void;
+}
 
-class Register extends React.Component {
+type State = {
+  username: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  password: string;
+}
+
+class Register extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +32,7 @@ class Register extends React.Component {
     let key = event.target.name;
     let value = event.target.value;
     this.setState({
+      ...this.state,
       [key]: value
     });
   }

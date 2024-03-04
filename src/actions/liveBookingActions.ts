@@ -1,4 +1,4 @@
-import theNeukApi from 'theNeukApi';
+import theNeukApi from '../api/theNeukApi';
 
 export const setBookingStart = (date) => {
   return {
@@ -21,9 +21,9 @@ export const setBooking = (booking) => {
   }
 }
 
-export const submitBooking = (booking) => {
+export const submitBooking = (booking, stripeToken) => {
   return (dispatch) => {
-    return theNeukApi.submitBooking(booking).then(response => {
+    return theNeukApi.submitBooking(booking, stripeToken).then(response => {
       dispatch(setBooking(response))
       return true
     });

@@ -1,6 +1,23 @@
 import * as React from 'react';
 
-class UpdateUser extends React.Component {
+type Props = {
+  user: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone_number: string;
+  };
+  updateUser: (user: object) => void;
+}
+
+type State = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+}
+
+class UpdateUser extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +53,8 @@ class UpdateUser extends React.Component {
     const target = event.target;
     const name = target.name;
     this.setState({
-      [name]: target.value
+      ...this.state,
+      [name]: target.value,
     });
   }
 

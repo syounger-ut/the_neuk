@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 import { connect } from 'react-redux';
-import * as locationActions from 'locationActions';
-import * as toDoActions from 'toDoActions';
+import * as locationActions from '../actions/locationActions';
+import * as toDoActions from '../actions/toDoActions';
 
 // Components
-import MainPhoto from 'About/MainPhoto';
-import LocationsTile from 'About/LocationsTile';
-import MapContainer from 'About/MapContainer';
-import ThingsToDo from 'About/ThingsToDo';
+import MainPhoto from '../components/About/MainPhoto';
+import LocationsTile from '../components/About/LocationsTile';
+import MapContainer from '../components/About/MapContainer';
+import ThingsToDo from '../components/About/ThingsToDo';
 
 type Props = {
   getThingsToDo: () => void;
@@ -17,16 +17,23 @@ type Props = {
 }
 
 type State = {
-  locations: string;
-  thingsToDo: string;
+  locations: { defaultLocation: any };
+  thingsToDo: {
+    image: {
+      thumb_photo_url: string;
+    };
+    name: string;
+    description: string;
+    website_url: string;
+  }[];
 }
 
 class About extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      locations: '',
-      thingsToDo: ''
+      locations: { defaultLocation: '' },
+      thingsToDo: [],
     };
   }
 
@@ -51,7 +58,7 @@ class About extends React.Component<Props, State> {
     return (
       <section className="about">
         <h1>Gallery</h1>
-        <MainPhoto locations={locations} setDefaultLocation={setDefaultLocation} />
+        <MainPhoto locations={locations} />
         <LocationsTile locations={locations} setDefaultLocation={setDefaultLocation} />
         <MapContainer />
         <ThingsToDo thingsToDo={thingsToDo} />

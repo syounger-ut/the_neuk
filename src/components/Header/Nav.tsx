@@ -1,7 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
 
-class Nav extends React.Component {
+type Props = {
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    role: string;
+  };
+  logout: () => void;
+}
+
+class Nav extends React.Component<Props> {
   render() {
     let user = this.props.user;
     let logout = this.props.logout;
