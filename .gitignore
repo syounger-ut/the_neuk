@@ -21,3 +21,6 @@
 
 # Ignore storage files
 storage/
+built/
+dist/
+public/

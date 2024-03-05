@@ -1,30 +1,34 @@
-var webpack = require('webpack')
-var path    = require('path')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   context: __dirname + "/src",
-  entry: './index.js',
+  entry: './index.tsx',
   mode: 'development',
   output: {
-    path: __dirname + '/public',
-    publicPath: '/',
-    filename: 'bundle.js'
+    filename: "bundle.[fullhash].js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: '/'
   },
-  devtool: 'inline-source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "../public/index.html",
+    }),
+  ],
+  devtool: "source-map",
+  resolve: {
+    modules: [__dirname, "src", "node_modules"],
+    extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
+  },
   module: {
     rules: [
-      {
-        test: /\.(?:js|jsx|mjs|cjs)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
-      }
+      // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
+      { test: /\.(t|j)sx?$/, use: { loader: 'ts-loader' }, exclude: /node_modules/ },
+      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      { enforce: "pre", test: /\.js$/, exclude: /node_modules/, loader: "source-map-loader" }
     ]
   },
   resolve: {
@@ -39,6 +43,6 @@ module.exports = {
       path.resolve(__dirname, 'src/containers'),
       path.resolve(__dirname, 'src/actions')
     ],
-    extensions: [".js", ".json", ".jsx", ".scss", ".css"]
-  }
-}
+    extensions: [".js", ".json", ".jsx", ".ts", ".tsx", ".scss", ".css"]
+  },
+};
