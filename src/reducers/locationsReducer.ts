@@ -15,7 +15,7 @@ const locationsReducer = (state = {}, action) => {
       })
 
       // Assign a default Location
-      initialState["defaultLocation"] = Object.values<Location>(initialState)[0].images[0]
+      initialState["defaultLocation"] = Object.values<Location>(initialState)[0]?.images[0]
 
       return Object.assign({}, state, initialState)
     case 'SET_DEFAULT_LOCATION':

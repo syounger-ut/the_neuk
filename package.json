@@ -2,9 +2,9 @@
   "name": "the_neuk_front",
   "version": "1.0.0",
   "description": "a property letting website for the neuk",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,13 +18,13 @@
   },
   "homepage": "https://github.com/samyounger/the_neuk_front#readme",
   "dependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "@babel/preset-react": "^7.23.3",
+    "@types/google-maps-react": "^2.0.5",
+    "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@types/react-image-gallery": "^1.2.4",
+    "@types/react-stripe-elements": "^6.0.9",
     "axios": "^1.6.7",
-    "babel-loader": "^9.1.3",
     "express": "^4.18.3",
     "font-awesome": "^4.7.0",
     "google-maps-react": "^2.0.6",
@@ -42,22 +42,14 @@
     "webpack-dev-middleware": "^7.0.0"
   },
   "devDependencies": {
-    "@types/google-maps-react": "^2.0.5",
-    "@types/react-image-gallery": "^1.2.4",
-    "@types/react-stripe-elements": "^6.0.9",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "gulp-clean": "^0.4.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-livereload": "^4.0.2",
-    "gulp-nodemon": "^2.5.0",
-    "gulp-sass": "^5.1.0",
-    "gulp4": "^4.0.2",
+    "css-loader": "^6.10.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.6.0",
     "path": "^0.12.7",
+    "style-loader": "^3.3.4",
     "typescript": "^5.3.3",
     "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.2"
   }
 }

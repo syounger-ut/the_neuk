@@ -30,9 +30,9 @@ class ImageSlider extends React.Component<Props> {
     let images: ImageGalleryItem[] = [];
 
     if (locations) {
-      const home = locations["Home"];
+      const home = locations["Home"] || {};
 
-      images = Object.entries<Image>(home.images).map(([index, image]): ImageGalleryItem => ({
+      images = Object.entries<Image>(home.images || []).map(([index, image]): ImageGalleryItem => ({
         original: image.original_photo_url,
         thumbnail: image.thumb_photo_url,
         description: image.name,

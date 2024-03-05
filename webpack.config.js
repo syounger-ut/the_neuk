@@ -1,16 +1,28 @@
-var webpack = require('webpack')
-var path    = require('path')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   context: __dirname + "/src",
   entry: './index.tsx',
   mode: 'development',
   output: {
-    path: __dirname + '/public',
-    publicPath: '/',
-    filename: 'bundle.js'
+    filename: "bundle.[fullhash].js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: '/'
   },
+  devServer: {
+    historyApiFallback: true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "../public/index.html",
+    }),
+  ],
   devtool: "source-map",
+  resolve: {
+    modules: [__dirname, "src", "node_modules"],
+    extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
+  },
   module: {
     rules: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
@@ -33,8 +45,4 @@ module.exports = {
     ],
     extensions: [".js", ".json", ".jsx", ".ts", ".tsx", ".scss", ".css"]
   },
-  externals: {
-    react: "React",
-    "react-dom": "ReactDOM",
-  },
-}
+};

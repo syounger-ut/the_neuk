@@ -52,8 +52,8 @@ class MainPhoto extends React.Component<Props, State> {
     return (
       <section className="image-gallery-container">
         <ImageGallery items={images} showThumbnails={false} showPlayButton={false} />
-        <h4>{defaultImage.name}</h4>
-        <p>{defaultImage.description}</p>
+        <h4>{defaultImage?.name}</h4>
+        <p>{defaultImage?.description}</p>
       </section>
     );
   }
